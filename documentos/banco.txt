@@ -1,0 +1,29 @@
+insert into patrocinador(nome, estrelas, valor) values(?,?,?);
+insert into estadio(estrelas, ingresso, publico) values(?,?,?);
+insert into time(pontos, esquema, saldo, patrocionarid, estadioid) values(?,?,?,?,?);
+insert into jogador(nome, posicao, idade, tecnica, fisico, inteligencia, motivacao, 
+suspenso, cartaoamarelo, timeid) values(?,?,?,?,?,?,?,?,?,?);
+insert into partida(casaid, visitanteid) values(?,?);
+insert into gols(gols, timeid, partidaid) values(?,?,?);
+
+update patrocinador set nome = ?, estrelas = ?, valor = ?, where patrocinadorid = ?;
+update estadio set estrelas = ?, ingresso = ?, publico = ?, where estadioid = ?;
+update time set pontos = ?, esquema = ?, saldo = ?, patrocinadorid = ?, estadioid = ?, where timeid = ?;
+update jogador set nome = ?, posicao = ?, idade = ?, tecnica = ?, fisico = ?, inteligencia = ?,
+motivacao = ?, suspenso = ?, cartaoamarelo = ?, timeid = ?, where jogadorid = ?;
+update partida set casaid = ?, visitanteid = ?, where partidaid = ?;
+update gols set gols = ?, timeid = ?, partidaid = ?, where partidaid = ?;
+
+select * from patrocinador where patrocinadorid = ?;
+select * from estadio where estadioid = ?;
+select * from time where timeid = ?;
+select * from jogador where jogadorid = ?;
+select * from partida where partidaid = ?;
+select * from gols where partidaid = ?;
+
+delete from patrocinador where patrocinadorid = ?;
+delete from estadio where estadioid = ?;
+delete from time where timeid = ?;
+delete from jogador where jogadorid = ?;
+delete from partida where partidaid = ?;
+delete from gols where partidaid = ?;

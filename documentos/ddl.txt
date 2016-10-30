@@ -1,0 +1,84 @@
+drop database if exists brasfoot;
+
+create database brasfoot;
+
+use brasfoot;
+
+create table patrocinador(
+patrocinadorid integer not null auto_increment,
+nome varchar(50),
+estrelas integer,
+valor double,
+primary key(patrocinadorid)
+);
+
+create table estadio(
+estadioid integer not null auto_increment,
+estrelas integer,
+ingresso double, 
+publico integer,
+primary key(estadioid)
+);
+
+create table time(
+timeid integer not null auto_increment,
+pontos integer,
+esquema integer,
+saldo double,
+patrocinadorid integer,
+estadioid integer,
+primary key(timeid), 
+key(patrocinadorid),
+key(estadioid)
+);
+
+create table jogador(
+jogadorid integer not null auto_increment,
+nome varchar(50),
+posicao varchar(50),
+idade integer,
+tecnica integer,
+fisico integer,
+inteligencia integer,
+motivacao integer,
+suspenso integer,
+cartaoamarelo integer,
+timeid integer,
+primary key(jogadorid),
+key (timeid)
+);
+
+create table partida(
+partidaid integer not null auto_increment,
+casaid integer,
+visitanteid integer,
+primary key(partidaid),
+key(casaid),
+key(visitanteid)
+);
+
+create table gols(
+gols integer not null,
+timeid integer,
+partidaid integer not null,
+primary key(partidaid),
+key(timeid)
+);
+
+alter table time add constraint fk_time_patrocionador
+foreign key (patrocinadorid) references patrocinador (patrocinadorid);
+
+alter table time add constraint fk_time_estadio
+foreign key (estadioid) references estadio (estadioid);
+
+alter table jogador add constraint fk_jogador_time
+foreign key (timeid) references time (timeid);
+
+alter table partida add constraint fk_partida_casa
+foreign key (casaid) references time (timeid);
+
+alter table partida add constraint fk_partida_visitante
+foreign key (visitanteid) references time (timeid);
+
+alter table gols add constraint fk_gols_time
+foreign key (timeid) references time (timeid);
