@@ -30,7 +30,6 @@ public class Partida {
         Esquema[] esquemas = {casaEsquema, visitanteEsquema};
 
         placar = Regras.getGols(esquemas, atributos);
-
     }
 
     public int[] getPlacar() {
