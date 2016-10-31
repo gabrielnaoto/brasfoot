@@ -11,6 +11,18 @@ public class Patrocinador {
     private double valor;
     private String nome;
 
+    public Patrocinador() {
+    }
+
+    public Patrocinador(int id, int estrelas, double valor, String nome) {
+
+        this.id = id;
+        this.estrelas = estrelas;
+        this.valor = valor;
+        this.nome = nome;
+    }
+
+
     public int getId() {
         return id;
     }
@@ -43,11 +55,5 @@ public class Patrocinador {
         this.nome = nome;
     }
 
-    public Patrocinador(int id, int estrelas, double valor, String nome) {
 
-        this.id = id;
-        this.estrelas = estrelas;
-        this.valor = valor;
-        this.nome = nome;
-    }
 }
