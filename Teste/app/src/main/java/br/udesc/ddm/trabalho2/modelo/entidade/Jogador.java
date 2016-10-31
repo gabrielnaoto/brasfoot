@@ -8,11 +8,17 @@ public class Jogador {
 
     private int id;
     private String nome;
+    private String posicao;
     private int idade;
     private int tecnica;
     private int fisico;
     private int inteligentcia;
     private int motivacao;
+    private Time time;
+
+    public Jogador() {
+
+    }
 
     public Jogador(int id, String nome, int idade, int tecnica, int fisico, int inteligentcia, int motivacao) {
         this.id = id;
@@ -22,6 +28,14 @@ public class Jogador {
         this.fisico = fisico;
         this.inteligentcia = inteligentcia;
         this.motivacao = motivacao;
+    }
+
+    public String getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(String posicao) {
+        this.posicao = posicao;
     }
 
     public int getId() {
@@ -78,5 +92,13 @@ public class Jogador {
 
     public void setMotivacao(int motivacao) {
         this.motivacao = motivacao;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
     }
 }

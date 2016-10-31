@@ -1,0 +1,36 @@
+Reald Madrid
+Cristiano Ronaldo,Atacante,31,94,94,93,50
+Gareth Bale,Atacante,27,90,90,89,50
+Luka Modric,Meia,31,89,89,88,50
+Sergio Ramos,Zagueiro,30,89,89,88,50
+Toni Kroos,Meia,26,88,90,89,50
+Pepe,Zagueiro,33,88,88,87,50
+James Rodríguez,Meia,25,87,92,89,50
+Karim Benzema,Atacante,28,87,87,85,50
+Marcelo,Zagueiro,28,86,86,84,50
+Keylor Navas,Goleiro,29,85,85,86,50
+Raphael Varane,Zagueiro,23,84,91,87,50
+Isco,Meia,24,84,88,86,50
+Carvajal,Zagueiro,24,83,86,85,50
+Morata,Atacante,23,82,86,88,50
+Casemiro,Meia,24,82,87,83,50
+Marco Asensio,Meia,20,81,89,87,50
+Lucas Vázquez,Meia,25,81,84,82,50
+Danilo,Zagueiro,25,80,83,81,50
+Barcelona
+Fábio Coentrão,Zagueiro,28,80,80,81,50
+Mateo Kovacic,Meia,22,79,85,81,50
+Kiko Casilla,Goleiro,30,79,79,78,50
+Nacho Fernández,Zagueiro,26,78,80,79,50
+Lucas Silva,Meia,23,74,76,77,50
+Mariano,Atacante,23,71,80,75,50
+Martin Odegaard,Meia,17,70,83,77,50
+Sergio Díaz,Atacante,18,67,81,72,50
+Aleix Febas,Meia,20,67,82,74
+Enzo Fernández,Meia,21,66,75,71,50
+Philipp Lienhart,Zagueiro,20,65,80,75,50
+Nikos Vergos,Atacante,20,65,74,72,50
+Rubén Yáñez,Goleiro,23,65,73,70,50
+Achraf Hakimi,Zagueiro,17,64,75,71,50
+Álvaro Tejero,Zagueiro,20,62,75,70,50
+

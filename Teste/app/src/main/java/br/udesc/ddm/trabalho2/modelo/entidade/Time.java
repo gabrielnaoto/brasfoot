@@ -1,8 +1,6 @@
 package br.udesc.ddm.trabalho2.modelo.entidade;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by ignoi on 26/10/2016.
@@ -10,9 +8,13 @@ import java.util.Map;
 
 public class Time {
 
+    private String nome;
+    private int pontos;
+    private double saldo;
     private List<Jogador> jogadores;
     private Esquema esquema;
     private Patrocinador patrocinador;
+    private Estadio estadio;
 
     public int getAtributos() {
         int tecnica = 0;
@@ -36,6 +38,14 @@ public class Time {
         return atributos;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public List<Jogador> getJogadores() {
         return jogadores;
     }
@@ -46,5 +56,47 @@ public class Time {
 
     public Patrocinador getPatrocinador() {
         return patrocinador;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public void setJogadores(List<Jogador> jogadores) {
+        this.jogadores = jogadores;
+    }
+
+    public void setEsquema(Esquema esquema) {
+        this.esquema = esquema;
+    }
+
+    public void setPatrocinador(Patrocinador patrocinador) {
+        this.patrocinador = patrocinador;
+    }
+
+    public Estadio getEstadio() {
+        return estadio;
+    }
+
+    public void setEstadio(Estadio estadio) {
+        this.estadio = estadio;
+    }
+
+    public Jogador adiciongarJogador(Jogador j){
+        jogadores.add(j);
+        j.setTime(this);
+        return j;
     }
 }
