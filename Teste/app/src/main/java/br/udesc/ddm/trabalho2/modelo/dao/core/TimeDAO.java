@@ -5,4 +5,14 @@ package br.udesc.ddm.trabalho2.modelo.dao.core;
  */
 
 public interface TimeDAO {
+
+    public void inserir(Time o);
+
+    public void editar(Time o);
+
+    public Time pesquisar(int o);
+
+    public List<Time> listar();
+
+    public void remover(int id);
 }

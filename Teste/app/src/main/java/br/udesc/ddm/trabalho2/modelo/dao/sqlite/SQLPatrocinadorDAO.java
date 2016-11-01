@@ -41,13 +41,13 @@ public class SQLPatrocinadorDAO implements PatrocinadorDAO {
     public Patrocinador pesquisar(int o) {
         String[] id = {Integer.toString(o)};
         Cursor cursor = db.rawQuery("select * from patrocinador where patrocinadorid = ?", id);
-        int index_id = cursor.getColumnIndex("patrocinadorid");
+        int index_patrocinadorid = cursor.getColumnIndex("patrocinadorid");
         int index_nome = cursor.getColumnIndex("nome");
         int index_estrelas = cursor.getColumnIndex("estrelas");
         int index_valor = cursor.getColumnIndex("valor");
         cursor.moveToFirst();
         Patrocinador p = new Patrocinador();
-        p.setId(cursor.getInt(index_id));
+        p.setPatrocinadorid(cursor.getInt(index_patrocinadorid));
         p.setNome(cursor.getString(index_nome));
         p.setEstrelas(cursor.getInt(index_estrelas));
         p.setValor(cursor.getDouble(index_valor));
@@ -57,7 +57,7 @@ public class SQLPatrocinadorDAO implements PatrocinadorDAO {
     @Override
     public List<Patrocinador> listar() {
         Cursor cursor = db.rawQuery("select * from patrocinador", null);
-        int index_id = cursor.getColumnIndex("patrocinadorid");
+        int index_patrocinadorid = cursor.getColumnIndex("patrocinadorid");
         int index_nome = cursor.getColumnIndex("nome");
         int index_estrelas = cursor.getColumnIndex("estrelas");
         int index_valor = cursor.getColumnIndex("valor");
@@ -65,7 +65,7 @@ public class SQLPatrocinadorDAO implements PatrocinadorDAO {
         List<Patrocinador> patrocinadores = new ArrayList<>();
         while(!cursor.isAfterLast()){
             Patrocinador p = new Patrocinador();
-            p.setId(cursor.getInt(index_id));
+            p.setPatrocinadorid(cursor.getInt(index_patrocinadorid));
             p.setNome(cursor.getString(index_nome));
             p.setEstrelas(cursor.getInt(index_estrelas));
             p.setValor(cursor.getDouble(index_valor));
