@@ -41,7 +41,7 @@ public class SQLPatrocinadorDAO implements PatrocinadorDAO {
     public Patrocinador pesquisar(int o) {
         String[] id = {Integer.toString(o)};
         Cursor cursor = db.rawQuery("select * from patrocinador where patrocinadorid = ?", id);
-        int index_id = cursor.getColumnIndex("id");
+        int index_id = cursor.getColumnIndex("patrocinadorid");
         int index_nome = cursor.getColumnIndex("nome");
         int index_estrelas = cursor.getColumnIndex("estrelas");
         int index_valor = cursor.getColumnIndex("valor");
@@ -57,7 +57,7 @@ public class SQLPatrocinadorDAO implements PatrocinadorDAO {
     @Override
     public List<Patrocinador> listar() {
         Cursor cursor = db.rawQuery("select * from patrocinador", null);
-        int index_id = cursor.getColumnIndex("id");
+        int index_id = cursor.getColumnIndex("patrocinadorid");
         int index_nome = cursor.getColumnIndex("nome");
         int index_estrelas = cursor.getColumnIndex("estrelas");
         int index_valor = cursor.getColumnIndex("valor");
@@ -77,6 +77,6 @@ public class SQLPatrocinadorDAO implements PatrocinadorDAO {
     @Override
     public void remover(int id) {
         Object[] valores = {id};
-        db.execSQL(" update patrocinador set nome = ?, estrelas = ?, valor = ?, where patrocinadorid = ?", valores);
+        db.execSQL("delete from patrocinador where patrocinadorid = ?", valores);
     }
 }

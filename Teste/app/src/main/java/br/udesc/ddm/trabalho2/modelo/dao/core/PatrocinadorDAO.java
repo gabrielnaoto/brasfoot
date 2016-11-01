@@ -22,13 +22,3 @@ public interface PatrocinadorDAO {
     
     
 }
-
-
-//    insert into patrocinador(nome, estrelas, valor) values(?,?,?);
-//
-//
-//        update patrocinador set nome = ?, estrelas = ?, valor = ?, where patrocinadorid = ?;
-//
-//        select * from patrocinador where patrocinadorid = ?;
-//
-//        delete from patrocinador where patrocinadorid = ?;
