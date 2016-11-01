@@ -1,4 +1,4 @@
-package br.udesc.ddm.trabalho2.modelo.entidade;
+package br.udesc.ddm.brasfoot.modelo.entidade;
 
 /**
  * Created by ignoi on 26/10/2016.

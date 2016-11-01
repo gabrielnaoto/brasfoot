@@ -1,7 +1,7 @@
-package br.udesc.ddm.trabalho2.modelo.dao.sqlite;
+package br.udesc.ddm.brasfoot.modelo.dao.sqlite;
 
-import br.udesc.ddm.trabalho2.modelo.dao.core.EstadioDAO;
-import br.udesc.ddm.trabalho2.modelo.entidade.Estadio;
+import br.udesc.ddm.brasfoot.modelo.dao.core.EstadioDAO;
+import br.udesc.ddm.brasfoot.modelo.entidade.Estadio;
 
 /**
  * Created by ignoi on 26/10/2016.

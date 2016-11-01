@@ -1,4 +1,4 @@
-package br.udesc.ddm.trabalho2.modelo.entidade;
+package br.udesc.ddm.brasfoot.modelo.entidade;
 
 import java.util.List;
 

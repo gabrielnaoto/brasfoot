@@ -1,4 +1,4 @@
-package br.udesc.ddm.trabalho2.modelo.entidade;
+package br.udesc.ddm.brasfoot.modelo.entidade;
 
 /**
  * Created by ignoi on 26/10/2016.
@@ -16,7 +16,7 @@ public class Patrocinador {
 
     public Patrocinador(int id, int estrelas, double valor, String nome) {
 
-        this.id = id;
+        this.patrocinadorid = id;
         this.estrelas = estrelas;
         this.valor = valor;
         this.nome = nome;
@@ -32,11 +32,11 @@ public class Patrocinador {
     }
 
     public int getId() {
-        return id;
+        return patrocinadorid;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.patrocinadorid = id;
     }
 
     public int getEstrelas() {

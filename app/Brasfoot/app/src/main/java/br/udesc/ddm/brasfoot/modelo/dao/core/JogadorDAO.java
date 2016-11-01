@@ -1,8 +1,8 @@
-package br.udesc.ddm.trabalho2.modelo.dao.core;
+package br.udesc.ddm.brasfoot.modelo.dao.core;
 
 import java.util.List;
 
-import br.udesc.ddm.trabalho2.modelo.entidade.Jogador;
+import br.udesc.ddm.brasfoot.modelo.entidade.Jogador;
 
 /**
  * Created by ignoi on 26/10/2016.

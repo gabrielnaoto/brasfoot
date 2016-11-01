@@ -1,4 +1,4 @@
-package br.udesc.ddm.trabalho2.modelo.dao.sqlite;
+package br.udesc.ddm.brasfoot.modelo.dao.sqlite;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,13 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.udesc.ddm.trabalho2.modelo.dao.core.PatrocinadorDAO;
-import br.udesc.ddm.trabalho2.modelo.dao.core.TimeDAO;
-import br.udesc.ddm.trabalho2.modelo.entidade.Time;
+import br.udesc.ddm.brasfoot.modelo.dao.core.PatrocinadorDAO;
+import br.udesc.ddm.brasfoot.modelo.dao.core.TimeDAO;
+import br.udesc.ddm.brasfoot.modelo.entidade.Time;
 
 public class SQLTimeDAO implements TimeDAO {
 
-    private SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase("brasfoot", null);
+    private SQLiteDatabase db = SQLiteDatabase.openDatabase("brasfoot", null, SQLiteDatabase.OPEN_READWRITE);
     private PatrocinadorDAO patrocinadorDAO;
 
     @Override
