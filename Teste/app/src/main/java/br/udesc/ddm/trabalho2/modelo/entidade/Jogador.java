@@ -6,7 +6,7 @@ package br.udesc.ddm.trabalho2.modelo.entidade;
 
 public class Jogador {
 
-    private int id;
+    private int jogadorid;
     private String nome;
     private String posicao;
     private int idade;
@@ -15,19 +15,25 @@ public class Jogador {
     private int inteligentcia;
     private int motivacao;
     private Time time;
+    private int suspenso;
+    private int cartaoamarelo;
 
     public Jogador() {
 
     }
 
-    public Jogador(int id, String nome, int idade, int tecnica, int fisico, int inteligentcia, int motivacao) {
-        this.id = id;
+    public Jogador(int jogadorid, String nome, String posicao, int idade, int tecnica, int fisico, int inteligentcia, int motivacao, Time time, int suspenso, int cartaoamarelo) {
+        this.jogadorid = jogadorid;
         this.nome = nome;
+        this.posicao = posicao;
         this.idade = idade;
         this.tecnica = tecnica;
         this.fisico = fisico;
         this.inteligentcia = inteligentcia;
         this.motivacao = motivacao;
+        this.time = time;
+        this.suspenso = suspenso;
+        this.cartaoamarelo = cartaoamarelo;
     }
 
     public String getPosicao() {
@@ -38,12 +44,12 @@ public class Jogador {
         this.posicao = posicao;
     }
 
-    public int getId() {
-        return id;
+    public int getJogadorid() {
+        return jogadorid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setJogadorid(int jogadorid) {
+        this.jogadorid = jogadorid;
     }
 
     public String getNome() {
@@ -100,5 +106,21 @@ public class Jogador {
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public int getSuspenso() {
+        return suspenso;
+    }
+
+    public void setSuspenso(int suspenso) {
+        this.suspenso = suspenso;
+    }
+
+    public int getCartaoamarelo() {
+        return cartaoamarelo;
+    }
+
+    public void setCartaoamarelo(int cartaoamarelo) {
+        this.cartaoamarelo = cartaoamarelo;
     }
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Time {
 
+    private int timeid;
     private String nome;
     private int pontos;
     private double saldo;
@@ -37,6 +38,10 @@ public class Time {
 
         return atributos;
     }
+
+    public int getTimeid() { return timeid; }
+
+    public void setTimeid(int timeid) { this.timeid = timeid; }
 
     public String getNome() {
         return nome;

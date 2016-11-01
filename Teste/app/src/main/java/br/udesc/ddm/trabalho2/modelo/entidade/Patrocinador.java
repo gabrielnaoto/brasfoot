@@ -6,7 +6,7 @@ package br.udesc.ddm.trabalho2.modelo.entidade;
 
 public class Patrocinador {
 
-    private int id;
+    private int patrocinadorid;
     private int estrelas;
     private double valor;
     private String nome;
@@ -22,6 +22,14 @@ public class Patrocinador {
         this.nome = nome;
     }
 
+
+    public int getPatrocinadorid() {
+        return patrocinadorid;
+    }
+
+    public void setPatrocinadorid(int patrocinadorid) {
+        this.patrocinadorid = patrocinadorid;
+    }
 
     public int getId() {
         return id;

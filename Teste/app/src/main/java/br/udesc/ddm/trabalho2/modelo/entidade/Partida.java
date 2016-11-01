@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Partida {
 
+    private int partidaid;
     private Time casa;
     private Time visitante;
     private int[] placar;
@@ -30,6 +31,14 @@ public class Partida {
         Esquema[] esquemas = {casaEsquema, visitanteEsquema};
 
         placar = Regras.getGols(esquemas, atributos);
+    }
+
+    public int getPartidaid() {
+        return partidaid;
+    }
+
+    public void setPartidaid(int partidaid) {
+        this.partidaid = partidaid;
     }
 
     public int[] getPlacar() {
