@@ -10,14 +10,15 @@ import br.udesc.ddm.brasfoot.modelo.dao.core.PatrocinadorDAO;
 import br.udesc.ddm.brasfoot.modelo.dao.core.TimeDAO;
 import br.udesc.ddm.brasfoot.modelo.entidade.Time;
 
-public class SQLTimeDAO implements TimeDAO {
+public class SQLTimeDAO extends TimeDAO {
 
-    private SQLiteDatabase db = SQLiteDatabase.openDatabase("brasfoot", null, SQLiteDatabase.OPEN_READWRITE);
-    private PatrocinadorDAO patrocinadorDAO;
+    public SQLTimeDAO(SQLiteDatabase db) {
+        super(db);
+    }
 
     @Override
     public void inserir(Time o) {
-        Object[] valores = new Object[7];
+        Object[] valores = new Object[6];
         valores[0] = o.getNome();
         valores[1] = o.getPontos();
         valores[2] = o.getEsquema().getOrdem();

@@ -2,31 +2,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.udesc.ddm.brasfoot.MainActivity">
+    tools:context="br.udesc.ddm.brasfoot.MainActivity"
+    android:theme="@style/AlertDialog.AppCompat.Light">
+
+    <style android:name="Theme.MyDialog" android:parent="@style/Theme.AppCompat.Light.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <item android:name="windowActionBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">false</item>
+        <item android:name="windowNoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">true</item>
+    </style>
 
     <Button
-        android:text="Carregar"
-        android:layout_width="wrap_content"
+        android:text="Novo Jogo"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="13dp"
         android:id="@+id/button"
-        android:layout_alignParentEnd="true"
-        android:onClick="carregar" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textView"
-        android:layout_above="@+id/button"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginTop="163dp"
+        android:layout_alignEnd="@+id/button2"
+        android:layout_width="200dp" />
+
+    <Button
+        android:text="Continuar Jogo"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:id="@+id/button2"
+        android:layout_width="200dp"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

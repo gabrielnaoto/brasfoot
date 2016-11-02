@@ -13,9 +13,11 @@ import br.udesc.ddm.brasfoot.modelo.entidade.Patrocinador;
  * Created by ignoi on 26/10/2016.
  */
 
-public class SQLPatrocinadorDAO implements PatrocinadorDAO {
+public class SQLPatrocinadorDAO extends PatrocinadorDAO {
 
-    private SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase("eurofoot", null);
+    public SQLPatrocinadorDAO(SQLiteDatabase db) {
+        super(db);
+    }
 
     @Override
     public void inserir(Patrocinador o) {

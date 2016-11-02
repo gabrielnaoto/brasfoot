@@ -1,5 +1,7 @@
 package br.udesc.ddm.brasfoot.modelo.dao.core;
 
+import android.database.sqlite.SQLiteDatabase;
+
 import java.util.List;
 
 import br.udesc.ddm.brasfoot.modelo.entidade.Time;
@@ -8,15 +10,21 @@ import br.udesc.ddm.brasfoot.modelo.entidade.Time;
  * Created by ignoi on 26/10/2016.
  */
 
-public interface TimeDAO {
+public abstract class TimeDAO {
 
-    public void inserir(Time o);
+    protected SQLiteDatabase db;
 
-    public void editar(Time o);
+    public TimeDAO(SQLiteDatabase db) {
+        this.db = db;
+    }
 
-    public Time pesquisar(int o);
+    public abstract void inserir(Time o);
 
-    public List<Time> listar();
+    public abstract void editar(Time o);
 
-    public void remover(int id);
+    public abstract Time pesquisar(int o);
+
+    public abstract List<Time> listar();
+
+    public abstract void remover(int id);
 }

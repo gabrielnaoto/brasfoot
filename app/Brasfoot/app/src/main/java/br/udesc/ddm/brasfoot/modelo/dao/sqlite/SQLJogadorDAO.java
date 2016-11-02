@@ -14,13 +14,15 @@ import br.udesc.ddm.brasfoot.modelo.entidade.Patrocinador;
  * Created by ignoi on 26/10/2016.
  */
 
-public class SQLJogadorDAO implements JogadorDAO {
+public class SQLJogadorDAO extends JogadorDAO {
 
-    private SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase("brasfoot", null);
+    public SQLJogadorDAO(SQLiteDatabase db) {
+        super(db);
+    }
 
     @Override
     public void inserir(Jogador o) {
-        Object[] valores = new Object[3];
+        Object[] valores = new Object[10];
         valores[0] = o.getNome();
         valores[1] = o.getPosicao();
         valores[2] = o.getIdade();
@@ -36,7 +38,7 @@ public class SQLJogadorDAO implements JogadorDAO {
 
     @Override
     public void editar(Jogador o) {
-        Object[] valores = new Object[3];
+        Object[] valores = new Object[10];
         valores[0] = o.getNome();
 
         db.execSQL("update jogador set nome = ?, posicao = ?, idade = ?, tecnica = ?, fisico = ?, inteligencia = ?,motivacao = ?, suspenso = ?, cartaoamarelo = ?, timeid = ?, where jogadorid = ?", valores);
@@ -69,7 +71,7 @@ public class SQLJogadorDAO implements JogadorDAO {
         int index_valor = cursor.getColumnIndex("valor");
         cursor.moveToFirst();
         List<Patrocinador> patrocinadores = new ArrayList<>();
-        while(!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             Patrocinador p = new Patrocinador();
             p.setId(cursor.getInt(index_id));
             p.setNome(cursor.getString(index_nome));

@@ -1,0 +1,48 @@
+create table if not exists patrocinador(
+patrocinadorid integer primary key autoincrement,
+nome varchar,
+estrelas integer,
+valor double)
+
+create table if not exists estadio(
+estadioid integer primary key autoincrement,
+estrelas integer,
+ingresso double, 
+publico integer
+)
+
+create table if not exists time(
+timeid integer primary key autoincrement,
+pontos integer,
+esquema integer,
+saldo double,
+patrocinadorid integer not null,
+estadioid integer not null
+)
+
+create table if not exists jogador(
+jogadorid integer primary key autoincrement,
+nome varchar,
+posicao varchar,
+idade integer,
+tecnica integer,
+fisico integer,
+inteligencia integer,
+motivacao integer,
+suspenso integer,
+cartaoamarelo integer,
+timeid integer
+)
+
+create table if not exists partida(
+partidaid integer primary key autoincrement,
+casaid integer,
+visitanteid integer
+);
+
+create table if not exists gols(
+id integer primary key autoincrement,
+gols integer not null,
+timeid integer not null,
+partidaid integer not null
+)

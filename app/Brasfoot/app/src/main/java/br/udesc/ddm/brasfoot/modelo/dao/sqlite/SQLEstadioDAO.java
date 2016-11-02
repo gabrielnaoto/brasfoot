@@ -1,5 +1,9 @@
 package br.udesc.ddm.brasfoot.modelo.dao.sqlite;
 
+import android.database.sqlite.SQLiteDatabase;
+
+import java.util.List;
+
 import br.udesc.ddm.brasfoot.modelo.dao.core.EstadioDAO;
 import br.udesc.ddm.brasfoot.modelo.entidade.Estadio;
 
@@ -7,7 +11,11 @@ import br.udesc.ddm.brasfoot.modelo.entidade.Estadio;
  * Created by ignoi on 26/10/2016.
  */
 
-public class SQLEstadioDAO implements EstadioDAO {
+public class SQLEstadioDAO extends EstadioDAO {
+
+    public SQLEstadioDAO(SQLiteDatabase db) {
+        super(db);
+    }
 
     @Override
     public void inserir(Estadio o) {
@@ -20,13 +28,13 @@ public class SQLEstadioDAO implements EstadioDAO {
     }
 
     @Override
-    public void pesquisar(Estadio o) {
-
+    public Estadio pesquisar(int o) {
+        return null;
     }
 
     @Override
-    public void listar(Estadio o) {
-
+    public List<Estadio> listar() {
+        return null;
     }
 
     @Override

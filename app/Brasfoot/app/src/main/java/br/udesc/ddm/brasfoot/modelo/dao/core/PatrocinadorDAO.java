@@ -1,5 +1,7 @@
 package br.udesc.ddm.brasfoot.modelo.dao.core;
 
+import android.database.sqlite.SQLiteDatabase;
+
 import java.util.List;
 
 import br.udesc.ddm.brasfoot.modelo.entidade.Patrocinador;
@@ -8,17 +10,23 @@ import br.udesc.ddm.brasfoot.modelo.entidade.Patrocinador;
  * Created by ignoi on 26/10/2016.
  */
 
-public interface PatrocinadorDAO {
+public abstract class PatrocinadorDAO {
 
-    public void inserir(Patrocinador o);
+    protected SQLiteDatabase db;
 
-    public void editar(Patrocinador o);
+    public PatrocinadorDAO(SQLiteDatabase db) {
+        this.db = db;
+    }
 
-    public Patrocinador pesquisar(int o);
+    public abstract void inserir(Patrocinador o);
 
-    public List<Patrocinador> listar();
+    public abstract void editar(Patrocinador o);
 
-    public void remover(int id);
+    public abstract Patrocinador pesquisar(int o);
+
+    public abstract List<Patrocinador> listar();
+
+    public abstract void remover(int id);
     
     
 }

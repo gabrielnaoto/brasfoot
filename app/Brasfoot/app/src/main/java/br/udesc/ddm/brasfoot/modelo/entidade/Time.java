@@ -1,5 +1,6 @@
 package br.udesc.ddm.brasfoot.modelo.entidade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +17,10 @@ public class Time {
     private Esquema esquema;
     private Patrocinador patrocinador;
     private Estadio estadio;
+
+    public Time() {
+        jogadores = new ArrayList<>();
+    }
 
     public int getAtributos() {
         int tecnica = 0;
@@ -103,5 +108,19 @@ public class Time {
         jogadores.add(j);
         j.setTime(this);
         return j;
+    }
+
+    @Override
+    public String toString() {
+        return "Time{" +
+                "timeid=" + timeid +
+                ", nome='" + nome + '\'' +
+                ", pontos=" + pontos +
+                ", saldo=" + saldo +
+                ", jogadores=" + jogadores +
+                ", esquema=" + esquema +
+                ", patrocinador=" + patrocinador +
+                ", estadio=" + estadio +
+                '}';
     }
 }
