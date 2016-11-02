@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_act_sel_time"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tonied.futmanddm.actSelTime"
+    android:background="@drawable/seltime"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/faixaTime"
+        android:layout_below="@+id/faixaDados"
+        android:layout_alignParentStart="true"
+        android:layout_height="220dp">
+
+        <ImageButton
+            android:layout_width="70dp"
+            app:srcCompat="@drawable/arrowleft"
+            android:id="@+id/timeLeft"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_above="@+id/patrocinio"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/escudo"
+            android:layout_height="70dp"
+            android:onClick="setTimeA (actSelTime)" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/ebarcelona"
+            android:id="@+id/escudo"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:layout_height="200dp" />
+
+        <ImageButton
+            android:layout_width="70dp"
+            app:srcCompat="@drawable/arrowright"
+            android:id="@+id/timeRight"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/timeLeft"
+            android:layout_alignTop="@+id/timeLeft"
+            android:layout_height="70dp"
+            android:visibility="visible"
+            android:onClick="setTimeB (actSelTime)" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:weightSum="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/faixaPatrocinio"
+        android:layout_below="@+id/faixaTime"
+        android:layout_alignParentStart="true"
+        android:layout_height="210dp">
+
+        <ImageButton
+            app:srcCompat="@drawable/arrowleft"
+            android:id="@+id/patrLeft"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_above="@+id/patrocinio"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/escudo"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/p5nike"
+            android:id="@+id/patrocinio"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:layout_height="190dp" />
+
+        <ImageButton
+            android:layout_width="70dp"
+            app:srcCompat="@drawable/arrowright"
+            android:id="@+id/patrRight"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/timeLeft"
+            android:layout_alignTop="@+id/timeLeft"
+            android:layout_height="70dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fxDadosPat"
+        android:layout_below="@+id/faixaPatrocinio"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="R$1.000.000,00\nIngressos: R$50,00"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Info02"
+            android:textColor="@android:color/black"
+            android:lineSpacingExtra="0sp"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:textSize="18sp"
+            android:textStyle="normal|bold"
+            android:layout_below="@+id/faixaPatrocinio"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/background_light" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/faixaDados"
+        android:gravity="center"
+        android:layout_weight="0.04"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="Score: 85 pts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/Info01"
+            android:textColor="@android:color/black"
+            android:minHeight="40dp"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:background="@android:color/background_light" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        app:srcCompat="@drawable/btreinar"
+        android:id="@+id/bTreinar"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:scaleType="center"
+        android:layout_below="@+id/fxDadosPat"
+        android:layout_centerHorizontal="true"
+        android:layout_height="80dp" />
+
+</RelativeLayout>

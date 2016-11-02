@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_act_manager"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tonied.futmanddm.actManager"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="152dp"
+            android:layout_height="142dp"
+            app:srcCompat="@drawable/ebayern"
+            android:id="@+id/escudo"
+            android:layout_gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="Score"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView28"
+                        android:layout_weight=".8"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/black"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:text="85"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/info00"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textStyle="normal|bold"
+                        android:textSize="24sp"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:text="85"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/info00n"
+                        android:layout_weight="1"
+                        android:textStyle="normal|bold"
+                        android:textColor="@android:color/holo_green_dark"
+                        android:textSize="24sp"
+                        android:layout_gravity="center" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="Classif:"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView8"
+                        android:layout_weight=".7"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/black"
+                        android:textAlignment="textEnd" />
+
+                    <TextView
+                        android:text="1º (12 pts)"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/info01"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textStyle="normal|bold"
+                        android:paddingStart="5dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="Moral:"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView9"
+                        android:layout_weight=".7"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/black"
+                        android:textAlignment="textEnd" />
+
+                    <TextView
+                        android:text="70%"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/info02"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textStyle="normal|bold"
+                        android:paddingStart="5dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="Caixa:"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView10"
+                        android:layout_weight=".7"
+                        android:layout_gravity="center_vertical"
+                        android:textAlignment="textEnd"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:text="R$ 875.000,00"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/info03"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textStyle="normal|bold"
+                        android:paddingStart="5dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="Despesas:"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView11"
+                        android:layout_weight=".7"
+                        android:layout_gravity="center_vertical"
+                        android:textAlignment="textEnd"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:text="R$ 58.000,00"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/info04"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textStyle="normal|bold"
+                        android:paddingStart="5dp" />
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:text="Ajustes do Time - Treinamentos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lbAjustes"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:background="@android:color/holo_orange_light"
+        android:textSize="18sp"
+        android:textAllCaps="true"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/black"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_help"
+            android:id="@+id/hint01"
+            android:layout_weight=".15"
+            android:onClick="onClickHint01" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingEnd="10dp"
+            android:paddingStart="15dp">
+
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sw01"
+                android:text="Motivação"
+                android:onClick="onClickSw01" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_help"
+            android:id="@+id/hint02"
+            android:layout_weight=".15"
+            android:onClick="onCLickHint02" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingEnd="15dp"
+            android:paddingStart="10dp">
+
+            <Switch
+                android:text="Técnica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sw02"
+                android:layout_weight="1"
+                android:onClick="onClickSw02" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_help"
+            android:id="@+id/hint03"
+            android:layout_weight=".15"
+            android:onClick="onCLickHint03" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="15dp"
+            android:paddingEnd="10dp">
+
+            <Switch
+                android:text="Física"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sw03"
+                android:onClick="onClickSw03" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_help"
+            android:id="@+id/hint04"
+            android:layout_weight=".15"
+            android:onClick="onCLickHint04" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:paddingEnd="15dp">
+
+            <Switch
+                android:text="Rehabilitação"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sw04"
+                android:onClick="onClickSw04" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:text=" Últimos jogos (ver tabela)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lbUltimos"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:background="@android:color/holo_orange_light"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/black"
+        android:textAlignment="center" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/colorControlHighlight">
+
+            <TextView
+                android:text="Rodada 01 (casa)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rod01"
+                android:layout_weight="1"
+                android:textStyle="normal|bold"
+                android:textAlignment="center"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    app:srcCompat="@drawable/eatlmadrid"
+                    android:id="@+id/ej01"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
+
+                <TextView
+                    android:text="3 x 2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/res01"
+                    android:layout_weight="1"
+                    android:textStyle="normal|bold"
+                    android:textAlignment="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="Rodada 02 (fora)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rod02"
+                android:layout_weight="1"
+                android:textStyle="normal|bold"
+                android:textAlignment="center"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    app:srcCompat="@drawable/ebarcelona"
+                    android:id="@+id/ej02"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
+
+                <TextView
+                    android:text="0 x 2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/res02"
+                    android:layout_weight="1"
+                    android:textStyle="normal|bold"
+                    android:textAlignment="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/colorControlHighlight">
+
+            <TextView
+                android:text="Rodada 03 (casa)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rod03"
+                android:layout_weight="1"
+                android:textStyle="normal|bold"
+                android:textAlignment="center"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    app:srcCompat="@drawable/erealm"
+                    android:id="@+id/ej03"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
+
+                <TextView
+                    android:text="3 x 2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/res03"
+                    android:layout_weight="1"
+                    android:textStyle="normal|bold"
+                    android:textAlignment="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_orange_light">
+
+                <TextView
+                    android:text="Classificação"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView19"
+                    android:layout_weight="1"
+                    android:textStyle="normal|bold"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp" />
+
+                <TextView
+                    android:text="Pts"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView22"
+                    android:layout_weight=".2"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/colorControlActivated">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    app:srcCompat="@drawable/ebayern"
+                    android:id="@+id/ec01"
+                    android:layout_height="35dp"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:text="Bayern Munchen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tc01"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical|start"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pc01"
+                    android:layout_weight=".3"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    app:srcCompat="@drawable/ejuventus"
+                    android:id="@+id/ec02"
+                    android:layout_height="35dp"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:text="Juventus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tc02"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical|start"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pc02"
+                    android:layout_weight=".3"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/colorControlActivated">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    app:srcCompat="@drawable/ebarcelona"
+                    android:id="@+id/ec03"
+                    android:layout_height="35dp"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:text="Barcelona"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tc03"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical|start"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pc03"
+                    android:layout_weight=".3"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    app:srcCompat="@drawable/erealm"
+                    android:id="@+id/ec04"
+                    android:layout_height="35dp"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:text="Real Madrid"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tc04"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical|start"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pc04"
+                    android:layout_weight=".3"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1">
+
+                <Button
+                    android:text="Ver classificação"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btClassif"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:paddingBottom="0dp" />
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/holo_green_light">
+
+            <TextView
+                android:text="Próximo jogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView17"
+                android:textStyle="normal|bold"
+                android:textColor="@android:color/black"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:text="Casa - 2º (11 pts)  - 89"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tAdversario"
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                app:srcCompat="@drawable/ejuventus"
+                android:id="@+id/eAdversario"
+                android:scaleType="fitCenter"
+                android:layout_height="130dp" />
+
+             <Button
+                android:text="Escalar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btEscalar"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:paddingTop="10dp"
+                android:textColor="@android:color/black"
+                android:textStyle="normal|bold"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
