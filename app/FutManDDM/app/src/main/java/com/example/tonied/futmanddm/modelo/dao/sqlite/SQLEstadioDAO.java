@@ -1,11 +1,11 @@
-package br.udesc.ddm.brasfoot.modelo.dao.sqlite;
+package com.example.tonied.futmanddm.modelo.dao.sqlite;
 
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.List;
 
-import br.udesc.ddm.brasfoot.modelo.dao.core.EstadioDAO;
-import br.udesc.ddm.brasfoot.modelo.entidade.Estadio;
+import com.example.tonied.futmanddm.modelo.dao.core.EstadioDAO;
+import com.example.tonied.futmanddm.modelo.entidade.Estadio;
 
 public class SQLEstadioDAO extends EstadioDAO {
 

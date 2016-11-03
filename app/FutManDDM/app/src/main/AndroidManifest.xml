@@ -25,7 +25,8 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_teste"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".actManager"></activity>
+        <activity android:name=".actManager" />
+        <activity android:name=".actInicial"></activity>
     </application>
 
 </manifest>

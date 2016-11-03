@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getActionBar().hide();
-
         listaJogos = (ListView) findViewById(R.id.listaJogos);
 
         opcoes = new ArrayList<String>();

@@ -1,4 +1,4 @@
-package br.udesc.ddm.brasfoot.modelo.dao.sqlite;
+package com.example.tonied.futmanddm.modelo.dao.sqlite;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,15 +6,20 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.udesc.ddm.brasfoot.modelo.dao.core.JogadorDAO;
-import br.udesc.ddm.brasfoot.modelo.entidade.Jogador;
-import br.udesc.ddm.brasfoot.modelo.entidade.Patrocinador;
+import com.example.tonied.futmanddm.modelo.dao.core.JogadorDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
+import com.example.tonied.futmanddm.modelo.entidade.Jogador;
+import com.example.tonied.futmanddm.modelo.entidade.Patrocinador;
 
 public class SQLJogadorDAO extends JogadorDAO {
 
+    private TimeDAO timeDAO;
+
     public SQLJogadorDAO(SQLiteDatabase db) {
         super(db);
+        timeDAO = new SQLTimeDAO(db);
     }
+
 
     @Override
     public void inserir(Jogador o) {
@@ -71,9 +76,9 @@ public class SQLJogadorDAO extends JogadorDAO {
         j.setIdade(cursor.getInt(index_idade));
         j.setTecnica(cursor.getInt(index_tecnica));
         j.setFisico(cursor.getInt(index_fisico));
-        j.setInteligencia(cursor.getInt(index_inteligencia));
+        j.setInteligentcia(cursor.getInt(index_inteligencia));
         j.setMotivacao(cursor.getInt(index_motivacao));
-        j.setTime(cursor.getInt(index_time));
+        j.setTime(timeDAO.pesquisar(cursor.getInt(index_time)));
         j.setSuspenso(cursor.getInt(index_suspenso));
         j.setCartaoamarelo(cursor.getInt(index_cartaoamarelo));
         return j;
@@ -103,9 +108,9 @@ public class SQLJogadorDAO extends JogadorDAO {
             j.setIdade(cursor.getInt(index_idade));
             j.setTecnica(cursor.getInt(index_tecnica));
             j.setFisico(cursor.getInt(index_fisico));
-            j.setInteligencia(cursor.getInt(index_inteligencia));
+            j.setInteligentcia(cursor.getInt(index_inteligencia));
             j.setMotivacao(cursor.getInt(index_motivacao));
-            j.setTime(cursor.getInt(index_time));
+            j.setTime(timeDAO.pesquisar(cursor.getInt(index_time)));
             j.setSuspenso(cursor.getInt(index_suspenso));
             j.setCartaoamarelo(cursor.getInt(index_cartaoamarelo));
             jogadores.add(j);
