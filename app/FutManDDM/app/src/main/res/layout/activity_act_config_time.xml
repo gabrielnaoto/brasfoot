@@ -196,7 +196,10 @@
 
         <TableRow
             android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/tr01"
+            android:onClick="@string/myTableRowClick"
+            android:background="@android:color/white">
 
             <TextView
                 android:text="80"

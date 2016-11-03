@@ -4,11 +4,14 @@ package com.example.tonied.futmanddm;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static android.R.color.white;
 
 public class actConfigTime extends AppCompatActivity {
 
@@ -18,7 +21,10 @@ public class actConfigTime extends AppCompatActivity {
     private static TextView scoreVisitante;
     private static TextView infoTime;
 
+    boolean bColorWhite = true;
+    boolean cColorBlue = true;
     private TableLayout tabela;
+    private TableRow tr01;
 
     private int indiceTime;
     private int indicePatr;
@@ -71,7 +77,25 @@ public class actConfigTime extends AppCompatActivity {
 
         infoTime = (TextView)findViewById(R.id.infoTime);
 
+        tabela = (TableLayout)findViewById(R.id.tabela);
+
         montaStrings(4,1,11,2);
+    }
+
+    public void myTableRowClickHandler(View view) {
+        switch (view.getId()) {
+            case R.id.tr01:{
+                if(bColorWhite){
+                    tr01.setBackgroundColor(Color.GREEN);
+                    bColorWhite = false;
+                }
+                else{
+                    tr01.setBackgroundColor(Color.YELLOW);
+                    bColorWhite = true;
+                }
+            }
+            break;
+        }
     }
 
     public void montaStrings(int time, int casa, int pontos, int classif){
@@ -84,5 +108,7 @@ public class actConfigTime extends AppCompatActivity {
             local = "casa";
         resultado = "Colocação: "+classif+" ("+pontos+" pts)\nPróximo jogo: "+proximo+" ("+local+")";
         infoTime.setText(resultado);
+
+
     }
 }

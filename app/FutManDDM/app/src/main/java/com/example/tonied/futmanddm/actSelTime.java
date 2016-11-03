@@ -87,7 +87,7 @@ public class actSelTime extends AppCompatActivity {
         bTreinar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(actSelTime.this, actConfigTime.class);
+                Intent it = new Intent(actSelTime.this, actManager.class);
                 Bundle dados = new Bundle();
                 //Data to bundle
                 dados.putInt("indiceTime", indiceTime);
