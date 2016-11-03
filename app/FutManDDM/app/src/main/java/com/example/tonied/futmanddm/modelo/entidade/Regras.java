@@ -1,9 +1,5 @@
 package br.udesc.ddm.brasfoot.modelo.entidade;
 
-/**
- * Created by ignoi on 26/10/2016.
- */
-
 public class Regras {
 
     public static final double CUSTO_PALESTRA = 10000;

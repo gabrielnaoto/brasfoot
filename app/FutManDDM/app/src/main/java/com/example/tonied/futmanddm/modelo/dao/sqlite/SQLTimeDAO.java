@@ -15,6 +15,8 @@ public class SQLTimeDAO extends TimeDAO {
     public SQLTimeDAO(SQLiteDatabase db) {
         super(db);
     }
+    private PatrocinadorDAO patrocinador;
+    private EstadioDAO estadio;
 
     @Override
     public void inserir(Time o) {
