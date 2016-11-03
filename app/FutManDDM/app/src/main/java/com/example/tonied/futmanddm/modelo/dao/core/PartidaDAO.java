@@ -20,11 +20,8 @@ public abstract class PartidaDAO {
 
     public abstract void inserir(Partida o);
 
-    public abstract void editar(Partida o);
-
     public abstract Partida pesquisar(int o);
 
     public abstract List<Partida> listar();
 
-    public abstract void remover(int id);
 }

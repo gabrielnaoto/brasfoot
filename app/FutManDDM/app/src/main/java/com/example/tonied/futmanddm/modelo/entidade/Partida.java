@@ -2,10 +2,6 @@ package br.udesc.ddm.brasfoot.modelo.entidade;
 
 import java.util.Map;
 
-/**
- * Created by ignoi on 26/10/2016.
- */
-
 public class Partida {
 
     private int partidaid;

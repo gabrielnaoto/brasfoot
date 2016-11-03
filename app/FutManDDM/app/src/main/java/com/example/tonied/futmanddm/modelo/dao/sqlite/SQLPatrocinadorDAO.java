@@ -9,10 +9,6 @@ import java.util.List;
 import br.udesc.ddm.brasfoot.modelo.dao.core.PatrocinadorDAO;
 import br.udesc.ddm.brasfoot.modelo.entidade.Patrocinador;
 
-/**
- * Created by ignoi on 26/10/2016.
- */
-
 public class SQLPatrocinadorDAO extends PatrocinadorDAO {
 
     public SQLPatrocinadorDAO(SQLiteDatabase db) {
@@ -34,9 +30,7 @@ public class SQLPatrocinadorDAO extends PatrocinadorDAO {
         valores[0] = o.getNome();
         valores[1] = o.getEstrelas();
         valores[2] = o.getValor();
-        valores[3] = o.getId();
         db.execSQL(" update patrocinador set nome = ?, estrelas = ?, valor = ?, where patrocinadorid = ?", valores);
-
     }
 
     @Override
