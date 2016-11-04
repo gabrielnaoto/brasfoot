@@ -48,4 +48,16 @@ public class Partida {
     public Time getVisitante() {
         return visitante;
     }
+
+    public void setCasa(Time casa) {
+        this.casa = casa;
+    }
+
+    public void setVisitante(Time visitante) {
+        this.visitante = visitante;
+    }
+
+    public void setPlacar(int[] placar) {
+        this.placar = placar;
+    }
 }

@@ -1,7 +1,9 @@
 package br.udesc.ddm.brasfoot.modelo.dao.sqlite;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.udesc.ddm.brasfoot.modelo.dao.core.EstadioDAO;
