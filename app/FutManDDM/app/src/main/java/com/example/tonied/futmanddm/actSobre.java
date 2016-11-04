@@ -23,7 +23,7 @@ public class actSobre extends AppCompatActivity implements Runnable{
     }
 
     public void run(){
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, actHome.class));
         finish();
     }
 }

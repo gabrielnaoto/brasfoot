@@ -14,20 +14,20 @@
     <Button
         android:text="Novo Jogo"
         android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="194dp"
         android:id="@+id/button2"
         android:layout_width="200dp"
+        android:onClick="novo"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="novo" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Continuar Jogo"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="52dp"
         android:id="@+id/button3"
+        android:onClick="continuar"
         android:layout_below="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:onClick="continuar" />
+        android:layout_alignStart="@+id/button2" />
 </RelativeLayout>
