@@ -1,6 +1,7 @@
 package com.example.tonied.futmanddm;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
@@ -28,14 +29,28 @@ public class actSelTime extends AppCompatActivity {
     private int indicePatr = 0;
 
     int[] times = {
-            R.drawable.ebarcelona,
-            R.drawable.erealm,
+            R.drawable.earsenal,
             R.drawable.eatlmadrid,
+            R.drawable.ebarcelona,
             R.drawable.ebayern,
-            R.drawable.ejuventus
-        };
+            R.drawable.ejuventus,
+            R.drawable.emanunited,
+            R.drawable.epsg,
+            R.drawable.erealm
+    };
 
-    int[] scores = {85,83,78,89,79};
+    String[] nomeTime = {
+            "Arsenal",
+            "Atl. Madrid",
+            "Barcelona",
+            "Bayern Munique",
+            "Juventus",
+            "Manchester Utd",
+            "Paris SG",
+            "Real Madrid"
+    };
+
+    int[] scores = {81,83,78,89,79,85,84,77};
 
     int[] patrocinadores = {
             R.drawable.p5nike,
@@ -58,6 +73,9 @@ public class actSelTime extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_sel_time);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         texto01 = (TextView)findViewById(R.id.Info01);
         escudo = (ImageView)findViewById(R.id.escudo);
@@ -87,7 +105,7 @@ public class actSelTime extends AppCompatActivity {
         bTreinar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(actSelTime.this, actConfigTime.class);
+                Intent it = new Intent(actSelTime.this, actManager.class);
                 Bundle dados = new Bundle();
                 //Data to bundle
                 dados.putInt("indiceTime", indiceTime);

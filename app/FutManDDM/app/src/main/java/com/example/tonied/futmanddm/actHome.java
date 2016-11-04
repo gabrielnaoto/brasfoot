@@ -24,8 +24,6 @@ public class actHome extends AppCompatActivity {
         ActionBar ac = getSupportActionBar();
         ac.hide();
 
-
-
     }
 
     public void novo(View v) {

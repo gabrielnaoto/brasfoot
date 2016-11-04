@@ -17,7 +17,7 @@
         android:id="@+id/faixaTime"
         android:layout_below="@+id/faixaDados"
         android:layout_alignParentStart="true"
-        android:layout_height="220dp">
+        android:layout_height="200dp">
 
         <ImageButton
             android:layout_width="70dp"
@@ -37,7 +37,7 @@
             android:id="@+id/escudo"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:layout_height="200dp" />
+            android:layout_height="170dp" />
 
         <ImageButton
             android:layout_width="70dp"
@@ -62,7 +62,7 @@
         android:id="@+id/faixaPatrocinio"
         android:layout_below="@+id/faixaTime"
         android:layout_alignParentStart="true"
-        android:layout_height="210dp">
+        android:layout_height="180dp">
 
         <ImageButton
             app:srcCompat="@drawable/arrowleft"
@@ -81,7 +81,7 @@
             android:id="@+id/patrocinio"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:layout_height="190dp" />
+            android:layout_height="150dp" />
 
         <ImageButton
             android:layout_width="70dp"

@@ -1,5 +1,7 @@
 package com.example.tonied.futmanddm;
 
+import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -67,23 +69,30 @@ public class actManager extends AppCompatActivity {
     private Button btEscalar;
 
     int[] times = {
-            R.drawable.ebarcelona,
-            R.drawable.erealm,
+            R.drawable.earsenal,
             R.drawable.eatlmadrid,
+            R.drawable.ebarcelona,
             R.drawable.ebayern,
-            R.drawable.ejuventus
+            R.drawable.ejuventus,
+            R.drawable.emanunited,
+            R.drawable.epsg,
+            R.drawable.erealm
     };
 
+
     String[] nomeTime = {
-            "Barcelona",
-            "Real Madrid",
+            "Arsenal",
             "Atl. Madrid",
+            "Barcelona",
             "Bayern Munique",
-            "Juventus"
+            "Juventus",
+            "Manchester Utd",
+            "Paris SG",
+            "Real Madrid"
     };
 
     //informações EXTERNAS a activity
-    int[] scores = {85,83,78,89,79};
+    int[] scores = {81,83,78,89,79,85,84,77};
     String[] stScores = {"85","83","78","89","79"};
     Double[] valPatr = {1000000.0,900000.0,800000.0,750000.0,600000.0,700000.0,750000.0,800000.0,450000.0, 800000.0, 350000.0};
     String[] tabClass = {"12","11","9","8","7"};
@@ -108,6 +117,9 @@ public class actManager extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_manager);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         escudo = (ImageView)findViewById(R.id.escudo);
         eAdversario = (ImageView)findViewById(R.id.eAdversario);
@@ -152,6 +164,9 @@ public class actManager extends AppCompatActivity {
         pc03 = (TextView) findViewById(R.id.pc03);
         pc04 = (TextView) findViewById(R.id.pc04);
 
+        btEscalar = (Button)findViewById(R.id.btEscalar);
+        btClassif = (Button)findViewById(R.id.btClassif);
+
         indiceTime = 0;
         indicePatr = 0;
         idScore = scores[indiceTime];
@@ -161,6 +176,7 @@ public class actManager extends AppCompatActivity {
         cargaInfos();
         cargaJogos(1);
         cargaClassif();
+        btEscalarClick();
     }
 
     public void buscaDadosExt(){
@@ -339,5 +355,20 @@ public class actManager extends AppCompatActivity {
         }
         info04.setText("R$ "+idDespesa+"0");
         atualizaScore();
+    }
+
+    public void btEscalarClick(){
+        btEscalar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(actManager.this, actConfigTime.class);
+                Bundle dados = new Bundle();
+                //Data to bundle
+                dados.putInt("indiceTime", indiceTime);
+                dados.putInt("indicePatr", indicePatr);
+                it.putExtras(dados);
+                startActivity(it);
+            }
+        });
     }
 }

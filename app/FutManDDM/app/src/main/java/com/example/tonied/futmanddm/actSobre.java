@@ -2,6 +2,7 @@ package com.example.tonied.futmanddm;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.Activity;
@@ -13,10 +14,10 @@ public class actSobre extends AppCompatActivity implements Runnable{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_act_sobre);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         Handler handler = new Handler();
         handler.postDelayed(this, 3000);

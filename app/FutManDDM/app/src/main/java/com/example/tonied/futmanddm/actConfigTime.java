@@ -2,6 +2,7 @@ package com.example.tonied.futmanddm;
 
 
 import android.graphics.Color;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -48,6 +49,9 @@ public class actConfigTime extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_config_time);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         Bundle dados = getIntent().getExtras();
         if(dados.isEmpty()){
