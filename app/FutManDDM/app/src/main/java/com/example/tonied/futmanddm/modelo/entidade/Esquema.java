@@ -1,4 +1,4 @@
-package br.udesc.ddm.brasfoot.modelo.entidade;
+package com.example.tonied.futmanddm.modelo.entidade;
 
 /**
  * Created by ignoi on 30/10/2016.

@@ -1,10 +1,10 @@
-package br.udesc.ddm.brasfoot.modelo.dao.core;
+package com.example.tonied.futmanddm.modelo.dao.core;
 
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.List;
 
-import br.udesc.ddm.brasfoot.modelo.entidade.Patrocinador;
+import com.example.tonied.futmanddm.modelo.entidade.Patrocinador;
 
 /**
  * Created by ignoi on 26/10/2016.
@@ -27,6 +27,6 @@ public abstract class PatrocinadorDAO {
     public abstract List<Patrocinador> listar();
 
     public abstract void remover(int id);
-    
-    
+
+
 }

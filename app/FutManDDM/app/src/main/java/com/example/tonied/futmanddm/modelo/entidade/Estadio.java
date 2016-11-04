@@ -1,4 +1,4 @@
-package br.udesc.ddm.brasfoot.modelo.entidade;
+package com.example.tonied.futmanddm.modelo.entidade;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package br.udesc.ddm.brasfoot.modelo.dao.core;
+package com.example.tonied.futmanddm.modelo.dao.core;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import br.udesc.ddm.brasfoot.modelo.dao.sqlite.SQLFactoryDAO;
-import br.udesc.ddm.brasfoot.modelo.entidade.Patrocinador;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLFactoryDAO;
+import com.example.tonied.futmanddm.modelo.entidade.Patrocinador;
 
 /**
  * Created by ignoi on 02/11/2016.

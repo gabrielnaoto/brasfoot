@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getActionBar().hide();
+
 
         listaJogos = (ListView) findViewById(R.id.listaJogos);
 
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         opcoes.add("Gerenciar time");
         opcoes.add("Escalar time");
         opcoes.add("Teste Full");
+        opcoes.add("Teste HOme");
         opcoes.add("Sair");
 
         adaptador = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, opcoes);
@@ -48,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 3: teste();
                         break;
-                    case 4: finish();
+                    case 4: loco();
+                        break;
+                    case 5: finish();
                         break;
                 }
             }
@@ -82,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void teste() {
         Intent it = new Intent(MainActivity.this, Teste.class);
+        startActivity(it);
+    }
+
+    private void loco() {
+        Intent it = new Intent(MainActivity.this, actHome.class);
         startActivity(it);
     }
 

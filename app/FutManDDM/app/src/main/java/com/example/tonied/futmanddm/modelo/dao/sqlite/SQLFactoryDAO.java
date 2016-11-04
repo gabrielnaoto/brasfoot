@@ -1,13 +1,13 @@
-package br.udesc.ddm.brasfoot.modelo.dao.sqlite;
+package com.example.tonied.futmanddm.modelo.dao.sqlite;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import br.udesc.ddm.brasfoot.modelo.dao.core.EstadioDAO;
-import br.udesc.ddm.brasfoot.modelo.dao.core.FactoryDAO;
-import br.udesc.ddm.brasfoot.modelo.dao.core.JogadorDAO;
-import br.udesc.ddm.brasfoot.modelo.dao.core.PartidaDAO;
-import br.udesc.ddm.brasfoot.modelo.dao.core.PatrocinadorDAO;
-import br.udesc.ddm.brasfoot.modelo.dao.core.TimeDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.EstadioDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.FactoryDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.JogadorDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.PartidaDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.PatrocinadorDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
 
 /**
  * Created by ignoi on 02/11/2016.

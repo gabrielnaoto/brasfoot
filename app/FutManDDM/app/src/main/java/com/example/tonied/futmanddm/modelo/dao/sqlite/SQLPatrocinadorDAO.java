@@ -1,4 +1,4 @@
-package br.udesc.ddm.brasfoot.modelo.dao.sqlite;
+package com.example.tonied.futmanddm.modelo.dao.sqlite;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.udesc.ddm.brasfoot.modelo.dao.core.PatrocinadorDAO;
-import br.udesc.ddm.brasfoot.modelo.entidade.Patrocinador;
+import com.example.tonied.futmanddm.modelo.dao.core.PatrocinadorDAO;
+import com.example.tonied.futmanddm.modelo.entidade.Patrocinador;
 
 public class SQLPatrocinadorDAO extends PatrocinadorDAO {
 

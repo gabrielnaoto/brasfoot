@@ -1,4 +1,4 @@
-package br.udesc.ddm.brasfoot.modelo.dao.sqlite;
+package com.example.tonied.futmanddm.modelo.dao.sqlite;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,9 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.udesc.ddm.brasfoot.modelo.dao.core.PartidaDAO;
-import br.udesc.ddm.brasfoot.modelo.dao.core.TimeDAO;
-import br.udesc.ddm.brasfoot.modelo.entidade.Partida;
+import com.example.tonied.futmanddm.modelo.dao.core.PartidaDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
+import com.example.tonied.futmanddm.modelo.entidade.Partida;
 
 public class SQLPartidaDAO extends PartidaDAO {
 
@@ -37,6 +37,7 @@ public class SQLPartidaDAO extends PartidaDAO {
             db.execSQL("insert into gols(gols, timeid, partidaid) values (?,?,?)", gols);
         }
     }
+
 
 
     @Override
