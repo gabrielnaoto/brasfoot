@@ -96,6 +96,8 @@ public class actManager extends AppCompatActivity {
     String[] stScores = {"85","83","78","89","79"};
     Double[] valPatr = {1000000.0,900000.0,800000.0,750000.0,600000.0,700000.0,750000.0,800000.0,450000.0, 800000.0, 350000.0};
     String[] tabClass = {"12","11","9","8","7"};
+
+
     int indiceTime;
     int indicePatr;
     String XatuScore = stScores[indiceTime];
@@ -195,7 +197,13 @@ public class actManager extends AppCompatActivity {
 
     public void cargaJogos(int rodAtual){
         //sequencia dos 3 últimos adversários
+
+
+
         int[] advJogos = {1, 2, 3};
+
+
+
         //sequencia dos placares dos 3 ultimos jogos, pode carregar 0 se não houve
         String[] placarC = {"3", "2", "1"};
         String[] placarF = {"1", "0", "0"};

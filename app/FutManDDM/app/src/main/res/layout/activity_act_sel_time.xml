@@ -153,6 +153,7 @@
         android:scaleType="center"
         android:layout_below="@+id/fxDadosPat"
         android:layout_centerHorizontal="true"
-        android:layout_height="80dp" />
+        android:layout_height="80dp"
+        android:onClick="bTreinarClick" />
 
 </RelativeLayout>

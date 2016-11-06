@@ -98,23 +98,21 @@ public class actSelTime extends AppCompatActivity {
         timeRightClick();
         patrLeftClick();
         patrRightClick();
-        bTreinarClick();
+
     }
 
-    public void bTreinarClick(){
-        bTreinar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(actSelTime.this, actManager.class);
-                Bundle dados = new Bundle();
-                //Data to bundle
-                dados.putInt("indiceTime", indiceTime);
-                dados.putInt("indicePatr", indicePatr);
-                it.putExtras(dados);
-                startActivity(it);
-            }
-        });
+    public void bTreinarClick(View v){
+        Intent it = new Intent(actSelTime.this, actManager.class);
+        Bundle dados = new Bundle();
+        //Data to bundle
+        dados.putInt("indiceTime", indiceTime);
+        dados.putInt("indicePatr", indicePatr);
+        it.putExtras(dados);
+        startActivity(it);
+        finish();
     }
+
+
 
 
     public void timeLeftClick() {

@@ -23,7 +23,20 @@ public class Regras {
         return placar;
     }
 
-    public String[][] getCalendario(int semana) {
+    public static String[] valores = {"1kk","900k","800k","750k","600k","700k","750k","800k","450k", "800k", "350k"};
+    public static String[] ingressos = {"80","85","70","65","60","50","50","45","50", "40", "35"};
+    public static String[] nomeTime = {
+            "Arsenal",
+            "Atl. Madrid",
+            "Barcelona",
+            "Bayern Munique",
+            "Juventus",
+            "Manchester Utd",
+            "Paris SG",
+            "Real Madrid"
+    };
+
+    public static String[][] getCalendario(int semana) {
         switch (semana) {
             case 1: {
                 String[][] valores = {{"Real Madrid", "Barcelona"},

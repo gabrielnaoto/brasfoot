@@ -95,7 +95,11 @@ public class actHome extends AppCompatActivity {
 
     public void continuar(View v) {
         Toast.makeText(getApplicationContext(), "continuar", Toast.LENGTH_SHORT).show();
-        //chama intent manager
+        Intent it = new Intent(this, actManager.class);
+
+
+        startActivity(it);
+        finish();
     }
 
     public void importar() {
