@@ -197,12 +197,7 @@ public class actManager extends AppCompatActivity {
 
     public void cargaJogos(int rodAtual){
         //sequencia dos 3 últimos adversários
-
-
-
         int[] advJogos = {1, 2, 3};
-
-
 
         //sequencia dos placares dos 3 ultimos jogos, pode carregar 0 se não houve
         String[] placarC = {"3", "2", "1"};
