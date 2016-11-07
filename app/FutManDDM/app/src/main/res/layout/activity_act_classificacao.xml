@@ -16,6 +16,18 @@
         android:layout_height="wrap_content"
         android:background="@android:color/holo_orange_light" />
 
+    <TextView
+        android:text="Classificação"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:background="@android:color/holo_green_light" />
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -24,12 +36,341 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/tabela">
+            android:id="@+id/tabela"
+            android:paddingBottom="15dp">
 
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_green_light"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:text=""
+                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:id="@+id/textView15" />
+
+                <TextView
+                    android:text="Pontos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:id="@+id/textView14"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:text="    Time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/textView13"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:textAlignment="textStart" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    app:srcCompat="@drawable/earsenal"
+                    android:id="@+id/escudo01"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pontos01"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:text="Arsenal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nome01"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="?attr/colorAccent">
+
+                <ImageView
+                    app:srcCompat="@drawable/earsenal"
+                    android:id="@+id/escudo02"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pontos02"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:text="Arsenal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nome02"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    app:srcCompat="@drawable/earsenal"
+                    android:id="@+id/escudo03"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pontos03"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:text="Arsenal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nome03"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="?attr/colorAccent">
+
+                <ImageView
+                    app:srcCompat="@drawable/earsenal"
+                    android:id="@+id/escudo04"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pontos04"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:text="Arsenal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nome04"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    app:srcCompat="@drawable/earsenal"
+                    android:id="@+id/escudo05"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pontos05"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:text="Arsenal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nome05"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="?attr/colorAccent">
+
+                <ImageView
+                    app:srcCompat="@drawable/earsenal"
+                    android:id="@+id/escudo06"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pontos06"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:text="Arsenal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nome06"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    app:srcCompat="@drawable/earsenal"
+                    android:id="@+id/escudo07"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pontos07"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:text="Arsenal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nome07"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="?attr/colorAccent">
+
+                <ImageView
+                    app:srcCompat="@drawable/earsenal"
+                    android:id="@+id/escudo08"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pontos08"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:text="Arsenal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nome08"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
         </TableLayout>
     </ScrollView>
+
 </LinearLayout>

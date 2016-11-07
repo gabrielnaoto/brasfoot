@@ -7,17 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.tonied.futmanddm.actDelayJogo"
-    android:background="@drawable/seltime">
+    android:background="@drawable/delayjogo">
 
-    <TextView
-        android:text="Calculando os\nresultados"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/textView3"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textColor="@android:color/black"
-        android:textSize="36sp"
-        android:lineSpacingExtra="14sp" />
 </LinearLayout>
