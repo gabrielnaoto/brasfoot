@@ -15,8 +15,6 @@ public interface PartidaDAO {
 
     void inserir(Partida o);
 
-    Partida pesquisar(int o);
-
-    List<Partida> listar();
+    List<Partida> listar(int o);
 
 }

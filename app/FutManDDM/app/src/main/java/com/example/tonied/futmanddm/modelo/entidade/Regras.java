@@ -2,6 +2,9 @@ package com.example.tonied.futmanddm.modelo.entidade;
 
 import com.example.tonied.futmanddm.R;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Regras {
 
     public static final double CUSTO_PALESTRA = 10000;
@@ -25,7 +28,7 @@ public class Regras {
         return placar;
     }
 
-    public static Double[] valPatr = {1000000.0,900000.0,800000.0,750000.0,600000.0,700000.0,750000.0,800000.0,450000.0, 800000.0, 350000.0};
+    public static Double[] valPatr = {1000000.0, 900000.0, 800000.0, 750000.0, 600000.0, 700000.0, 750000.0, 800000.0, 450000.0, 800000.0, 350000.0};
 
     public static int[] patrocinadores = {
             R.drawable.p5nike,
@@ -69,8 +72,8 @@ public class Regras {
             1
     };
 
-    public static String[] valores = {"1kk","900k","800k","750k","600k","700k","750k","800k","450k", "800k", "350k"};
-    public static String[] ingressos = {"80","85","70","65","60","50","50","45","50", "40", "35"};
+    public static String[] valores = {"1kk", "900k", "800k", "750k", "600k", "700k", "750k", "800k", "450k", "800k", "350k"};
+    public static String[] ingressos = {"80", "85", "70", "65", "60", "50", "50", "45", "50", "40", "35"};
     public static String[] nomeTime = {
             "Arsenal",
             "Atl. Madrid",
@@ -82,6 +85,23 @@ public class Regras {
             "Real Madrid"
     };
 
+
+    public static Map<String, Integer> getIndicesPorTime() {
+        Map<String, Integer> mapa = new HashMap<>();
+
+
+        mapa.put("Arsenal", 0);
+        mapa.put("Atl. Madrid", 1);
+        mapa.put("Barcelona", 2);
+        mapa.put("Bayern Munique", 3);
+        mapa.put("Juventus", 4);
+        mapa.put("Manchester Utd", 5);
+        mapa.put("Paris SG", 6);
+        mapa.put("Real Madrid", 7);
+
+        return mapa;
+    }
+
     public static int[] times = {
             R.drawable.earsenal,
             R.drawable.eatlmadrid,
@@ -92,6 +112,29 @@ public class Regras {
             R.drawable.epsg,
             R.drawable.erealm
     };
+
+    public static String getAdversario(String time, int semana) {
+        String[][] jogos = getCalendario(semana);
+        for (int i = 0; i < 4; i++) {
+            System.out.println(jogos[i][0] + jogos[i][1]);
+            if (jogos[i][0] == time) {
+                return jogos[i][1];
+            } else {
+                return jogos[i][0];
+            }
+        }
+        return null;
+    }
+
+    public static boolean isCasa(String time, int semana) {
+        String[][] jogos = getCalendario(semana);
+        for (int i = 0; i < 4; i++) {
+            if (jogos[i][0] == time) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static String[][] getCalendario(int semana) {
         switch (semana) {

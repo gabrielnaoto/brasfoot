@@ -133,20 +133,5 @@ public class Jogador {
         this.titular = titular;
     }
 
-    @Override
-    public String toString() {
-        return "Jogador{" +
-                "jogadorid=" + jogadorid +
-                ", nome='" + nome + '\'' +
-                ", posicao='" + posicao + '\'' +
-                ", idade=" + idade +
-                ", tecnica=" + tecnica +
-                ", fisico=" + fisico +
-                ", inteligentcia=" + inteligentcia +
-                ", motivacao=" + motivacao +
-                ", time=" + time +
-                ", suspenso=" + suspenso +
-                ", cartaoamarelo=" + cartaoamarelo +
-                '}';
-    }
+
 }

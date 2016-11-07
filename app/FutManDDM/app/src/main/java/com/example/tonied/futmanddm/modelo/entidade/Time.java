@@ -112,17 +112,5 @@ public class Time {
         jogadores.add(j);
     }
 
-    @Override
-    public String toString() {
-        return "Time{" +
-                "timeid=" + timeid +
-                ", nome='" + nome + '\'' +
-                ", pontos=" + pontos +
-                ", saldo=" + saldo +
-                ", jogadores=" + jogadores +
-                ", esquema=" + esquema +
-                ", patrocinador=" + patrocinador +
-                ", estadio=" + estadio +
-                '}';
-    }
+
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 public class Partida {
 
     private int partidaid;
+    private int rodada;
     private Time casa;
     private Time visitante;
     private int[] placar;
@@ -59,5 +60,13 @@ public class Partida {
 
     public void setPlacar(int[] placar) {
         this.placar = placar;
+    }
+
+    public int getRodada() {
+        return rodada;
+    }
+
+    public void setRodada(int rodada) {
+        this.rodada = rodada;
     }
 }

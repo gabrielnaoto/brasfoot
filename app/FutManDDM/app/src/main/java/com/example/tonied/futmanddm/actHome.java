@@ -71,6 +71,7 @@ public class actHome extends AppCompatActivity {
                 "id integer primary key autoincrement,\n" +
                 "time integer,\n" +
                 "estadio integer,\n" +
+                "rodada integer,\n" +
                 "patrocinador integer)");
 
         db.execSQL("create table if not exists estadio(\n" +
@@ -108,6 +109,7 @@ public class actHome extends AppCompatActivity {
                 "partidaid integer primary key autoincrement,\n" +
                 "casaid integer,\n" +
                 "visitanteid integer\n" +
+                "rodada integer\n" +
                 ");");
 
         db.execSQL("create table if not exists gols(\n" +

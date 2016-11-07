@@ -1,6 +1,7 @@
 package com.example.tonied.futmanddm;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,19 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-import org.w3c.dom.Text;
+
+import com.example.tonied.futmanddm.modelo.dao.core.CampeonatoDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.PartidaDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLCampeonatoDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLPartidaDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLTimeDAO;
+import com.example.tonied.futmanddm.modelo.entidade.Campeonato;
+import com.example.tonied.futmanddm.modelo.entidade.Partida;
+import com.example.tonied.futmanddm.modelo.entidade.Regras;
+import com.example.tonied.futmanddm.modelo.entidade.Time;
+
+import java.util.List;
 
 public class actManager extends AppCompatActivity {
     //informações cabeçalho
@@ -68,39 +81,10 @@ public class actManager extends AppCompatActivity {
     private ImageView eAdversario;
     private Button btEscalar;
 
-    int[] times = {
-            R.drawable.earsenal,
-            R.drawable.eatlmadrid,
-            R.drawable.ebarcelona,
-            R.drawable.ebayern,
-            R.drawable.ejuventus,
-            R.drawable.emanunited,
-            R.drawable.epsg,
-            R.drawable.erealm
-    };
-
-
-    String[] nomeTime = {
-            "Arsenal",
-            "Atl. Madrid",
-            "Barcelona",
-            "Bayern Munique",
-            "Juventus",
-            "Manchester Utd",
-            "Paris SG",
-            "Real Madrid"
-    };
-
-    //informações EXTERNAS a activity
-    int[] scores = {81,83,78,89,79,85,84,77};
-    String[] stScores = {"85","83","78","89","79"};
-    Double[] valPatr = {1000000.0,900000.0,800000.0,750000.0,600000.0,700000.0,750000.0,800000.0,450000.0, 800000.0, 350000.0};
-    String[] tabClass = {"12","11","9","8","7"};
-
 
     int indiceTime;
     int indicePatr;
-    String XatuScore = stScores[indiceTime];
+    String XatuScore;
     int idScore;
     int atuScore;
     static int inc01;
@@ -108,15 +92,22 @@ public class actManager extends AppCompatActivity {
     static int inc03;
     static int inc04;
     static int idClassif;
+    static int advClassif;
     static int idPontos;
     static int idMoral;
     static double idCaixa;
     static double idDespesa;
 
-    //id do adversario do proximo jogo
-    int idAdver = 4;
-    //dados: colocacao - pontos
-    int[] dadosAdver = {2, 11, 5};
+    private TimeDAO tdao;
+    private CampeonatoDAO cdao;
+    private PartidaDAO pdao;
+
+    private List<Time> times;
+    private Time time;
+    private Time adversario;
+
+    private Campeonato campeonato;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,9 +117,9 @@ public class actManager extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        escudo = (ImageView)findViewById(R.id.escudo);
-        eAdversario = (ImageView)findViewById(R.id.eAdversario);
-        tAdversario = (TextView)findViewById(R.id.tAdversario);
+        escudo = (ImageView) findViewById(R.id.escudo);
+        eAdversario = (ImageView) findViewById(R.id.eAdversario);
+        tAdversario = (TextView) findViewById(R.id.tAdversario);
 
         info00 = (TextView) findViewById(R.id.info00);
         info00n = (TextView) findViewById(R.id.info00n);
@@ -141,10 +132,10 @@ public class actManager extends AppCompatActivity {
         hint02 = (ImageView) findViewById(R.id.hint02);
         hint03 = (ImageView) findViewById(R.id.hint03);
         hint04 = (ImageView) findViewById(R.id.hint04);
-        sw01 = (Switch)findViewById(R.id.sw01);
-        sw02 = (Switch)findViewById(R.id.sw02);
-        sw03 = (Switch)findViewById(R.id.sw03);
-        sw04 = (Switch)findViewById(R.id.sw04);
+        sw01 = (Switch) findViewById(R.id.sw01);
+        sw02 = (Switch) findViewById(R.id.sw02);
+        sw03 = (Switch) findViewById(R.id.sw03);
+        sw04 = (Switch) findViewById(R.id.sw04);
 
         rod01 = (TextView) findViewById(R.id.rod01);
         rod02 = (TextView) findViewById(R.id.rod02);
@@ -156,10 +147,10 @@ public class actManager extends AppCompatActivity {
         res02 = (TextView) findViewById(R.id.res02);
         res03 = (TextView) findViewById(R.id.res03);
 
-        ec01 = (ImageView)findViewById(R.id.ec01);
-        ec02 = (ImageView)findViewById(R.id.ec02);
-        ec03 = (ImageView)findViewById(R.id.ec03);
-        ec04 = (ImageView)findViewById(R.id.ec04);
+        ec01 = (ImageView) findViewById(R.id.ec01);
+        ec02 = (ImageView) findViewById(R.id.ec02);
+        ec03 = (ImageView) findViewById(R.id.ec03);
+        ec04 = (ImageView) findViewById(R.id.ec04);
         tc01 = (TextView) findViewById(R.id.tc01);
         tc02 = (TextView) findViewById(R.id.tc02);
         tc03 = (TextView) findViewById(R.id.tc03);
@@ -169,46 +160,82 @@ public class actManager extends AppCompatActivity {
         pc03 = (TextView) findViewById(R.id.pc03);
         pc04 = (TextView) findViewById(R.id.pc04);
 
-        btEscalar = (Button)findViewById(R.id.btEscalar);
-        btClassif = (Button)findViewById(R.id.btClassif);
+        btEscalar = (Button) findViewById(R.id.btEscalar);
+        btClassif = (Button) findViewById(R.id.btClassif);
 
-        indiceTime = 0;
-        indicePatr = 0;
-        idScore = scores[indiceTime];
+
+        SQLiteDatabase db = openOrCreateDatabase("brasfoot", MODE_PRIVATE, null);
+
+        tdao = new SQLTimeDAO(db);
+        cdao = new SQLCampeonatoDAO(db);
+        pdao = new SQLPartidaDAO(db);
+
+        times = tdao.listar();
+
+        campeonato = cdao.pesquisar();
+        time = campeonato.getT();
+        adversario = tdao.pesquisar(Regras.getIndicesPorTime().get(Regras.getAdversario(time.getNome(), campeonato.getRodada())));
+
+
+        idScore = time.getAtributos();
         atuScore = idScore;
+        XatuScore = idScore + "";
 
         buscaDadosExt();
         cargaInfos();
-        cargaJogos(1);
+        cargaJogos(campeonato.getRodada());
         cargaClassif();
         btEscalarClick();
         visualizaTimeClick();
         btClassificacaoClick();
+
+
     }
 
-    public void buscaDadosExt(){
+
+    /**
+     * preencher dina
+     */
+    public void buscaDadosExt() {
+//        int contador = 0;
+//        for (Time t : times) {
+//            scores[contador++] = t.getAtributos();
+//        }
+
         inc01 = 0;
         inc02 = 0;
         inc03 = 0;
         inc04 = 0;
+
+
         idClassif = 1;
-        idPontos = 12;
+        advClassif = 1;
+        for (Time t : times) {
+            if (t.getTimeid() == time.getTimeid()) {
+                break;
+            }
+            idClassif++;
+
+        }
+        for (Time t : times) {
+            if (t.getTimeid() == adversario.getTimeid()) {
+                break;
+            }
+            advClassif++;
+
+        }
+        idPontos = time.getPontos();
         idMoral = 70;
-        idCaixa = valPatr[indicePatr];
+        idCaixa = Regras.valPatr[indicePatr];
         idDespesa = 0;
+
+
     }
 
-    public void cargaJogos(int rodAtual){
-        //sequencia dos 3 últimos adversários
-        int[] advJogos = {1, 2, 3};
+    public void cargaJogos(int rodAtual) {
+//        List<Partida> partidas = pdao.listar(time.getTimeid());
 
-        //sequencia dos placares dos 3 ultimos jogos, pode carregar 0 se não houve
-        String[] placarC = {"3", "2", "1"};
-        String[] placarF = {"1", "0", "0"};
-        //locais dos jogos - sequencia completa do time
-        String[] locais = {"casa", "fora", "casa", "fora"};
-
-        if (rodAtual==0){
+        if (rodAtual == 0) {
             ej01.setImageResource(R.drawable.esemtime);
             ej02.setImageResource(R.drawable.esemtime);
             ej03.setImageResource(R.drawable.esemtime);
@@ -219,149 +246,159 @@ public class actManager extends AppCompatActivity {
             res02.setText("  X  ");
             res03.setText("  X  ");
 
-        }else if (rodAtual==1){
-            ej01.setImageResource(times[advJogos[0]]);
-            ej02.setImageResource(R.drawable.esemtime);
-            ej03.setImageResource(R.drawable.esemtime);
-            rod01.setText("Rodada 1 - "+locais[1]);
-            rod02.setText("");
-            rod03.setText("");
-            res01.setText(placarC[0]+" X "+placarF[0]);
-            res02.setText("  X  ");
-            res03.setText("  X  ");
-
-        }else if (rodAtual==2){
-            ej01.setImageResource(times[advJogos[0]]);
-            ej02.setImageResource(times[advJogos[1]]);
-            ej03.setImageResource(R.drawable.esemtime);
-            rod01.setText("Rodada 1 - "+locais[0]);
-            rod02.setText("Rodada 2 - "+locais[1]);
-            rod03.setText("");
-            res01.setText(placarC[0]+" X "+placarF[0]);
-            res02.setText(placarC[1]+" X "+placarF[1]);
-            res03.setText("  X  ");
-
-        }else if (rodAtual==3){
-            ej01.setImageResource(times[advJogos[0]]);
-            ej02.setImageResource(times[advJogos[1]]);
-            ej03.setImageResource(times[advJogos[2]]);
-            rod01.setText("Rodada 1 - "+locais[0]);
-            rod02.setText("Rodada 2 - "+locais[1]);
-            rod03.setText("Rodada 3 - "+locais[2]);
-            res01.setText(placarC[0]+" X "+placarF[0]);
-            res02.setText(placarC[1]+" X "+placarF[1]);
-            res03.setText(placarC[2]+" X "+placarF[2]);
-
-        } else if (rodAtual>=4){
-            ej01.setImageResource(times[advJogos[0]]);
-            ej02.setImageResource(times[advJogos[1]]);
-            ej03.setImageResource(times[advJogos[2]]);
-            rod01.setText("Rodada "+(rodAtual-3)+locais[(rodAtual-4)]);
-            rod02.setText("Rodada "+(rodAtual-2)+locais[(rodAtual-3)]);
-            rod03.setText("Rodada "+(rodAtual-1)+locais[(rodAtual-2)]);
-            res01.setText(placarC[0]+" X "+placarF[0]);
-            res02.setText(placarC[1]+" X "+placarF[1]);
-            res03.setText(placarC[2]+" X "+placarF[2]);
+//        } else if (rodAtual == 1) {
+//            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+//            ej02.setImageResource(R.drawable.esemtime);
+//            ej03.setImageResource(R.drawable.esemtime);
+//            rod01.setText("Rodada 1 - " + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+//            rod02.setText("");
+//            rod03.setText("");
+//            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
+//            res02.setText("  X  ");
+//            res03.setText("  X  ");
+//
+//        } else if (rodAtual == 2) {
+//            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+//            ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+//            ej03.setImageResource(R.drawable.esemtime);
+//            rod01.setText("Rodada 1 - " + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+//            rod02.setText("Rodada 2 - " + (partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+//            rod03.setText("");
+//            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
+//            res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
+//            res03.setText("  X  ");
+//
+//        } else if (rodAtual == 3) {
+//            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+//            ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+//            ej03.setImageResource(Regras.times[partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? partidas.get(2).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+//            rod01.setText("Rodada 1 - " + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+//            rod02.setText("Rodada 2 - " + (partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+//            rod03.setText("Rodada 3 - " + (partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+//            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
+//            res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
+//            res03.setText(partidas.get(2).getPlacar()[0] + " X " + partidas.get(2).getPlacar()[1]);
+//
+//        } else if (rodAtual >= 4) {
+//            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+//            ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+//            ej03.setImageResource(Regras.times[partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? partidas.get(2).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+//            rod01.setText("Rodada " + (rodAtual - 3) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+//            rod02.setText("Rodada " + (rodAtual - 2) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+//            rod03.setText("Rodada " + (rodAtual - 1) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+//            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
+//            res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
+//            res03.setText(partidas.get(2).getPlacar()[0] + " X " + partidas.get(2).getPlacar()[1]);
         }
-        eAdversario.setImageResource(times[idAdver]);
+        eAdversario.setImageResource(Regras.times[adversario.getTimeid()]);
 
         String localiz = "";
-        if(locais[rodAtual].equalsIgnoreCase("casa"))
+        if (Regras.isCasa(time.getNome(), rodAtual + 1))
             localiz = "Casa";
         else
             localiz = "Fora";
-        tAdversario.setText(localiz+" - "+dadosAdver[0]+"º ("+dadosAdver[1]+" pts) - "+scores[idAdver]);
+        tAdversario.setText(localiz + " - " + advClassif + "º (" + adversario.getPontos() + " pts) - " + adversario.getAtributos());
     }
 
-    public void cargaInfos(){
-        escudo.setImageResource(times[indiceTime]);
+    public void cargaInfos() {
+        escudo.setImageResource(Regras.times[time.getTimeid()]);
         info00.setText(XatuScore);
         atualizaScore();
-        info01.setText(idClassif+"º ("+idPontos+" pts)");
-        info02.setText(idMoral+"%");
-        info03.setText("R$ "+idCaixa+"0");
-        info04.setText("R$ "+idDespesa+"0");
+        info01.setText(idClassif + "º (" + idPontos + " pts)");
+        info02.setText(idMoral + "%");
+        info03.setText("R$ " + idCaixa + "0");
+        info04.setText("R$ " + idDespesa + "0");
     }
 
-    public void atualizaScore(){
+    public void atualizaScore() {
         info00n.setText(XatuScore);//(atuScore+inc01+inc02+inc03+inc04));
     }
 
-    public void cargaClassif(){
-        ec01.setImageResource(times[indiceTime]);
-        ec02.setImageResource(times[1]);
-        ec03.setImageResource(times[2]);
-        ec04.setImageResource(times[3]);
-        tc01.setText(nomeTime[indiceTime]);
-        tc02.setText(nomeTime[1]);
-        tc03.setText(nomeTime[2]);
-        tc04.setText(nomeTime[3]);
-        pc01.setText(tabClass[0]);
-        pc02.setText(tabClass[1]);
-        pc03.setText(tabClass[2]);
-        pc04.setText(tabClass[3]);
+    public void cargaClassif() {
+        System.out.println(times.get(0).getTimeid() + "");
+        System.out.println(times.get(1).getTimeid() + "");
+        System.out.println(times.get(2).getTimeid() + "");
+        System.out.println(times.get(3).getTimeid() + "");
+
+
+        ec01.setImageResource(Regras.times[times.get(0).getTimeid()]); //imagem
+
+        ec02.setImageResource(Regras.times[times.get(1).getTimeid()]);
+        ec03.setImageResource(Regras.times[times.get(2).getTimeid()]);
+        ec04.setImageResource(Regras.times[times.get(3).getTimeid()]);
+        tc01.setText(times.get(0).getNome()); //nome
+        tc02.setText(times.get(1).getNome());
+        tc03.setText(times.get(2).getNome());
+        tc04.setText(times.get(3).getNome());
+        pc01.setText(times.get(0).getPontos() + ""); //pontos
+        pc02.setText(times.get(1).getPontos() + "");
+        pc03.setText(times.get(2).getPontos() + "");
+        pc04.setText(times.get(3).getPontos() + "");
     }
 
-    public void onClickHint01(View v){
+    public void onClickHint01(View v) {
         Toast.makeText(this, "Custo de R$ 25.000,00 por partida\nAumento de 2% no Score para a partida", Toast.LENGTH_SHORT).show();
     }
 
-    public void onCLickHint02(View v){
+    public void onCLickHint02(View v) {
         Toast.makeText(this, "Custo de R$ 10.000,00 por partida\nAumento CUMULATIVO de 2% no Score por semana", Toast.LENGTH_SHORT).show();
     }
 
-    public void onCLickHint03(View v){
+    public void onCLickHint03(View v) {
         Toast.makeText(this, "Custo de R$ 8.000,00 por partida\nAumento CUMULATIVO de 1% no Score por semana", Toast.LENGTH_SHORT).show();
     }
 
-    public void onCLickHint04(View v){
+    public void onCLickHint04(View v) {
         Toast.makeText(this, "Custo de R$ 15.000,00 por partida\nGarante a recuperação plena do jogador, sem perda de score", Toast.LENGTH_SHORT).show();
     }
 
-    public void onClickSw01(View v){
-        if (sw01.isChecked()){
-            idDespesa+=25000;
+    public void onClickSw01(View v) {
+        if (sw01.isChecked()) {
+            idDespesa += 25000;
             inc01 = (int) (atuScore * 0.02);
         } else {
-            idDespesa-=25000;
+            idDespesa -= 25000;
             inc01 = 0;
         }
-        info04.setText("R$ "+idDespesa+"0");
-        atualizaScore();
-    }
-    public void onClickSw02(View v){
-        if (sw02.isChecked()){
-            idDespesa+=10000;
-            inc02 = (int) (atuScore * 0.02);
-        } else {
-            idDespesa-=10000;
-            inc02 = 0;
-        }
-        info04.setText("R$ "+idDespesa+"0");
-        atualizaScore();
-    }
-    public void onClickSw03(View v){
-        if (sw03.isChecked()){
-            idDespesa+=8000;
-            inc03 = (int) (atuScore * 0.01);
-        } else {
-            idDespesa-=8000;
-            inc03 = 0;
-        }
-        info04.setText("R$ "+idDespesa+"0");
-        atualizaScore();
-    }
-    public void onClickSw04(View v){
-        if (sw04.isChecked()){
-            idDespesa+=15000;
-        } else {
-            idDespesa-=15000;
-        }
-        info04.setText("R$ "+idDespesa+"0");
+        info04.setText("R$ " + idDespesa + "0");
         atualizaScore();
     }
 
-    public void btEscalarClick(){
+    public void onClickSw02(View v) {
+        if (sw02.isChecked()) {
+            idDespesa += 10000;
+            inc02 = (int) (atuScore * 0.02);
+        } else {
+            idDespesa -= 10000;
+            inc02 = 0;
+        }
+        info04.setText("R$ " + idDespesa + "0");
+        atualizaScore();
+    }
+
+    public void onClickSw03(View v) {
+        if (sw03.isChecked()) {
+            idDespesa += 8000;
+            inc03 = (int) (atuScore * 0.01);
+        } else {
+            idDespesa -= 8000;
+            inc03 = 0;
+        }
+        info04.setText("R$ " + idDespesa + "0");
+        atualizaScore();
+    }
+
+    public void onClickSw04(View v) {
+        if (sw04.isChecked()) {
+            idDespesa += 15000;
+        } else {
+            idDespesa -= 15000;
+        }
+        info04.setText("R$ " + idDespesa + "0");
+        atualizaScore();
+    }
+
+    public void btEscalarClick() {
         btEscalar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -376,24 +413,26 @@ public class actManager extends AppCompatActivity {
         });
     }
 
-    public void visualizaTimeClick(){
+    public void visualizaTimeClick() {
         eAdversario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(actManager.this, actConsultaTime.class);
                 Bundle dados = new Bundle();
                 //Data to bundle
-                dados.putInt("adverIdTime", idAdver);
-                dados.putInt("adverClassi", dadosAdver[0]);
-                dados.putInt("adverPontos", dadosAdver[1]);
-                dados.putInt("adverProximo", dadosAdver[2]);
+                int c = 0;
+
+                dados.putInt("adverIdTime", adversario.getTimeid());
+                dados.putInt("adverClassi", advClassif);
+                dados.putInt("adverPontos", adversario.getPontos());
+                dados.putInt("adverProximo", Regras.getIndicesPorTime().get(Regras.getAdversario(adversario.getNome(), campeonato.getRodada() + 1)));
                 it.putExtras(dados);
                 startActivity(it);
             }
         });
     }
 
-    public void btClassificacaoClick(){
+    public void btClassificacaoClick() {
         btClassif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

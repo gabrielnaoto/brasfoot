@@ -9,12 +9,14 @@ public class Campeonato {
     private Time t;
     private Patrocinador p;
     private Estadio e;
+    private int rodada;
 
     public Campeonato() {
+        rodada = 1;
     }
 
     public Campeonato(Time t, Patrocinador p, Estadio e) {
-
+        rodada = 1;
         this.t = t;
         this.p = p;
         this.e = e;
@@ -42,5 +44,13 @@ public class Campeonato {
 
     public void setE(Estadio e) {
         this.e = e;
+    }
+
+    public int getRodada() {
+        return rodada;
+    }
+
+    public void setRodada(int rodada) {
+        this.rodada = rodada;
     }
 }

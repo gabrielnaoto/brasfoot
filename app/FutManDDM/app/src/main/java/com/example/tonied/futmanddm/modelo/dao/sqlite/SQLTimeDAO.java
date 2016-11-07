@@ -109,7 +109,7 @@ public class SQLTimeDAO implements TimeDAO {
 
     @Override
     public List<Time> listar() {
-        Cursor cursor = db.rawQuery("select * from time", null);
+        Cursor cursor = db.rawQuery("select * from time order by pontos desc", null);
         int index_timeid = cursor.getColumnIndex("timeid");
         int index_nome = cursor.getColumnIndex("nome");
         int index_pontos = cursor.getColumnIndex("pontos");

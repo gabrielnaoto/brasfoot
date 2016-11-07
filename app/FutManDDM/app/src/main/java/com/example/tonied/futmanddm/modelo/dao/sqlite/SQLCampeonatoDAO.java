@@ -28,11 +28,12 @@ public class SQLCampeonatoDAO implements CampeonatoDAO {
 
     @Override
     public void inserir(Campeonato o) {
-        Object[] valores = new Object[3];
+        Object[] valores = new Object[4];
         valores[0] = o.getT().getTimeid();
         valores[1] = o.getE().getEstadioid();
         valores[2] = o.getP().getPatrocinadorid();
-        db.execSQL("insert into campeonato (time, estadio, patrocinador) values(?,?,?)", valores);
+        valores[3] = o.getRodada();
+        db.execSQL("insert into campeonato (time, estadio, patrocinador, rodada) values(?,?,?,?)", valores);
     }
 
     @Override
@@ -46,11 +47,13 @@ public class SQLCampeonatoDAO implements CampeonatoDAO {
         int index_time = cursor.getColumnIndex("time");
         int index_estadio = cursor.getColumnIndex("estadio");
         int index_patrocinador = cursor.getColumnIndex("patrocinador");
+        int index_rodada = cursor.getColumnIndex("rodada");
         cursor.moveToFirst();
         Campeonato e = new Campeonato();
         e.setT(tdao.pesquisar(cursor.getInt(index_time)));
-        e.setE(edao.pesquisar(cursor.getInt(index_estadio)));
-        e.setP(pdao.pesquisar(cursor.getInt(index_patrocinador)));
+//        e.setE(edao.pesquisar(cursor.getInt(index_estadio)));
+//        e.setP(pdao.pesquisar(cursor.getInt(index_patrocinador)));
+        e.setRodada(cursor.getInt(index_rodada));
         return e;
     }
 
