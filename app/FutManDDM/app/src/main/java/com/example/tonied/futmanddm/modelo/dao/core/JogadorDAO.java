@@ -10,21 +10,15 @@ import com.example.tonied.futmanddm.modelo.entidade.Jogador;
  * Created by ignoi on 26/10/2016.
  */
 
-public abstract class JogadorDAO {
+public interface JogadorDAO {
 
-    protected SQLiteDatabase db;
+    void inserir(Jogador o);
 
-    public JogadorDAO(SQLiteDatabase db) {
-        this.db = db;
-    }
+    void editar(Jogador o);
 
-    public abstract void inserir(Jogador o);
+    Jogador pesquisar(int o);
 
-    public abstract void editar(Jogador o);
+    List<Jogador> listar();
 
-    public abstract Jogador pesquisar(int o);
-
-    public abstract List<Jogador> listar();
-
-    public abstract void remover(int id);
+    void remover(int id);
 }

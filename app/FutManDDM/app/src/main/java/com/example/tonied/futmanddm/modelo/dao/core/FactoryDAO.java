@@ -9,26 +9,16 @@ import com.example.tonied.futmanddm.modelo.entidade.Patrocinador;
  * Created by ignoi on 02/11/2016.
  */
 
-public abstract class FactoryDAO {
+public interface FactoryDAO {
 
-    protected SQLiteDatabase db;
+    EstadioDAO getEstadoDAO();
 
-    public FactoryDAO(SQLiteDatabase db) {
-        this.db = db;
-    }
+    JogadorDAO getJogadorDAO();
 
-    public abstract EstadioDAO getEstadoDAO();
+    PartidaDAO getPartidaDAO();
 
-    public abstract JogadorDAO getJogadorDAO();
+    PatrocinadorDAO getPatrocinadorDAO();
 
-    public abstract PartidaDAO getPartidaDAO();
-
-    public abstract PatrocinadorDAO getPatrocinadorDAO();
-
-    public abstract TimeDAO getTimeDAO();
-
-    public FactoryDAO getFactoryDAO (){
-        return new SQLFactoryDAO(db);
-    }
+    TimeDAO getTimeDAO();
 
 }

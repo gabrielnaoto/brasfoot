@@ -9,10 +9,12 @@ import java.util.List;
 import com.example.tonied.futmanddm.modelo.dao.core.PatrocinadorDAO;
 import com.example.tonied.futmanddm.modelo.entidade.Patrocinador;
 
-public class SQLPatrocinadorDAO extends PatrocinadorDAO {
+public class SQLPatrocinadorDAO implements PatrocinadorDAO {
+
+    private SQLiteDatabase db;
 
     public SQLPatrocinadorDAO(SQLiteDatabase db) {
-        super(db);
+        this.db = db;
     }
 
     @Override

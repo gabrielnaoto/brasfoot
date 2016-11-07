@@ -17,6 +17,7 @@ public class Jogador {
     private Time time;
     private int suspenso;
     private int cartaoamarelo;
+    private boolean titular;
 
     public Jogador() {
 
@@ -122,6 +123,14 @@ public class Jogador {
 
     public void setCartaoamarelo(int cartaoamarelo) {
         this.cartaoamarelo = cartaoamarelo;
+    }
+
+    public boolean isTitular() {
+        return titular;
+    }
+
+    public void setTitular(boolean titular) {
+        this.titular = titular;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.tonied.futmanddm.modelo.dao.sqlite;
 
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
@@ -14,33 +15,20 @@ import com.example.tonied.futmanddm.modelo.entidade.Esquema;
 import com.example.tonied.futmanddm.modelo.entidade.Jogador;
 import com.example.tonied.futmanddm.modelo.entidade.Time;
 
-public class SQLTimeDAO extends TimeDAO {
+public class SQLTimeDAO implements TimeDAO {
 
     private PatrocinadorDAO patrocinadorDAO;
     private EstadioDAO estadioDAO;
-    private JogadorDAO jogadorDAO;
+    private SQLiteDatabase db;
 
     public SQLTimeDAO(SQLiteDatabase db) {
-        super(db);
         patrocinadorDAO = new SQLPatrocinadorDAO(db);
         estadioDAO = new SQLEstadioDAO(db);
-        jogadorDAO = new SQLJogadorDAO(db);
+        this.db = db;
     }
 
     @Override
     public void inserir(Time o) {
-        Object[] valores = new Object[6];
-        valores[0] = o.getNome();
-        valores[1] = o.getPontos();
-        valores[2] = o.getEsquema().getOrdem();
-        valores[3] = o.getSaldo();
-        valores[4] = o.getPatrocinador().getPatrocinadorid();
-        valores[5] = o.getEstadio().getEstadioid();
-        db.execSQL("insert into time(nome, pontos, esquema, saldo, patrocinadorid, estadioid) values(?,?,?,?,?,?)", valores);
-    }
-
-    @Override
-    public void editar(Time o) {
         Object[] valores = new Object[7];
         valores[0] = o.getNome();
         valores[1] = o.getPontos();
@@ -48,11 +36,25 @@ public class SQLTimeDAO extends TimeDAO {
         valores[3] = o.getSaldo();
         valores[4] = o.getPatrocinador().getPatrocinadorid();
         valores[5] = o.getEstadio().getEstadioid();
-        db.execSQL("update time set nome = ?, pontos = ?, esquema = ?, saldo = ?, patrocinadorid = ?, estadioid = ? where timeid = ? ", valores);
+        valores[6] = o.getTimeid();
+        db.execSQL("insert into time(nome, pontos, esquema, saldo, patrocinadorid, estadioid, timeid) values(?, ?,?,?,?,?, ?)", valores);
     }
 
     @Override
-    public Time pesquisar(int o) {
+    public void editar(Time o) {
+        Object[] valores = new Object[8];
+        valores[0] = o.getNome();
+        valores[1] = o.getPontos();
+        valores[2] = o.getEsquema().getOrdem();
+        valores[3] = o.getSaldo();
+        valores[4] = o.getPatrocinador().getPatrocinadorid();
+        valores[5] = o.getEstadio().getEstadioid();
+        valores[6] = o.getTimeid();
+        db.execSQL("update time set nome = ?, pontos = ?, esquema = ?, saldo = ?, patrocinadorid = ?, estadioid = ?, timeid = ? where timeid = ? ", valores);
+    }
+
+    @Override
+    public Time pesquisar(int o) throws CursorIndexOutOfBoundsException {
         String[] id = {o + ""};
         Cursor cursor = db.rawQuery("select * from time where timeid = ?", id);
         int index_timeid = cursor.getColumnIndex("timeid");
@@ -69,8 +71,8 @@ public class SQLTimeDAO extends TimeDAO {
         t.setPontos(cursor.getInt(index_pontos));
         t.setEsquema(Esquema.values()[cursor.getInt(index_esquema)]);
         t.setSaldo(cursor.getInt(index_saldo));
-        t.setPatrocinador(patrocinadorDAO.pesquisar(cursor.getInt(index_patrocinadorid)));
-        t.setEstadio(estadioDAO.pesquisar(cursor.getInt(index_timeid)));
+//        t.setPatrocinador(patrocinadorDAO.pesquisar(cursor.getInt(index_patrocinadorid)));
+//        t.setEstadio(estadioDAO.pesquisar(cursor.getInt(index_timeid)));
         Cursor cursorj = db.rawQuery("select * from jogador where timeid = ?", id);
         int index_jogadorid = cursorj.getColumnIndex("jogadorid");
         int index_nomej = cursorj.getColumnIndex("nome");
@@ -85,20 +87,21 @@ public class SQLTimeDAO extends TimeDAO {
         int index_cartaoamarelo = cursorj.getColumnIndex("cartaoamarelo");
         cursorj.moveToFirst();
         List<Jogador> jogadores = new ArrayList<>();
-        while (!cursor.isAfterLast()) {
+        while (!cursorj.isAfterLast()) {
             Jogador j = new Jogador();
-            j.setJogadorid(cursor.getInt(index_jogadorid));
-            j.setNome(cursor.getString(index_nome));
-            j.setPosicao(cursor.getString(index_posicao));
-            j.setIdade(cursor.getInt(index_idade));
-            j.setTecnica(cursor.getInt(index_tecnica));
-            j.setFisico(cursor.getInt(index_fisico));
-            j.setInteligentcia(cursor.getInt(index_inteligencia));
-            j.setMotivacao(cursor.getInt(index_motivacao));
+            j.setJogadorid(cursorj.getInt(index_jogadorid));
+            j.setNome(cursorj.getString(index_nome));
+            j.setPosicao(cursorj.getString(index_posicao));
+            j.setIdade(cursorj.getInt(index_idade));
+            j.setTecnica(cursorj.getInt(index_tecnica));
+            j.setFisico(cursorj.getInt(index_fisico));
+            j.setInteligentcia(cursorj.getInt(index_inteligencia));
+            j.setMotivacao(cursorj.getInt(index_motivacao));
             j.setTime(t);
-            j.setSuspenso(cursor.getInt(index_suspenso));
-            j.setCartaoamarelo(cursor.getInt(index_cartaoamarelo));
+            j.setSuspenso(cursorj.getInt(index_suspenso));
+            j.setCartaoamarelo(cursorj.getInt(index_cartaoamarelo));
             jogadores.add(j);
+            cursorj.moveToNext();
         }
         t.setJogadores(jogadores);
         return t;
@@ -124,8 +127,8 @@ public class SQLTimeDAO extends TimeDAO {
             t.setPontos(cursor.getInt(index_pontos));
             t.setEsquema(Esquema.values()[cursor.getInt(index_esquema)]);
             t.setSaldo(cursor.getInt(index_saldo));
-            t.setPatrocinador(patrocinadorDAO.pesquisar(cursor.getInt(index_patrocinadorid)));
-            t.setEstadio(estadioDAO.pesquisar(cursor.getInt(index_timeid)));
+//            t.setPatrocinador(patrocinadorDAO.pesquisar(cursor.getInt(index_patrocinadorid)));
+//            t.setEstadio(estadioDAO.pesquisar(cursor.getInt(index_timeid)));
             String[] id = {t.getTimeid() + ""};
             Cursor cursorj = db.rawQuery("select * from jogador where timeid = ?", id);
             int index_jogadorid = cursorj.getColumnIndex("jogadorid");
@@ -141,23 +144,25 @@ public class SQLTimeDAO extends TimeDAO {
             int index_cartaoamarelo = cursorj.getColumnIndex("cartaoamarelo");
             cursorj.moveToFirst();
             List<Jogador> jogadores = new ArrayList<>();
-            while (!cursor.isAfterLast()) {
+            while (!cursorj.isAfterLast()) {
                 Jogador j = new Jogador();
-                j.setJogadorid(cursor.getInt(index_jogadorid));
-                j.setNome(cursor.getString(index_nome));
-                j.setPosicao(cursor.getString(index_posicao));
-                j.setIdade(cursor.getInt(index_idade));
-                j.setTecnica(cursor.getInt(index_tecnica));
-                j.setFisico(cursor.getInt(index_fisico));
-                j.setInteligentcia(cursor.getInt(index_inteligencia));
-                j.setMotivacao(cursor.getInt(index_motivacao));
+                j.setJogadorid(cursorj.getInt(index_jogadorid));
+                j.setNome(cursorj.getString(index_nome));
+                j.setPosicao(cursorj.getString(index_posicao));
+                j.setIdade(cursorj.getInt(index_idade));
+                j.setTecnica(cursorj.getInt(index_tecnica));
+                j.setFisico(cursorj.getInt(index_fisico));
+                j.setInteligentcia(cursorj.getInt(index_inteligencia));
+                j.setMotivacao(cursorj.getInt(index_motivacao));
                 j.setTime(t);
-                j.setSuspenso(cursor.getInt(index_suspenso));
-                j.setCartaoamarelo(cursor.getInt(index_cartaoamarelo));
+                j.setSuspenso(cursorj.getInt(index_suspenso));
+                j.setCartaoamarelo(cursorj.getInt(index_cartaoamarelo));
                 jogadores.add(j);
+                cursorj.moveToNext();
             }
             t.setJogadores(jogadores);
             times.add(t);
+            cursor.moveToNext();
         }
         return times;
     }

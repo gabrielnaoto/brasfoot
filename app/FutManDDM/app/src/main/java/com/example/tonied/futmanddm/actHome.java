@@ -10,10 +10,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.tonied.futmanddm.modelo.dao.core.FactoryDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.JogadorDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLJogadorDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLTimeDAO;
+import com.example.tonied.futmanddm.modelo.entidade.Esquema;
+import com.example.tonied.futmanddm.modelo.entidade.Estadio;
+import com.example.tonied.futmanddm.modelo.entidade.Jogador;
+import com.example.tonied.futmanddm.modelo.entidade.Patrocinador;
+import com.example.tonied.futmanddm.modelo.entidade.Time;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 public class actHome extends AppCompatActivity {
 
-    private SQLiteDatabase db;
+
     private Button b2;
+    private TimeDAO timeDAO;
+    private JogadorDAO jogadorDAO;
+    private SQLiteDatabase db;
 
 
     @Override
@@ -21,32 +41,37 @@ public class actHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_home);
 
+
         ActionBar ac = getSupportActionBar();
         ac.hide();
 
     }
 
-    public void novo(View v) {
+    public void novo(View v) throws IOException {
         Toast.makeText(getApplicationContext(), "novo", Toast.LENGTH_SHORT).show();
         deleteDatabase("brasfoot");
         createDataBase();
         importar();
-
-
         startActivity(new Intent(this, actSelTime.class));
         finish();
-        //chama intent seltime
     }
 
     private void createDataBase() {
-
-        this.db = openOrCreateDatabase("brasfoot", MODE_PRIVATE, null);
+        db = openOrCreateDatabase("brasfoot", MODE_PRIVATE, null);
+        jogadorDAO = new SQLJogadorDAO(db);
+        timeDAO = new SQLTimeDAO(db);
 
         db.execSQL("create table if not exists patrocinador(\n" +
                 "patrocinadorid integer primary key autoincrement,\n" +
                 "nome varchar,\n" +
                 "estrelas integer,\n" +
                 "valor double)");
+
+        db.execSQL("create table if not exists campeonato(\n" +
+                "id integer primary key autoincrement,\n" +
+                "time integer,\n" +
+                "estadio integer,\n" +
+                "patrocinador integer)");
 
         db.execSQL("create table if not exists estadio(\n" +
                 "estadioid integer primary key autoincrement,\n" +
@@ -57,7 +82,7 @@ public class actHome extends AppCompatActivity {
 
         db.execSQL("create table if not exists time(\n" +
                 "nome varchar," +
-                "timeid integer primary key autoincrement,\n" +
+                "timeid integer primary key,\n" +
                 "pontos integer,\n" +
                 "esquema integer,\n" +
                 "saldo double,\n" +
@@ -96,15 +121,62 @@ public class actHome extends AppCompatActivity {
     public void continuar(View v) {
         Toast.makeText(getApplicationContext(), "continuar", Toast.LENGTH_SHORT).show();
         Intent it = new Intent(this, actManager.class);
-
-
         startActivity(it);
         finish();
     }
 
-    public void importar() {
-        //logica para ler os dados de um res.raw.jogadores.txt
-        //boa sorte
-
+    public void importar() throws IOException {
+        BufferedReader leitor;
+        leitor = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.jogadores)));
+        String linha = "";
+        List<Time> times = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            linha = leitor.readLine();
+            System.out.println("print " + linha);
+            Time t = new Time();
+            t.setTimeid(i);
+            t.setNome(linha);
+            t.setEsquema(Esquema.BALANCEADO);
+            t.setEstadio(new Estadio());
+            t.setPatrocinador(new Patrocinador());
+            t.setPontos(0);
+            t.setSaldo(0);
+            for (int j = 0; j < 18; j++) {
+                System.out.println("print " + linha);
+                linha = leitor.readLine();
+                String[] valores = linha.split(",");
+                Jogador jogador = new Jogador();
+                jogador.setNome(valores[1]);
+                jogador.setPosicao(valores[2]);
+                jogador.setIdade(Integer.parseInt(valores[3]));
+                jogador.setTecnica(Integer.parseInt(valores[4]));
+                jogador.setFisico(Integer.parseInt(valores[5]));
+                jogador.setInteligentcia(Integer.parseInt(valores[6]));
+                jogador.setTitular(valores[0] == "1" ? true : false);
+                jogador.setMotivacao(50);
+                jogador.setTime(t);
+                t.adiciongarJogador(jogador);
+                jogadorDAO.inserir(jogador);
+            }
+            timeDAO.inserir(t);
+            times.add(t);
+        }
+        leitor.readLine();
+        for (int j = 0; j < 59; j++) {
+            System.out.println("print " + linha);
+            linha = leitor.readLine();
+            String[] valores = linha.split(",");
+            Jogador jogador = new Jogador();
+            jogador.setNome(valores[1]);
+            jogador.setPosicao(valores[2]);
+            jogador.setIdade(Integer.parseInt(valores[3]));
+            jogador.setTecnica(Integer.parseInt(valores[4]));
+            jogador.setFisico(Integer.parseInt(valores[5]));
+            jogador.setInteligentcia(Integer.parseInt(valores[6]));
+            jogador.setMotivacao(50);
+            jogador.setTitular(valores[0] == "1" ? true : false);
+            jogador.setTime(new Time());
+            jogadorDAO.inserir(jogador);
+        }
     }
 }

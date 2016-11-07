@@ -1,5 +1,7 @@
 package com.example.tonied.futmanddm.modelo.entidade;
 
+import com.example.tonied.futmanddm.R;
+
 public class Regras {
 
     public static final double CUSTO_PALESTRA = 10000;
@@ -23,6 +25,50 @@ public class Regras {
         return placar;
     }
 
+    public static Double[] valPatr = {1000000.0,900000.0,800000.0,750000.0,600000.0,700000.0,750000.0,800000.0,450000.0, 800000.0, 350000.0};
+
+    public static int[] patrocinadores = {
+            R.drawable.p5nike,
+            R.drawable.p5adidas,
+            R.drawable.p4puma,
+            R.drawable.p4reebok,
+            R.drawable.p3mizuno,
+            R.drawable.p3underarmour,
+            R.drawable.p3umbro,
+            R.drawable.p2lotto,
+            R.drawable.p2olympikus,
+            R.drawable.p1topper,
+            R.drawable.p1penalty
+    };
+
+    public static String[] n_patrocinadores = {
+            "Nike",
+            "Adidas",
+            "Puma",
+            "Reebok",
+            "Mizuno",
+            "Under Armour",
+            "Umbro",
+            "Lotto",
+            "Olympikus",
+            "Topper",
+            "Penalty"
+    };
+
+    public static int[] e_patrocinadores = {
+            5,
+            5,
+            4,
+            4,
+            3,
+            3,
+            3,
+            2,
+            2,
+            1,
+            1
+    };
+
     public static String[] valores = {"1kk","900k","800k","750k","600k","700k","750k","800k","450k", "800k", "350k"};
     public static String[] ingressos = {"80","85","70","65","60","50","50","45","50", "40", "35"};
     public static String[] nomeTime = {
@@ -34,6 +80,17 @@ public class Regras {
             "Manchester Utd",
             "Paris SG",
             "Real Madrid"
+    };
+
+    public static int[] times = {
+            R.drawable.earsenal,
+            R.drawable.eatlmadrid,
+            R.drawable.ebarcelona,
+            R.drawable.ebayern,
+            R.drawable.ejuventus,
+            R.drawable.emanunited,
+            R.drawable.epsg,
+            R.drawable.erealm
     };
 
     public static String[][] getCalendario(int semana) {

@@ -130,37 +130,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public List<Time> importar() throws IOException, NullPointerException{
-        String linha = "";
-        List<Time> times = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            linha = leitor.readLine();
-            System.out.println("print " + linha);
-            Time t = new Time();
-            t.setNome(linha);
-            t.setEsquema(Esquema.BALANCEADO);
-            t.setEstadio(new Estadio());
-            t.setPatrocinador(new Patrocinador());
-            t.setPontos(1);
-            t.setSaldo(10);
-            for (int j = 0; j < 18; j++) {
-                System.out.println("print " + linha);
-                linha = leitor.readLine();
-                String[] valores = linha.split(",");
-                Jogador jogador = new Jogador();
-                jogador.setNome(valores[1]);
-                jogador.setPosicao(valores[2]);
-                jogador.setIdade(Integer.parseInt(valores[3]));
-                jogador.setTecnica(Integer.parseInt(valores[4]));
-                jogador.setFisico(Integer.parseInt(valores[5]));
-                jogador.setInteligentcia(Integer.parseInt(valores[6]));
-                jogador.setMotivacao(50);
-                jogador = t.adiciongarJogador(jogador);
-                jogadorDAO.inserir(jogador);
-            }
-            timeDAO.inserir(t);
-            times.add(t);
-        }
-        return times;
+
     }
 
 

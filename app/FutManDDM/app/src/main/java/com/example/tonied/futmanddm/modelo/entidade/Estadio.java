@@ -16,8 +16,7 @@ public class Estadio {
     public Estadio() {
     }
 
-    public Estadio(int estadioid, int estrelas, double ingresso, int publico) {
-        this.estadioid = estadioid;
+    public Estadio(int estrelas, double ingresso, int publico) {
         this.estrelas = estrelas;
         this.ingresso = ingresso;
         this.publico = publico;

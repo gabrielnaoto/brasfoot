@@ -13,10 +13,12 @@ import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
  * Created by ignoi on 02/11/2016.
  */
 
-public class SQLFactoryDAO extends FactoryDAO{
+public class SQLFactoryDAO implements FactoryDAO{
+
+    private SQLiteDatabase db;
 
     public SQLFactoryDAO(SQLiteDatabase db) {
-        super(db);
+        this.db = db;
     }
 
     @Override

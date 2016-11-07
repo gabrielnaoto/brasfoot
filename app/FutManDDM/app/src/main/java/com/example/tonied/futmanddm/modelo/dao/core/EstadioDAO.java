@@ -10,22 +10,17 @@ import com.example.tonied.futmanddm.modelo.entidade.Estadio;
  * Created by ignoi on 26/10/2016.
  */
 
-public abstract class EstadioDAO {
+public interface EstadioDAO {
 
-    protected SQLiteDatabase db;
 
-    public EstadioDAO(SQLiteDatabase db) {
-        this.db = db;
-    }
+    void inserir(Estadio o);
 
-    public abstract void inserir(Estadio o);
+    void editar(Estadio o);
 
-    public abstract void editar(Estadio o);
+    Estadio pesquisar(int o);
 
-    public abstract Estadio pesquisar(int o);
+    List<Estadio> listar();
 
-    public abstract List<Estadio> listar();
-
-    public abstract void remover(int id);
+    void remover(int id);
 
 }

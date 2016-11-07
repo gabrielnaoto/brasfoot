@@ -10,13 +10,14 @@ import com.example.tonied.futmanddm.modelo.dao.core.PartidaDAO;
 import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
 import com.example.tonied.futmanddm.modelo.entidade.Partida;
 
-public class SQLPartidaDAO extends PartidaDAO {
+public class SQLPartidaDAO implements PartidaDAO {
 
     private TimeDAO timeDAO;
+    private SQLiteDatabase db;
 
     public SQLPartidaDAO(SQLiteDatabase db) {
-        super(db);
         timeDAO = new SQLTimeDAO(db);
+        this.db = db;
     }
 
     @Override

@@ -10,18 +10,13 @@ import com.example.tonied.futmanddm.modelo.entidade.Partida;
  * Created by ignoi on 26/10/2016.
  */
 
-public abstract class PartidaDAO {
+public interface PartidaDAO {
 
-    protected SQLiteDatabase db;
 
-    public PartidaDAO(SQLiteDatabase db) {
-        this.db = db;
-    }
+    void inserir(Partida o);
 
-    public abstract void inserir(Partida o);
+    Partida pesquisar(int o);
 
-    public abstract Partida pesquisar(int o);
-
-    public abstract List<Partida> listar();
+    List<Partida> listar();
 
 }

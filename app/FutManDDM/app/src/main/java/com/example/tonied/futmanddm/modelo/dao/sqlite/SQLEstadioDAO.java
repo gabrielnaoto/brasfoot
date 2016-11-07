@@ -9,10 +9,12 @@ import java.util.List;
 import com.example.tonied.futmanddm.modelo.dao.core.EstadioDAO;
 import com.example.tonied.futmanddm.modelo.entidade.Estadio;
 
-public class SQLEstadioDAO extends EstadioDAO {
+public class SQLEstadioDAO implements EstadioDAO {
+
+    private SQLiteDatabase db;
 
     public SQLEstadioDAO(SQLiteDatabase db) {
-        super(db);
+        this.db = db;
     }
 
     @Override

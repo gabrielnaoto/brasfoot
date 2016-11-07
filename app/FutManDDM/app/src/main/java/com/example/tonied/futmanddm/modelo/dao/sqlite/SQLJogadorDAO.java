@@ -11,13 +11,15 @@ import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
 import com.example.tonied.futmanddm.modelo.entidade.Jogador;
 import com.example.tonied.futmanddm.modelo.entidade.Patrocinador;
 
-public class SQLJogadorDAO extends JogadorDAO {
+public class SQLJogadorDAO implements JogadorDAO {
 
+
+    private SQLiteDatabase db;
     private TimeDAO timeDAO;
 
     public SQLJogadorDAO(SQLiteDatabase db) {
-        super(db);
         timeDAO = new SQLTimeDAO(db);
+        this.db = db;
     }
 
 
@@ -110,7 +112,7 @@ public class SQLJogadorDAO extends JogadorDAO {
             j.setFisico(cursor.getInt(index_fisico));
             j.setInteligentcia(cursor.getInt(index_inteligencia));
             j.setMotivacao(cursor.getInt(index_motivacao));
-            j.setTime(timeDAO.pesquisar(cursor.getInt(index_time)));
+//            j.setTime(timeDAO.pesquisar(cursor.getInt(index_time)));
             j.setSuspenso(cursor.getInt(index_suspenso));
             j.setCartaoamarelo(cursor.getInt(index_cartaoamarelo));
             jogadores.add(j);

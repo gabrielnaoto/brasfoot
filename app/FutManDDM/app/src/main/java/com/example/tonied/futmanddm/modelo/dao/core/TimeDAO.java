@@ -10,21 +10,15 @@ import com.example.tonied.futmanddm.modelo.entidade.Time;
  * Created by ignoi on 26/10/2016.
  */
 
-public abstract class TimeDAO {
+public interface TimeDAO {
 
-    protected SQLiteDatabase db;
+    void inserir(Time o);
 
-    public TimeDAO(SQLiteDatabase db) {
-        this.db = db;
-    }
+    void editar(Time o);
 
-    public abstract void inserir(Time o);
+    Time pesquisar(int o);
 
-    public abstract void editar(Time o);
+    List<Time> listar();
 
-    public abstract Time pesquisar(int o);
-
-    public abstract List<Time> listar();
-
-    public abstract void remover(int id);
+    void remover(int id);
 }

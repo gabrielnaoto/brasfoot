@@ -39,14 +39,18 @@ public class Time {
         motivacao = motivacao / jogadores.size();
 
 
-        int atributos = (tecnica + fisico + inteligencia + motivacao) / 4;
+        int atributos = (int) (tecnica + fisico + inteligencia + motivacao) / 4;
 
         return atributos;
     }
 
-    public int getTimeid() { return timeid; }
+    public int getTimeid() {
+        return timeid;
+    }
 
-    public void setTimeid(int timeid) { this.timeid = timeid; }
+    public void setTimeid(int timeid) {
+        this.timeid = timeid;
+    }
 
     public String getNome() {
         return nome;
@@ -104,10 +108,8 @@ public class Time {
         this.estadio = estadio;
     }
 
-    public Jogador adiciongarJogador(Jogador j){
+    public void adiciongarJogador(Jogador j) {
         jogadores.add(j);
-        j.setTime(this);
-        return j;
     }
 
     @Override
