@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2: configTime();
                         break;
-                    case 3: teste();
+                    case 3: loco();
                         break;
                     case 4: loco();
                         break;
@@ -85,10 +85,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it);
     }
 
-    private void teste() {
-        Intent it = new Intent(MainActivity.this, Teste.class);
-        startActivity(it);
-    }
 
     private void loco() {
         Intent it = new Intent(MainActivity.this, actHome.class);

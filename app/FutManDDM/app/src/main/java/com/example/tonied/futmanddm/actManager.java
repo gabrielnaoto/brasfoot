@@ -112,8 +112,11 @@ public class actManager extends AppCompatActivity {
     static int idMoral;
     static double idCaixa;
     static double idDespesa;
-    static int idAdver = 0;
 
+    //id do adversario do proximo jogo
+    int idAdver = 4;
+    //dados: colocacao - pontos
+    int[] dadosAdver = {2, 11, 5};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,6 +182,8 @@ public class actManager extends AppCompatActivity {
         cargaJogos(1);
         cargaClassif();
         btEscalarClick();
+        visualizaTimeClick();
+        btClassificacaoClick();
     }
 
     public void buscaDadosExt(){
@@ -191,8 +196,6 @@ public class actManager extends AppCompatActivity {
         idMoral = 70;
         idCaixa = valPatr[indicePatr];
         idDespesa = 0;
-        //id do adversario do proximo jogo
-        idAdver = 4;
     }
 
     public void cargaJogos(int rodAtual){
@@ -202,8 +205,6 @@ public class actManager extends AppCompatActivity {
         //sequencia dos placares dos 3 ultimos jogos, pode carregar 0 se não houve
         String[] placarC = {"3", "2", "1"};
         String[] placarF = {"1", "0", "0"};
-        //dados: colocacao - pontos
-        String[] dadosAdver = {"2", "11"};
         //locais dos jogos - sequencia completa do time
         String[] locais = {"casa", "fora", "casa", "fora"};
 
@@ -369,6 +370,37 @@ public class actManager extends AppCompatActivity {
                 //Data to bundle
                 dados.putInt("indiceTime", indiceTime);
                 dados.putInt("indicePatr", indicePatr);
+                it.putExtras(dados);
+                startActivity(it);
+            }
+        });
+    }
+
+    public void visualizaTimeClick(){
+        eAdversario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(actManager.this, actConsultaTime.class);
+                Bundle dados = new Bundle();
+                //Data to bundle
+                dados.putInt("adverIdTime", idAdver);
+                dados.putInt("adverClassi", dadosAdver[0]);
+                dados.putInt("adverPontos", dadosAdver[1]);
+                dados.putInt("adverProximo", dadosAdver[2]);
+                it.putExtras(dados);
+                startActivity(it);
+            }
+        });
+    }
+
+    public void btClassificacaoClick(){
+        btClassif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(actManager.this, actClassificacao.class);
+                Bundle dados = new Bundle();
+                //Data to bundle
+
                 it.putExtras(dados);
                 startActivity(it);
             }

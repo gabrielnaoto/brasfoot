@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_act_tela_jogo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tonied.futmanddm.actTelaJogo"
+    android:background="@android:color/background_light">
+
+    <Button
+        android:text="OK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btOk"
+        android:background="@android:color/holo_green_light"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+</LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_act_consulta_time"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tonied.futmanddm.actConsultaTime"
+    android:background="@android:color/background_light">
+
+    <Button
+        android:text="Voltar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btVoltar"
+        android:minWidth="0dp"
+        android:background="@android:color/holo_orange_light" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:id="@+id/escudo"
+            android:layout_weight=".4"
+            app:srcCompat="@drawable/earsenal"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:text="85"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/score"
+            android:layout_weight=".3"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="normal|bold"
+            android:textSize="24sp"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:text="Colocação: 1 (12 pts)\nPróximos jogo: Juventus (casa)"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/infoTime"
+            android:layout_weight=".8"
+            android:textAlignment="center"
+            android:textStyle="normal|italic"
+            android:textColor="@android:color/black"
+            android:lineSpacingExtra="8sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        android:layout_weight="1">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tabela">
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableLayout>
+    </ScrollView>
+
+
+</LinearLayout>

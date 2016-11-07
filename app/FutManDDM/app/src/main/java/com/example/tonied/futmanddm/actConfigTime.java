@@ -1,11 +1,13 @@
 package com.example.tonied.futmanddm;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -19,30 +21,36 @@ public class actConfigTime extends AppCompatActivity {
     private static TextView scoreCasa;
     private static TextView scoreVisitante;
     private static TextView infoTime;
+    private Button btVoltar;
+    private Button btJogar;
 
     private int indiceTime;
-    private int indicePatr;
 
     int[] times = {
-            R.drawable.ebarcelona,
-            R.drawable.erealm,
+            R.drawable.earsenal,
             R.drawable.eatlmadrid,
+            R.drawable.ebarcelona,
             R.drawable.ebayern,
-            R.drawable.ejuventus
+            R.drawable.ejuventus,
+            R.drawable.emanunited,
+            R.drawable.epsg,
+            R.drawable.erealm
     };
+
 
     String[] nomeTime = {
-            "Barcelona",
-            "Real Madrid",
+            "Arsenal",
             "Atl. Madrid",
+            "Barcelona",
             "Bayern Munique",
-            "Juventus"
+            "Juventus",
+            "Manchester Utd",
+            "Paris SG",
+            "Real Madrid"
     };
 
-    int[] scores = {85,83,78,89,79};
-
-    String[] valores = {"1kk","900k","800k","750k","600k","700k","750k","800k","450k", "800k", "350k"};
-    String[] ingressos = {"80","85","70","65","60","50","50","45","50", "40", "35"};
+    //informações EXTERNAS a activity
+    int[] scores = {81,83,78,89,79,85,84,77};
 
     private TableLayout tabela;
     private int linhasSelect = 0;
@@ -78,10 +86,8 @@ public class actConfigTime extends AppCompatActivity {
         Bundle dados = getIntent().getExtras();
         if(dados.isEmpty()){
             Toast.makeText(this, "Dados não carregados", Toast.LENGTH_SHORT).show();
-            indicePatr = 0;
             indiceTime = 0;
         } else {
-            indicePatr = dados.getInt("indicePatr");
             indiceTime = dados.getInt("indiceTime");
         }
 
@@ -97,8 +103,8 @@ public class actConfigTime extends AppCompatActivity {
 
         infoTime = (TextView)findViewById(R.id.infoTime);
         tabela = (TableLayout)findViewById(R.id.tabela);
-
-        montaStrings(4,1,11,2);
+        btVoltar = (Button)findViewById(R.id.btVoltar);
+        btJogar = (Button)findViewById(R.id.btJogar);
 
         tabela.removeAllViews();
         int tabJog = 20;
@@ -110,6 +116,34 @@ public class actConfigTime extends AppCompatActivity {
                     "-"};
             criaDadosTabela(i, jogador);
         }
+        montaStrings(4,1,11,2);
+
+        btJogarClick();
+        btVoltarClick();
+    }
+
+    private void btVoltarClick() {
+        btVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void btJogarClick() {
+        btJogar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(actConfigTime.this, actDelayJogo.class);
+                Bundle dados = new Bundle();
+                //Data to bundle
+                dados.putInt("indiceTime", indiceTime);
+                it.putExtras(dados);
+                startActivity(it);
+                finish();
+            }
+        });
     }
 
     public void montaStrings(int time, int casa, int pontos, int classif){
@@ -125,7 +159,6 @@ public class actConfigTime extends AppCompatActivity {
     }
 
     public void criaDadosTabela(int pos, String[] jogador){
-
         TableRow row = new TableRow(this);
         row.setLayoutParams(new TableRow.LayoutParams(0,0));
 

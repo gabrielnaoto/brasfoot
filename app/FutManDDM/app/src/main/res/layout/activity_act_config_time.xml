@@ -11,25 +11,28 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="30dp">
+        android:layout_height="45dp">
+
+        <Button
+            android:text="Voltar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/btVoltar"
+            android:layout_weight=".5"
+            android:minWidth="0dp"
+            android:background="@android:color/holo_orange_light" />
 
         <Button
             android:text="Jogar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/bt1"
+            android:id="@+id/btJogar"
             android:minWidth="0dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_red_light" />
+            android:background="@android:color/holo_green_light"
+            android:textAlignment="center"
+            android:textSize="24sp" />
 
-        <Button
-            android:text="Clube"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/bt2"
-            android:layout_weight="1"
-            android:minWidth="0dp"
-            android:background="@android:color/holo_red_dark" />
     </LinearLayout>
 
     <LinearLayout
