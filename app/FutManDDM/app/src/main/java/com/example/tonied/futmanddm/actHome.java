@@ -41,6 +41,7 @@ public class actHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_home);
 
+        deleteDatabase("brasfoot");
 
         ActionBar ac = getSupportActionBar();
         ac.hide();
@@ -52,6 +53,7 @@ public class actHome extends AppCompatActivity {
         deleteDatabase("brasfoot");
         createDataBase();
         importar();
+
         startActivity(new Intent(this, actSelTime.class));
         finish();
     }

@@ -12,9 +12,10 @@ import com.example.tonied.futmanddm.modelo.entidade.Partida;
 
 public interface PartidaDAO {
 
-
     void inserir(Partida o);
 
-    List<Partida> listar(int o);
+    List<Partida> listarPorTime(int o);
+
+    List<Partida> listarPorRodada(int o);
 
 }

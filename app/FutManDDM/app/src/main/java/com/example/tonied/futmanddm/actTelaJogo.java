@@ -1,14 +1,25 @@
 package com.example.tonied.futmanddm;
 
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.tonied.futmanddm.modelo.dao.core.CampeonatoDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.PartidaDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
+import com.example.tonied.futmanddm.modelo.entidade.Campeonato;
+import com.example.tonied.futmanddm.modelo.entidade.Partida;
+import com.example.tonied.futmanddm.modelo.entidade.Regras;
+import com.example.tonied.futmanddm.modelo.entidade.Time;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class actTelaJogo extends AppCompatActivity {
 
@@ -30,6 +41,14 @@ public class actTelaJogo extends AppCompatActivity {
     private TextView p3plVisit;
     private TextView p4plVisit;
     private TextView rodada;
+    private CampeonatoDAO campeonatodao;
+    private Campeonato c;
+    private PartidaDAO partidadao;
+    private Partida p;
+    private TimeDAO timedao;
+    private Time t;
+    private int rodadap;
+    private Map<String, View> views;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,31 +58,70 @@ public class actTelaJogo extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        p1escCasa = (ImageView)findViewById(R.id.p1escCasa);
-        p2escCasa = (ImageView)findViewById(R.id.p2escCasa);
-        p3escCasa = (ImageView)findViewById(R.id.p3escCasa);
-        p4escCasa = (ImageView)findViewById(R.id.p4escCasa);
-        p1escVisit = (ImageView)findViewById(R.id.p1escVisit);
-        p2escVisit = (ImageView)findViewById(R.id.p2escVisit);
-        p3escVisit = (ImageView)findViewById(R.id.p3escVisit);
-        p4escVisit = (ImageView)findViewById(R.id.p4escVisit);
-        p1plCasa = (TextView)findViewById(R.id.p1plCasa);
-        p2plCasa = (TextView)findViewById(R.id.p2plCasa);
-        p3plCasa = (TextView)findViewById(R.id.p3plCasa);
-        p4plCasa = (TextView)findViewById(R.id.p4plCasa);
-        p1plVisit = (TextView)findViewById(R.id.p1plVisit);
-        p2plVisit = (TextView)findViewById(R.id.p2plVisit);
-        p3plVisit = (TextView)findViewById(R.id.p3plVisit);
-        p4plVisit = (TextView)findViewById(R.id.p4plVisit);
-        rodada = (TextView)findViewById(R.id.rodada);
-        btOk = (Button)findViewById(R.id.btOk);
+        p1escCasa = (ImageView) findViewById(R.id.p1escCasa);
+        p2escCasa = (ImageView) findViewById(R.id.p2escCasa);
+        p3escCasa = (ImageView) findViewById(R.id.p3escCasa);
+        p4escCasa = (ImageView) findViewById(R.id.p4escCasa);
+        p1plCasa = (TextView) findViewById(R.id.p1plCasa);
+        p2plCasa = (TextView) findViewById(R.id.p2plCasa);
+        p3plCasa = (TextView) findViewById(R.id.p3plCasa);
+        p4plCasa = (TextView) findViewById(R.id.p4plCasa);
+
+        p1escVisit = (ImageView) findViewById(R.id.p1escVisit);
+        p2escVisit = (ImageView) findViewById(R.id.p2escVisit);
+        p3escVisit = (ImageView) findViewById(R.id.p3escVisit);
+        p4escVisit = (ImageView) findViewById(R.id.p4escVisit);
+        p1plVisit = (TextView) findViewById(R.id.p1plVisit);
+        p2plVisit = (TextView) findViewById(R.id.p2plVisit);
+        p3plVisit = (TextView) findViewById(R.id.p3plVisit);
+        p4plVisit = (TextView) findViewById(R.id.p4plVisit);
+
+        views = new HashMap<>();
+        views.put("1escCasa", p1escCasa);
+        views.put("2escCasa", p2escCasa);
+        views.put("3escCasa", p3escCasa);
+        views.put("4escCasa", p4escCasa);
+        views.put("1plCasa", p1plCasa);
+        views.put("2plCasa", p2plCasa);
+        views.put("3plCasa", p3plCasa);
+        views.put("4plCasa", p4plCasa);
+
+        views.put("1escVisit", p1escVisit);
+        views.put("2escVisit", p2escVisit);
+        views.put("3escVisit", p3escVisit);
+        views.put("4escVisit", p4escVisit);
+        views.put("1plVisit", p1plVisit);
+        views.put("2plVisit", p2plVisit);
+        views.put("3plVisit", p3plVisit);
+        views.put("4plVisit", p4plVisit);
+
+        rodada = (TextView) findViewById(R.id.rodada);
+        btOk = (Button) findViewById(R.id.btOk);
 
         btOkClick();
         cargaJogos(1);
+        carregaResultados();
     }
 
-    private void cargaJogos(int r){
-        rodada.setText("Resultados da "+r+"ª Rodada");
+    public void carregaResultados() {
+        c = campeonatodao.pesquisar();
+        rodadap = c.getRodada();
+        List<Partida> partidas = partidadao.listar(rodadap);
+        for (int i = 1; i <= partidas.size(); i++) {
+            Partida atual = partidas.get(i);
+            String chave = i + "esc" + "Casa";
+            ((ImageView) views.get(chave)).setImageResource(Regras.times[atual.getCasa().getTimeid()]);
+            chave = i + "pl" + "Casa";
+            ((TextView) views.get(chave)).setText(atual.getPlacar()[0]);
+            chave = i + "esc" + "Visit";
+            ((ImageView) views.get(chave)).setImageResource(Regras.times[atual.getVisitante().getTimeid()]);
+            chave = i + "pl" + "Visit";
+            ((TextView) views.get(chave)).setText(atual.getPlacar()[1]);
+        }
+    }
+
+    private void cargaJogos(int r) {
+        rodada.setText("Resultados da " + r + "ª Rodada");
     }
 
     private void btOkClick() {

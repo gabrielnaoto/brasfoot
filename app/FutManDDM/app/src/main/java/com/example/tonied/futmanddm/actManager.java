@@ -231,7 +231,7 @@ public class actManager extends AppCompatActivity {
     }
 
     public void cargaJogos(int rodAtual) {
-//        List<Partida> partidas = pdao.listar(time.getTimeid());
+        List<Partida> partidas = pdao.listarPorTime(time.getTimeid());
 
         if (rodAtual == 0) {
             ej01.setImageResource(R.drawable.esemtime);
@@ -244,49 +244,49 @@ public class actManager extends AppCompatActivity {
             res02.setText("  X  ");
             res03.setText("  X  ");
 
-//        } else if (rodAtual == 1) {
-//            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
-//            ej02.setImageResource(R.drawable.esemtime);
-//            ej03.setImageResource(R.drawable.esemtime);
-//            rod01.setText("Rodada 1 - " + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-//            rod02.setText("");
-//            rod03.setText("");
-//            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
-//            res02.setText("  X  ");
-//            res03.setText("  X  ");
-//
-//        } else if (rodAtual == 2) {
-//            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
-//            ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
-//            ej03.setImageResource(R.drawable.esemtime);
-//            rod01.setText("Rodada 1 - " + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-//            rod02.setText("Rodada 2 - " + (partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-//            rod03.setText("");
-//            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
-//            res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
-//            res03.setText("  X  ");
-//
-//        } else if (rodAtual == 3) {
-//            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
-//            ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
-//            ej03.setImageResource(Regras.times[partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? partidas.get(2).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
-//            rod01.setText("Rodada 1 - " + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-//            rod02.setText("Rodada 2 - " + (partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-//            rod03.setText("Rodada 3 - " + (partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-//            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
-//            res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
-//            res03.setText(partidas.get(2).getPlacar()[0] + " X " + partidas.get(2).getPlacar()[1]);
-//
-//        } else if (rodAtual >= 4) {
-//            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
-//            ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
-//            ej03.setImageResource(Regras.times[partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? partidas.get(2).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
-//            rod01.setText("Rodada " + (rodAtual - 3) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-//            rod02.setText("Rodada " + (rodAtual - 2) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-//            rod03.setText("Rodada " + (rodAtual - 1) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-//            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
-//            res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
-//            res03.setText(partidas.get(2).getPlacar()[0] + " X " + partidas.get(2).getPlacar()[1]);
+        } else if (rodAtual == 1) {
+            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+            ej02.setImageResource(R.drawable.esemtime);
+            ej03.setImageResource(R.drawable.esemtime);
+            rod01.setText("Rodada 1 - " + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            rod02.setText("");
+            rod03.setText("");
+            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
+            res02.setText("  X  ");
+            res03.setText("  X  ");
+
+        } else if (rodAtual == 2) {
+            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+            ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+            ej03.setImageResource(R.drawable.esemtime);
+            rod01.setText("Rodada 1 - " + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            rod02.setText("Rodada 2 - " + (partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            rod03.setText("");
+            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
+            res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
+            res03.setText("  X  ");
+
+        } else if (rodAtual == 3) {
+            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+            ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+            ej03.setImageResource(Regras.times[partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? partidas.get(2).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+            rod01.setText("Rodada 1 - " + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            rod02.setText("Rodada 2 - " + (partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            rod03.setText("Rodada 3 - " + (partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
+            res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
+            res03.setText(partidas.get(2).getPlacar()[0] + " X " + partidas.get(2).getPlacar()[1]);
+
+        } else if (rodAtual >= 4) {
+            ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+            ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+            ej03.setImageResource(Regras.times[partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? partidas.get(2).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
+            rod01.setText("Rodada " + (rodAtual - 3) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            rod02.setText("Rodada " + (rodAtual - 2) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            rod03.setText("Rodada " + (rodAtual - 1) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            res01.setText(partidas.get(0).getPlacar()[0] + " X " + partidas.get(0).getPlacar()[1]);
+            res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
+            res03.setText(partidas.get(2).getPlacar()[0] + " X " + partidas.get(2).getPlacar()[1]);
         }
         eAdversario.setImageResource(Regras.times[adversario.getTimeid()]);
 
