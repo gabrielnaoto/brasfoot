@@ -78,7 +78,7 @@ public class Regras {
             "Arsenal",
             "Atl. Madrid",
             "Barcelona",
-            "Bayern Munique",
+            "Bayern",
             "Juventus",
             "Manchester Utd",
             "Paris SG",
@@ -93,7 +93,7 @@ public class Regras {
         mapa.put("Arsenal", 0);
         mapa.put("Atl. Madrid", 1);
         mapa.put("Barcelona", 2);
-        mapa.put("Bayern Munique", 3);
+        mapa.put("Bayern", 3);
         mapa.put("Juventus", 4);
         mapa.put("Manchester Utd", 5);
         mapa.put("Paris SG", 6);
@@ -140,100 +140,100 @@ public class Regras {
         switch (semana) {
             case 1: {
                 String[][] valores = {{"Real Madrid", "Barcelona"},
-                        {"Atlético Madrid", "Bayern"},
-                        {"Juventus", "Manchester United"},
-                        {"Arsenal", "Paris Saint-Germain"}};
+                        {"Atl. Madrid", "Bayern"},
+                        {"Juventus", "Manchester Utd"},
+                        {"Arsenal", "Paris SG"}};
                 return valores;
             }
             case 2: {
                 String[][] valores = {{"Bayern", "Real Madrid"},
-                        {"Barcelona", "Atlético Madrid"},
-                        {"Paris Saint-Germain", "Juventus"},
-                        {"Manchester United", "Arsenal"}};
+                        {"Barcelona", "Atl. Madrid"},
+                        {"Paris SG", "Juventus"},
+                        {"Manchester Utd", "Arsenal"}};
                 return valores;
             }
             case 3: {
-                String[][] valores = {{"Real Madrid", "Atlético Madrid"},
+                String[][] valores = {{"Real Madrid", "Atl. Madrid"},
                         {"Bayern", "Barcelona"},
                         {"Arsenal", "Juventus"},
-                        {"Manchester United", "Paris Saint-Germain"}};
+                        {"Manchester Utd", "Paris SG"}};
                 return valores;
             }
             case 4: {
                 String[][] valores = {{"Juventus", "Real Madrid"},
-                        {"Barcelona", "Manchester United"},
-                        {"Paris Saint-Germain", "Bayern"},
-                        {"Atlético Madrid", "Arsenal"}};
+                        {"Barcelona", "Manchester Utd"},
+                        {"Paris SG", "Bayern"},
+                        {"Atl. Madrid", "Arsenal"}};
                 return valores;
             }
             case 5: {
-                String[][] valores = {{"Real Madrid", "Manchester United"},
+                String[][] valores = {{"Real Madrid", "Manchester Utd"},
                         {"Barcelona", "Juventus"},
                         {"Bayern", "Arsenal"},
-                        {"Atlético Madrid", "Paris Saint-Germain"}};
+                        {"Atl. Madrid", "Paris SG"}};
                 return valores;
             }
             case 6: {
-                String[][] valores = {{"Paris Saint-Germain", "Real Madrid"},
+                String[][] valores = {{"Paris SG", "Real Madrid"},
                         {"Arsenal", "Barcelona"},
                         {"Juventus", "Bayern"},
-                        {"Manchester United", "Atlético Madrid"}};
+                        {"Manchester Utd", "Atl. Madrid"}};
                 return valores;
             }
             case 7: {
                 String[][] valores = {{"Real Madrid", "Arsenal"},
-                        {"Barcelona", "Paris Saint-Germain"},
-                        {"Bayern", "Manchester United"},
-                        {"Atlético Madrid", "Juventus"}};
+                        {"Barcelona", "Paris SG"},
+                        {"Bayern", "Manchester Utd"},
+                        {"Atl. Madrid", "Juventus"}};
                 return valores;
             }
             case 8: {
                 String[][] valores = {{"Barcelona", "Real Madrid"},
-                        {"Bayern", "Atlético Madrid"},
-                        {"Manchester United", "Juventus"},
-                        {"Paris Saint-Germain", "Arsenal"}};
+                        {"Bayern", "Atl. Madrid"},
+                        {"Manchester Utd", "Juventus"},
+                        {"Paris SG", "Arsenal"}};
                 return valores;
             }
             case 9: {
                 String[][] valores = {{"Real Madrid", "Bayern"},
-                        {"Atlético Madrid", "Barcelona"},
-                        {"Juventus", "Paris Saint-Germain"},
-                        {"Arsenal", "Manchester United"}};
+                        {"Atl. Madrid", "Barcelona"},
+                        {"Juventus", "Paris SG"},
+                        {"Arsenal", "Manchester Utd"}};
                 return valores;
             }
             case 10: {
-                String[][] valores = {{"Atlético Madrid", "Real Madrid"},
+                String[][] valores = {{"Atl. Madrid", "Real Madrid"},
                         {"Barcelona", "Bayern"},
                         {"Juventus", "Arsenal"},
-                        {"Paris Saint-Germain", "Manchester United"}};
+                        {"Paris SG", "Manchester Utd"}};
                 return valores;
             }
             case 11: {
                 String[][] valores = {{"Real Madrid", "Juventus"},
-                        {"Manchester United", "Barcelona"},
-                        {"Bayern", "Paris Saint-Germain"},
-                        {"Arsenal", "Atlético Madrid"}};
+                        {"Manchester Utd", "Barcelona"},
+                        {"Bayern", "Paris SG"},
+                        {"Arsenal", "Atl. Madrid"}};
                 return valores;
             }
             case 12: {
-                String[][] valores = {{"Manchester United", "Real Madrid"},
+                String[][] valores = {{"Manchester Utd", "Real Madrid"},
                         {"Juventus", "Barcelona"},
                         {"Arsenal", "Bayern"},
-                        {"Paris Saint-Germain", "Atlético Madrid"}};
+                        {"Paris SG", "Atl. Madrid"}};
                 return valores;
             }
             case 13: {
-                String[][] valores = {{"Real Madrid", "Paris Saint-Germain"},
+                String[][] valores = {{"Real Madrid", "Paris SG"},
                         {"Barcelona", "Arsenal"},
                         {"Bayern", "Juventus"},
-                        {"Atlético Madrid", "Manchester United"}};
+                        {"Atl. Madrid", "Manchester Utd"}};
                 return valores;
             }
             case 14: {
                 String[][] valores = {{"Arsenal", "Real Madrid"},
-                        {"Paris Saint-Germain", "Barcelona"},
-                        {"Manchester United", "Bayern"},
-                        {"Juventus", "Atlético Madrid"}};
+                        {"Paris SG", "Barcelona"},
+                        {"Manchester Utd", "Bayern"},
+                        {"Juventus", "Atl. Madrid"}};
                 return valores;
             }
         }
