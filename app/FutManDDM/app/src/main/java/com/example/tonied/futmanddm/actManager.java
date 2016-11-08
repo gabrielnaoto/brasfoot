@@ -82,7 +82,7 @@ public class actManager extends AppCompatActivity {
     private Button btEscalar;
 
 
-    int indiceTime;
+    int indiceTime, idCasa, idVisit;
     int indicePatr;
     String XatuScore;
     int idScore;
@@ -176,7 +176,6 @@ public class actManager extends AppCompatActivity {
         time = campeonato.getT();
         adversario = tdao.pesquisar(Regras.getIndicesPorTime().get(Regras.getAdversario(time.getNome(), campeonato.getRodada())));
 
-
         idScore = time.getAtributos();
         atuScore = idScore;
         XatuScore = idScore + "";
@@ -188,7 +187,6 @@ public class actManager extends AppCompatActivity {
         btEscalarClick();
         visualizaTimeClick();
         btClassificacaoClick();
-
 
     }
 
@@ -293,16 +291,21 @@ public class actManager extends AppCompatActivity {
         eAdversario.setImageResource(Regras.times[adversario.getTimeid()]);
 
         String localiz = "";
-        if (Regras.isCasa(time.getNome(), rodAtual + 1))
+        if (Regras.isCasa(time.getNome(), rodAtual + 1)) {
             localiz = "Casa";
-        else
+            idCasa = time.getTimeid();
+            idVisit = adversario.getTimeid();
+        } else {
             localiz = "Fora";
+            idCasa = adversario.getTimeid();
+            idVisit = time.getTimeid();
+        }
         tAdversario.setText(localiz + " - " + advClassif + "º (" + adversario.getPontos() + " pts) - " + adversario.getAtributos());
     }
 
     public void cargaInfos() {
         escudo.setImageResource(Regras.times[time.getTimeid()]);
-        info00.setText(XatuScore);
+        info00.setText(idScore+"");
         atualizaScore();
         info01.setText(idClassif + "º (" + idPontos + " pts)");
         info02.setText(idMoral + "%");
@@ -311,7 +314,7 @@ public class actManager extends AppCompatActivity {
     }
 
     public void atualizaScore() {
-        info00n.setText(XatuScore);//(atuScore+inc01+inc02+inc03+inc04));
+        info00n.setText(atuScore+inc01+inc02+inc03+inc04+"");
     }
 
     public void cargaClassif() {
@@ -322,7 +325,6 @@ public class actManager extends AppCompatActivity {
 
 
         ec01.setImageResource(Regras.times[times.get(0).getTimeid()]); //imagem
-
         ec02.setImageResource(Regras.times[times.get(1).getTimeid()]);
         ec03.setImageResource(Regras.times[times.get(2).getTimeid()]);
         ec04.setImageResource(Regras.times[times.get(3).getTimeid()]);
@@ -406,7 +408,8 @@ public class actManager extends AppCompatActivity {
                 Bundle dados = new Bundle();
                 //Data to bundle
                 dados.putInt("indiceTime", indiceTime);
-                dados.putInt("indicePatr", indicePatr);
+                dados.putInt("idCasa", idCasa );
+                dados.putInt("idVisit", idVisit);
                 it.putExtras(dados);
                 startActivity(it);
             }
@@ -420,12 +423,10 @@ public class actManager extends AppCompatActivity {
                 Intent it = new Intent(actManager.this, actConsultaTime.class);
                 Bundle dados = new Bundle();
                 //Data to bundle
-                int c = 0;
 
                 dados.putInt("adverIdTime", adversario.getTimeid());
                 dados.putInt("adverClassi", advClassif);
                 dados.putInt("adverPontos", adversario.getPontos());
-                dados.putInt("adverProximo", Regras.getIndicesPorTime().get(Regras.getAdversario(adversario.getNome(), campeonato.getRodada() + 1)));
                 it.putExtras(dados);
                 startActivity(it);
             }

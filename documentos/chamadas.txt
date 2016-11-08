@@ -1,0 +1,32 @@
+    public void btEscalarClick() {
+        btEscalar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(actManager.this, actConfigTime.class);
+                Bundle dados = new Bundle();
+                //Data to bundle
+                dados.putInt("indiceTime", indiceTime);
+                dados.putInt("idCasa", idCasa );
+                dados.putInt("idVisit", idVisit);
+                it.putExtras(dados);
+                startActivity(it);
+            }
+        });
+    }
+
+    public void visualizaTimeClick() {
+        eAdversario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(actManager.this, actConsultaTime.class);
+                Bundle dados = new Bundle();
+                //Data to bundle
+                dados.putInt("adverIdTime", adversario.getTimeid());
+                dados.putInt("adverClassi", advClassif);
+                dados.putInt("adverPontos", adversario.getPontos());
+                dados.putInt("adverProximo", Regras.getIndicesPorTime().get(Regras.getAdversario(adversario.getNome(), campeonato.getRodada() + 1) ) );
+                it.putExtras(dados);
+                startActivity(it);
+            }
+        });
+    }

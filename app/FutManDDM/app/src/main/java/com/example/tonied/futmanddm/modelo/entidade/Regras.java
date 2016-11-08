@@ -89,7 +89,6 @@ public class Regras {
     public static Map<String, Integer> getIndicesPorTime() {
         Map<String, Integer> mapa = new HashMap<>();
 
-
         mapa.put("Arsenal", 0);
         mapa.put("Atl. Madrid", 1);
         mapa.put("Barcelona", 2);

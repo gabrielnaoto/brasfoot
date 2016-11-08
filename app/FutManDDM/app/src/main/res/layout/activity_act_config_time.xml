@@ -106,18 +106,33 @@
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_light">
 
-        <TextView
-            android:text="Jogando em\nATAQUE TOTAL"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tFormacao"
-            android:layout_weight="1"
-            android:textColor="@android:color/black"
-            android:textStyle="normal|bold"
-            android:textAlignment="center"
-            android:lineSpacingExtra="8sp"
-            android:paddingBottom="10dp"
-            android:paddingTop="5dp" />
+            android:layout_weight="1">
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekFormacao"
+                android:layout_weight="1"
+                android:max="4"
+                android:paddingTop="5dp"
+                android:progress="2" />
+
+            <TextView
+                android:text="50/50 - Balanceado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tFormacao"
+                android:layout_weight="1"
+                android:textColor="@android:color/black"
+                android:textStyle="normal|bold"
+                android:textAlignment="center"
+                android:lineSpacingExtra="8sp"
+                android:paddingTop="10dp" />
+        </LinearLayout>
 
         <TextView
             android:text="Colocação: 1 (12 pts)\nPróximos jogo: Juventus (casa)"

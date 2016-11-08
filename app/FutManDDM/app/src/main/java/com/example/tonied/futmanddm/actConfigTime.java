@@ -9,22 +9,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tonied.futmanddm.modelo.entidade.Esquema;
+import com.example.tonied.futmanddm.modelo.entidade.Regras;
+
 public class actConfigTime extends AppCompatActivity {
 
-    private static ImageView escudoCasa;
-    private static ImageView escudoVisitante;
-    private static TextView scoreCasa;
-    private static TextView scoreVisitante;
-    private static TextView infoTime;
+    private ImageView escudoCasa;
+    private ImageView escudoVisitante;
+    private TextView scoreCasa;
+    private TextView scoreVisitante;
+    private TextView infoTime;
+    private TextView tFormacao;
+    private SeekBar seekFormacao;
     private Button btVoltar;
     private Button btJogar;
 
-    private int indiceTime;
+    private int indiceTime, idCasa, idVisit;
 
     int[] times = {
             R.drawable.earsenal,
@@ -49,9 +55,6 @@ public class actConfigTime extends AppCompatActivity {
             "Real Madrid"
     };
 
-    //informações EXTERNAS a activity
-    int[] scores = {81,83,78,89,79,85,84,77};
-
     private TableLayout tabela;
     private int linhasSelect = 0;
     private int idLine01, idLine02;
@@ -75,6 +78,10 @@ public class actConfigTime extends AppCompatActivity {
     String j2Idade;
     String j2Cartao;
 
+    //informações EXTERNAS a activity
+    int[] scores = {81,83,78,89,79,85,84,77};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,27 +91,42 @@ public class actConfigTime extends AppCompatActivity {
         actionBar.hide();
 
         Bundle dados = getIntent().getExtras();
-        if(dados.isEmpty()){
-            Toast.makeText(this, "Dados não carregados", Toast.LENGTH_SHORT).show();
-            indiceTime = 0;
-        } else {
-            indiceTime = dados.getInt("indiceTime");
-        }
+        indiceTime = dados.getInt("indiceTime");
+        idCasa = dados.getInt("idCasa");
+        idVisit = dados.getInt("idVisit");
 
         scoreCasa = (TextView)findViewById(R.id.scoreCasa);
-        scoreCasa.setText("Score atual: "+scores[indiceTime]+" pontos");
         escudoCasa = (ImageView)findViewById(R.id.escudoCasa);
-        escudoCasa.setImageResource(times[indiceTime]);
-
         scoreVisitante = (TextView)findViewById(R.id.scoreVisitante);
-        scoreVisitante.setText("Score atual: "+scores[indiceTime+1]+" pontos");
         escudoVisitante = (ImageView)findViewById(R.id.escudoVisitante);
-        escudoVisitante.setImageResource(times[indiceTime+1]);
-
         infoTime = (TextView)findViewById(R.id.infoTime);
+        tFormacao = (TextView)findViewById(R.id.tFormacao);
+        seekFormacao = (SeekBar)findViewById(R.id.seekFormacao);
         tabela = (TableLayout)findViewById(R.id.tabela);
         btVoltar = (Button)findViewById(R.id.btVoltar);
         btJogar = (Button)findViewById(R.id.btJogar);
+
+
+        //dados do time casa
+        scoreCasa.setText("Score atual: "+scores[idCasa]+" pontos");
+        escudoCasa.setImageResource(times[idCasa]);
+        //dados do time visitante
+        scoreVisitante.setText("Score atual: "+scores[idVisit]+" pontos");
+        escudoVisitante.setImageResource(times[idVisit]);
+
+        //implementações da seekbar
+        seekFormacao.setProgress(2);
+        seekFormacao.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Esquema e = Esquema.values()[progress];
+                tFormacao.setText(String.valueOf(e.getAtaque())+"/"+String.valueOf(e.getDefesa())+" - "+String.valueOf(e.getNome()) );
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
 
         tabela.removeAllViews();
         int tabJog = 20;
@@ -116,10 +138,11 @@ public class actConfigTime extends AppCompatActivity {
                     "-"};
             criaDadosTabela(i, jogador);
         }
-        montaStrings(4,1,11,2);
 
+        montaStrings(5,1,11,2);
         btJogarClick();
         btVoltarClick();
+        visualizaTimeClick();
     }
 
     private void btVoltarClick() {
@@ -144,6 +167,41 @@ public class actConfigTime extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void visualizaTimeClick() {
+        if (idCasa == indiceTime){
+            escudoVisitante.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                Intent it = new Intent(actConfigTime.this, actConsultaTime.class);
+                Bundle dados = new Bundle();
+                //Data to bundle
+//                    dados.putInt("adverIdTime", adversario.getTimeid());
+//                    dados.putInt("adverClassi", advClassif);
+//                    dados.putInt("adverPontos", adversario.getPontos());
+//                    dados.putInt("adverProximo", Regras.getIndicesPorTime().get(Regras.getAdversario(adversario.getNome(), campeonato.getRodada() + 1) ) );
+                it.putExtras(dados);
+                startActivity(it);
+                }
+            });
+        }else{
+            escudoCasa.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                Intent it = new Intent(actConfigTime.this, actConsultaTime.class);
+                Bundle dados = new Bundle();
+                //Data to bundle
+//                    dados.putInt("adverIdTime", adversario.getTimeid());
+//                    dados.putInt("adverClassi", advClassif);
+//                    dados.putInt("adverPontos", adversario.getPontos());
+//                    dados.putInt("adverProximo", Regras.getIndicesPorTime().get(Regras.getAdversario(adversario.getNome(), campeonato.getRodada() + 1) ) );
+                it.putExtras(dados);
+                startActivity(it);
+                }
+            });
+        }
+
     }
 
     public void montaStrings(int time, int casa, int pontos, int classif){
