@@ -16,6 +16,9 @@ public class Partida {
         placar = new int[2]; // [0]: casa | [1]: visitante;
     }
 
+    public Partida() {
+    }
+
     public void iniciar() {
         int casaAtributos = casa.getAtributos();
         int visitanteAtributos = visitante.getAtributos();
