@@ -58,8 +58,8 @@ public class SQLTimeDAO implements TimeDAO {
         int index_pontos = cursor.getColumnIndex("pontos");
         int index_esquema = cursor.getColumnIndex("esquema");
         int index_saldo = cursor.getColumnIndex("saldo");
-        int index_patrocinadorid = cursor.getColumnIndex("patrocinadorid");
-        int index_estadioid = cursor.getColumnIndex("estadioid");
+//        int index_patrocinadorid = cursor.getColumnIndex("patrocinadorid");
+//        int index_estadioid = cursor.getColumnIndex("estadioid");
         cursor.moveToFirst();
         Time t = new Time();
         t.setTimeid(cursor.getInt(index_timeid));
@@ -67,8 +67,8 @@ public class SQLTimeDAO implements TimeDAO {
         t.setPontos(cursor.getInt(index_pontos));
         t.setEsquema(Esquema.values()[cursor.getInt(index_esquema)]);
         t.setSaldo(cursor.getInt(index_saldo));
-        t.setPatrocinador(patrocinadorDAO.pesquisar(cursor.getInt(index_patrocinadorid)));
-        t.setEstadio(estadioDAO.pesquisar(cursor.getInt(index_timeid)));
+//        t.setPatrocinador(patrocinadorDAO.pesquisar(cursor.getInt(index_patrocinadorid)));
+//        t.setEstadio(estadioDAO.pesquisar(cursor.getInt(index_timeid)));
         Cursor cursorj = db.rawQuery("select * from jogador where timeid = ?", id);
         int index_jogadorid = cursorj.getColumnIndex("jogadorid");
         int index_nomej = cursorj.getColumnIndex("nome");
@@ -103,6 +103,9 @@ public class SQLTimeDAO implements TimeDAO {
         return t;
     }
 
+
+
+
     @Override
     public List<Time> listar() {
         Cursor cursor = db.rawQuery("select * from time order by pontos desc", null);
@@ -111,8 +114,8 @@ public class SQLTimeDAO implements TimeDAO {
         int index_pontos = cursor.getColumnIndex("pontos");
         int index_esquema = cursor.getColumnIndex("esquema");
         int index_saldo = cursor.getColumnIndex("saldo");
-        int index_patrocinadorid = cursor.getColumnIndex("patrocinadorid");
-        int index_estadioid = cursor.getColumnIndex("estadioid");
+//        int index_patrocinadorid = cursor.getColumnIndex("patrocinadorid");
+//        int index_estadioid = cursor.getColumnIndex("estadioid");
         cursor.moveToFirst();
         List<Time> times = new ArrayList<>();
         while (!cursor.isAfterLast()) {
@@ -122,8 +125,8 @@ public class SQLTimeDAO implements TimeDAO {
             t.setPontos(cursor.getInt(index_pontos));
             t.setEsquema(Esquema.values()[cursor.getInt(index_esquema)]);
             t.setSaldo(cursor.getInt(index_saldo));
-            t.setPatrocinador(patrocinadorDAO.pesquisar(cursor.getInt(index_patrocinadorid)));
-            t.setEstadio(estadioDAO.pesquisar(cursor.getInt(index_timeid)));
+//            t.setPatrocinador(patrocinadorDAO.pesquisar(cursor.getInt(index_patrocinadorid)));
+//            t.setEstadio(estadioDAO.pesquisar(cursor.getInt(index_timeid)));
             String[] id = {t.getTimeid() + ""};
             Cursor cursorj = db.rawQuery("select * from jogador where timeid = ?", id);
             int index_jogadorid = cursorj.getColumnIndex("jogadorid");

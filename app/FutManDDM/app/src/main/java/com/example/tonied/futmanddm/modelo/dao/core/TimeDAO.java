@@ -18,6 +18,7 @@ public interface TimeDAO {
 
     Time pesquisar(int o);
 
+
     List<Time> listar();
 
     void remover(int id);

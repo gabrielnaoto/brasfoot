@@ -1,6 +1,7 @@
 package com.example.tonied.futmanddm.modelo.dao.sqlite;
 
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class SQLPatrocinadorDAO implements PatrocinadorDAO {
     }
 
     @Override
-    public Patrocinador pesquisar(int o) {
+    public Patrocinador pesquisar(int o) throws CursorIndexOutOfBoundsException{
         String[] id = {Integer.toString(o)};
         Cursor cursor = db.rawQuery("select * from patrocinador where patrocinadorid = ?", id);
         int index_patrocinadorid = cursor.getColumnIndex("patrocinadorid");
