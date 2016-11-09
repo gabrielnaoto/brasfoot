@@ -1,155 +1,155 @@
 Arsenal
-1,Mesut Ozil,Meia,28,89,89,90,50
-1,Santi Cazorla,Meia,31,86,86,85,50
-1,Granit Xhaka,Meia,24,84,87,81,50
-0,Aaron Ramsey,Meia,25,84,87,85,50
-0,Mohamed Elneny,Meia,24,74,81,75,50
-1,Alex Iwobi,Meia,20,73,86,82,50
 1,Petr Cech,Goleiro,34,88,88,88,50
-0,David Ospina,Goleiro,28,79,80,80,50
-1,Alexis Sánchez,Atacante,27,87,87,85,50
-1,Olivier Giroud,Atacante,30,83,83,81,50
-0,Lucas Pérez,Atacante,28,81,81,86,50
-0,Alex Oxlade-Chamberlain,Atacante,23,79,86,81,50
 1,Laurent Koscielny,Zagueiro,31,85,85,86,50
 1,Shkodran Mustafi,Zagueiro,24,83,88,87,50
 1,Per Mertesacker,Zagueiro,32,83,83,85,50
-0,Nacho Monreal,Zagueiro,30,81,81,83,50
 1,Héctor Bellerín,Zagueiro,21,79,87,85,50
-0.Gabriel,Zagueiro,25,79,83,81,50
+1,Mesut Ozil,Meia,28,89,89,90,50
+1,Santi Cazorla,Meia,31,86,86,85,50
+1,Granit Xhaka,Meia,24,84,87,81,50
+1,Alex Iwobi,Meia,20,73,86,82,50
+1,Alexis Sánchez,Atacante,27,87,87,85,50
+1,Olivier Giroud,Atacante,30,83,83,81,50
+0,David Ospina,Goleiro,28,79,80,80,50
+0,Gabriel,Zagueiro,25,79,83,81,50
+0,Nacho Monreal,Zagueiro,30,81,81,83,50
+0,Aaron Ramsey,Meia,25,84,87,85,50
+0,Mohamed Elneny,Meia,24,74,81,75,50
+0,Lucas Pérez,Atacante,28,81,81,86,50
+0,Alex Oxlade-Chamberlain,Atacante,23,79,86,81,50
 Atlético Madrid
-1,Roberto Núñez,Atacante,20,61,75,70,50
-1,Antoine Griezmann,Atacante,25,88,92,89,50
-0,Kévin Gameiro,Atacante,29,83,83,81,50
-0,Ángel Corra,Atacante,21,79,88,85,50
 1,Jan Oblak,Goleiro,23,87,91,90,50
-0,André Moreira,Goleiro,20,70,80,75,50
 1,Diego Godín,Zagueiro,30,88,90,87,50
 1,Filipe Luís,Zagueiro,31,85,85,84,50
 1,José María Giménez,Zagueiro,21,83,88,85,50
 1,Sime Vrsaljko,Zagueiro,24,78,82,81,50
-0,Borja González,Zagueiro,20,62,74,68,50
-0,Stefan Savic,Zagueiro,25,82,86,85,50
 1,Nicolás Gaitán,Meia,28,85,85,86,50
 1,Koke,Meia,24,84,88,86,50
 1,Tiago,Meia,35,81,81,86,50
 1,Thomas,Meia,23,75,82,80,50
+1,Roberto Núñez,Atacante,20,61,75,70,50
+1,Antoine Griezmann,Atacante,25,88,92,89,50
+0,André Moreira,Goleiro,20,70,80,75,50
+0,Borja González,Zagueiro,20,62,74,68,50
+0,Stefan Savic,Zagueiro,25,82,86,85,50
 0,Caio Henrique,Meia,19,66,83,76,50
 0,Saúl,Meia,21,80,88,81,50
+0,Kévin Gameiro,Atacante,29,83,83,81,50
+0,Ángel Corra,Atacante,21,79,88,85,50
 Barcelona
-1,Neymar,Atacante,24,92,95,93,50
-1,Lionel Messi,Atacante,29,93,93,94,50
-0,Paco Alcácer,Atacante,23,81,87,85,50
-0,Marc Cardona,Atacante,21,65,74,70,50
-1,Iniesta,Meia,32,88,88,89,50
-1,Sergio Busquets,Meia,28,87,88,89,50
-1,Rafinha,Meia,23,80,85,82,50
-0,Sergi Roberto,Meia,24,79,85,81,50
-1,Aleix Vidal,Meia,27,77,78,76,50
-0,Gerard,Meia,21,70,74,70,50
+1,Marc-André ter Stegen,Goleiro,24,83,88,85,50
 1,Jordi Alba,Zagueiro,27,86,87,88,50
 1,Piqué,Zagueiro,29,86,86,82,50
 1,Samuel Umtiti,Zagueiro,22,82,87,83,50
 1,Lucas Digne,Zagueiro,23,70,84,75,50
+1,Aleix Vidal,Meia,27,77,78,76,50
+1,Iniesta,Meia,32,88,88,89,50
+1,Sergio Busquets,Meia,28,87,88,89,50
+1,Rafinha,Meia,23,80,85,82,50
+1,Neymar,Atacante,24,92,95,93,50
+1,Lionel Messi,Atacante,29,93,93,94,50
+0,Jordi Masip,Goleiro,27,70,71,69,50
 0,Nili Perdomo,Zagueiro,22,69,78,71,50
 0,Borja López,Zagueiro,22,71,81,76,50
-1,Marc-André ter Stegen,Goleiro,24,83,88,85,50
-0,Jordi Masip,Goleiro,27,70,71,69,50
+0,Sergi Roberto,Meia,24,79,85,81,50
+0,Gerard,Meia,21,70,74,70,50
+0,Paco Alcácer,Atacante,23,81,87,85,50
+0,Marc Cardona,Atacante,21,65,74,70,50
 Bayern Munique
 1,Manuel Neuer,Goleiro,30,92,92,91,50
-0,Tom Starke,Goleiro,35,74,74,71,50
-1,Robert Lewandowski,Atacante,28,90,90,91,50
-1,Kingsley Coman,Atacante,20,81,88,85,50
-0,Julian Green,Atacante,21,68,75,72,50
-0,Nikos Vergos,Atacante,20,65,74,72,50
 1,Jérôme Boateng,Zagueiro,28,90,90,90,50
 1,Philipp Lahm,Zagueiro,32,88,88,89,50
 1,David Alaba,Zagueiro,24,87,90,88,50
 1,Mats Hummels,Zagueiro,27,87,87,81,50
-0,Joshua Kimmich,Zagueiro,21,79,88,85,50
-0,Holger Badstuber,Zagueiro,27,79,79,81,50
 1,Thomas Muller,Meia,27,87,88,85,50
 1,Arturo Vidal,Meia,29,87,87,86,50
 1,Arjen Robben,Meia,32,87,87,85,50
 1,Renato Sanches,Meia,19,78,90,79,50
+1,Robert Lewandowski,Atacante,28,90,90,91,50
+1,Kingsley Coman,Atacante,20,81,88,85,50
+0,Tom Starke,Goleiro,35,74,74,71,50
+0,Joshua Kimmich,Zagueiro,21,79,88,85,50
+0,Holger Badstuber,Zagueiro,27,79,79,81,50
 0,Niklas Dorsch,Meia,18,59,78,63,50
 0,Erdal Ozturk,Meia,20,58,70,65,50
+0,Julian Green,Atacante,21,68,75,72,50
+0,Nikos Vergos,Atacante,20,65,74,72,50
 Juventus
-1,Gonzalo Higuaín,Atacante,28,88,88,87,50
-1,Paulo Dybala,Atacante,22,85,92,87,50
-0,Mario Mandzukic,Atacante,30,83,83,85,50
-0,Marko Pjaca,Atacante,21,76,86,75,50
 1,Gianluigi Buffon,Goleiro,38,88,88,86,50
-0,Emil Audero,Goleiro,19,67,77,72,50
 1,Giorgio Chiellini,Zagueiro,32,88,88,89,50
 1,Leonardo Bonucci,Zagueiro,29,87,87,88,50
 1,Dani Alves,Zagueiro,33,85,85,88,50
-0,Medhi Benatia,Zagueiro,29,83,83,80,50
-0,Lucas Hernández,Zagueiro,20,76,87,80,50
 1,Federico Mattiello,Zagueiro,21,72,84,76,50
 1,Claudio Marchisio,Meia,30,86,86,81,50
 1,Miralem Pjanic,Meia,26,85,87,81,50
 1,Stephan Lichtsteiner,Meia,32,83,83,81,50
 1,Kwadwo Asamoah,Meia,27,80,81,79,50
+1,Gonzalo Higuaín,Atacante,28,88,88,87,50
+1,Paulo Dybala,Atacante,22,85,92,87,50
+0,Emil Audero,Goleiro,19,67,77,72,50
+0,Medhi Benatia,Zagueiro,29,83,83,80,50
+0,Lucas Hernández,Zagueiro,20,76,87,80,50
 0,Maria Lemina,Meia,23,77,83,80,50
 0,Stefano Sturaro,Meia,23,77,82,79,50
+0,Mario Mandzukic,Atacante,30,83,83,85,50
+0,Marko Pjaca,Atacante,21,76,86,75,50
 Manchester United
 1,De Gea,Goleiro,25,90,92,91,50
-0,Sergio Romero,Goleiro,29,79,79,78,50
-1,Zlatan Ibrahimovic,Atacante,35,90,90,89,50
-0,Marcus Rahford,Atacante,19,76,88,85,50
-1,Wayne Rooney,Atacante,31,84,84,87,50
-0,Anthony Martial,Atacante,20,82,90,81,50
-1,Paul Pogba,Meia,23,88,94,90,50
-1,Henrikh Mkhitaryan,Meia,27,85,85,86,50
-1,Juan Mata,Meia,28,84,84,85,50
-0,Ander Herrera,Meia,27,83,85,81,50
-0,Bastian Schweinteiger,Meia,32,83,83,85,50
-1,Matteo Darmian,Meia,26,80,82,86,50
 1,Chris Smalling,Zagueiro,26,84,85,85,50
 1,Eic Bailly,Zagueiro,22,82,90,86,50
 1,Daley Blind,Zagueiro,26,81,83,82,50
 1,Phil Jones,Zagueiro,24,79,82,80,50
+1,Matteo Darmian,Meia,26,80,82,86,50
+1,Paul Pogba,Meia,23,88,94,90,50
+1,Henrikh Mkhitaryan,Meia,27,85,85,86,50
+1,Juan Mata,Meia,28,84,84,85,50
+1,Wayne Rooney,Atacante,31,84,84,87,50
+1,Zlatan Ibrahimovic,Atacante,35,90,90,89,50
+0,Sergio Romero,Goleiro,29,79,79,78,50
 0,Alex Tuanzebe,Zagueiro,18,67,81,80,50
 0,Renan Poole,Zagueiro,18,63,80,75,50
+0,Ander Herrera,Meia,27,83,85,81,50
+0,Bastian Schweinteiger,Meia,32,83,83,85,50
+0,Marcus Rahford,Atacante,19,76,88,85,50
+0,Anthony Martial,Atacante,20,82,90,81,50
 Paris Saint-Germain
+1,Kevin Trapp,Goleiro,26,83,86,82,50
 1,Thiago Silva,Zagueiro,32,89,89,88,50
 1,Marquinhos,Zagueiro,22,82,88,86,50
-0,Presnel Kimpembe,Zagueiro,21,73,84,82,50
 1,Layvin Kurzawa,Zagueiro,24,81,88,85,50
 1,Maxwell,Zagueiro,35,79,79,78,50
-0,Thomas Meunier,Zagueiro,25,77,80,79,50
 1,Ángel Di María,Meia,28,87,87,85,50
 1,Blaise Matuidi,Meia,29,86,86,87,50
 1,Marco Verratti,Meia,23,85,90,87,50
-0,Grzegorz Krychowiak,Meia,26,84,86,85,50
 1,Serge Aurier,Meia,23,83,88,85,50
-0,Alec Georgen,Meia,18,63,81,75,50
 1,Javier Pastore,Atacante,27,85,86,86,50
 1,Edinson Cavani,Atacante,29,85,85,88,50
+0,Alphonse Areola,Goleiro,23,81,89,85,50
+0,Presnel Kimpembe,Zagueiro,21,73,84,82,50
+0,Thomas Meunier,Zagueiro,25,77,80,79,50
+0,Grzegorz Krychowiak,Meia,26,84,86,85,50
+0,Alec Georgen,Meia,18,63,81,75,50
 0,Hatem Ben Arfa,Atacante,29,84,84,85,50
 0,Romain Habra,Atacante,22,68,78,77,50
-1,Kevin Trapp,Goleiro,26,83,86,82,50
-0,Alphonse Areola,Goleiro,23,81,89,85,50
 Real Madrid
 1,Keylor Navas,Goleiro,29,85,85,86,50
-0,Rubén Yáñez,Goleiro,23,65,73,70,50
-1,Cristiano Ronaldo,Atacante,31,94,94,93,50
-1,Gareth Bale,Atacante,27,90,90,89,50
-0,Karim Benzema,Atacante,28,87,87,85,50
-0,Morata,Atacante,23,82,86,88,50
-1,Luka Modric,Meia,31,89,89,88,50
-1,Toni Kroos,Meia,26,88,90,89,50
-1,James Rodríguez,Meia,25,87,92,89,50
-1,Mateo Kovacic,Meia,22,79,85,81,50
-0,Lucas Silva,Meia,23,74,76,77,50
-0,Martin Odegaard,Meia,17,70,83,77,50
 1,Danilo,Zagueiro,25,80,83,81,50
 1,Carvajal,Zagueiro,24,83,86,85,50
 1,Sergio Ramos,Zagueiro,30,89,89,88,50
 1,Pepe,Zagueiro,33,88,88,87,50
+1,Luka Modric,Meia,31,89,89,88,50
+1,Toni Kroos,Meia,26,88,90,89,50
+1,James Rodríguez,Meia,25,87,92,89,50
+1,Mateo Kovacic,Meia,22,79,85,81,50
+1,Cristiano Ronaldo,Atacante,31,94,94,93,50
+1,Gareth Bale,Atacante,27,90,90,89,50
+0,Rubén Yáñez,Goleiro,23,65,73,70,50
 0,Fábio Coentrão,Zagueiro,28,80,80,81,50
 0,Nacho Fernández,Zagueiro,26,78,80,79,50
+0,Lucas Silva,Meia,23,74,76,77,50
+0,Martin Odegaard,Meia,17,70,83,77,50
+0,Karim Benzema,Atacante,28,87,87,85,50
+0,Morata,Atacante,23,82,86,88,50
 
 0,Mariano,Atacante,23,71,80,75,50
 0,Sergio Díaz,Atacante,18,67,81,72,50

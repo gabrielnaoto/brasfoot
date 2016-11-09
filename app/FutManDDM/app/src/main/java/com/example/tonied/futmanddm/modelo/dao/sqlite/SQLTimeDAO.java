@@ -90,7 +90,7 @@ public class SQLTimeDAO implements TimeDAO {
         while (!cursorj.isAfterLast()) {
             Jogador j = new Jogador();
             j.setJogadorid(cursorj.getInt(index_jogadorid));
-            j.setNome(cursorj.getString(index_nome));
+            j.setNome(cursorj.getString(index_nomej));
             j.setPosicao(cursorj.getString(index_posicao));
             j.setIdade(cursorj.getInt(index_idade));
             j.setTecnica(cursorj.getInt(index_tecnica));

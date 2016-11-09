@@ -44,7 +44,7 @@
             android:layout_gravity="center" />
 
         <TextView
-            android:text="Colocação: 1 (12 pts)\nPróximos jogo: Juventus (casa)"
+            android:text="Colocação: 1 (12 pts)\nPróximo jogo: Juventus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/infoTime"

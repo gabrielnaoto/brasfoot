@@ -1,6 +1,7 @@
 package com.example.tonied.futmanddm;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,18 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tonied.futmanddm.modelo.dao.core.CampeonatoDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.PartidaDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLCampeonatoDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLPartidaDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLTimeDAO;
+import com.example.tonied.futmanddm.modelo.entidade.Campeonato;
+import com.example.tonied.futmanddm.modelo.entidade.Regras;
+import com.example.tonied.futmanddm.modelo.entidade.Time;
+
+import java.util.List;
+
 public class actConsultaTime extends AppCompatActivity {
 
     private Button btVoltar;
@@ -24,7 +37,7 @@ public class actConsultaTime extends AppCompatActivity {
     private int indiceTime;
     private int indicePatr;
 
-    int[] times = {
+    int[] timesEscudo = {
             R.drawable.earsenal,
             R.drawable.eatlmadrid,
             R.drawable.ebarcelona,
@@ -46,11 +59,19 @@ public class actConsultaTime extends AppCompatActivity {
             "Real Madrid"
     };
 
-    int[] scores = {81,83,78,89,79,85,84,77};
+    private TimeDAO tdao;
+    private CampeonatoDAO cdao;
+    private PartidaDAO pdao;
+
+    private List<Time> times;
+    private Time time;
+    private Time adversario;
+    private Campeonato campeonato;
+
     int adverIdTime = 0;
     int adverClassi = 0;
     int adverPontos = 0;
-    int adverProximo = 0;
+    String adverProximo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +82,20 @@ public class actConsultaTime extends AppCompatActivity {
         actionBar.hide();
 
         Bundle dados = getIntent().getExtras();
-        if (dados.isEmpty()) {
-            Toast.makeText(this, "Dados não carregados", Toast.LENGTH_SHORT).show();
-            adverIdTime = 0;
-            adverClassi = 0;
-            adverPontos = 0;
-            adverProximo = 0;
-        } else {
             adverIdTime = dados.getInt("adverIdTime");
             adverClassi = dados.getInt("adverClassi");
             adverPontos = dados.getInt("adverPontos");
-            adverProximo = dados.getInt("adverProximo");
-        }
+            adverProximo = dados.getString("adverProximo");
+
+        SQLiteDatabase db = openOrCreateDatabase("brasfoot", MODE_PRIVATE, null);
+        tdao = new SQLTimeDAO(db);
+        cdao = new SQLCampeonatoDAO(db);
+        pdao = new SQLPartidaDAO(db);
+
+        times = tdao.listar();
+        campeonato = cdao.pesquisar();
+        time = campeonato.getT();
+        adversario = tdao.pesquisar(Regras.getIndicesPorTime().get(Regras.getAdversario(time.getNome(), campeonato.getRodada())));
 
         btVoltar = (Button)findViewById(R.id.btVoltar);
         escudo = (ImageView)findViewById(R.id.escudo);
@@ -80,20 +103,35 @@ public class actConsultaTime extends AppCompatActivity {
         infoTime = (TextView)findViewById(R.id.infoTime);
         tabela = (TableLayout) findViewById(R.id.tabela);
 
-        montaStrings(adverIdTime, adverClassi, adverPontos, adverProximo);
-
         tabela.removeAllViews();
         int tabJog = 18;
-        for (int i = 0; i <= tabJog; i++) {
-            String[] jogador = {
-                    String.valueOf((int) (Math.random() * 20) + 70),
-                    "Jogador " + i,
-                    String.valueOf((int) (Math.random() * 20) + 20),
-                    "-"};
-            criaDadosTabela(i, jogador);
+        int numJogador = 0;
+        for(int i=0; i <= tabJog; i++) {
+            if(i==0){
+                criaDadosTabela(i, null);
+            } else {
+                String[] jogador = {
+                        String.valueOf(
+                                (int)
+                                        (  (time.getJogadores().get(numJogador).getFisico()
+                                                +time.getJogadores().get(numJogador).getInteligentcia()
+                                                +time.getJogadores().get(numJogador).getTecnica()
+                                                //+time.getJogadores().get(numJogador).getMotivacao()
+                                        )
+                                                /3)
+                        ),
+                        time.getJogadores().get(numJogador).getNome(),
+                        time.getJogadores().get(numJogador).getPosicao().substring(0,1),
+                        String.valueOf(time.getJogadores().get(numJogador).getIdade()),
+                        String.valueOf(time.getJogadores().get(numJogador).getCartaoamarelo())
+                };
+                criaDadosTabela(i, jogador);
+                numJogador++;
+            }
         }
 
         btVoltarClick();
+        montaStrings(adverIdTime, adverClassi, adverPontos, adverProximo);
     }
 
     private void btVoltarClick() {
@@ -105,28 +143,28 @@ public class actConsultaTime extends AppCompatActivity {
         });
     }
 
-    public void montaStrings(int adverIdTime, int adverClassi, int adverPontos, int adverProximo){
-        escudo.setImageResource(times[adverIdTime]);
-        score.setText(scores[adverIdTime]+"");
-        String proximo = nomeTime[adverProximo];
-        infoTime.setText("Colocação: "+adverClassi+" ("+adverPontos+" pts)\nPróximo jogo: "+proximo);
+    public void montaStrings(int adverIdTime, int adverClassi, int adverPontos, String adverProximo){
+        escudo.setImageResource(timesEscudo[adverIdTime]);
+        score.setText(adversario.getAtributos()+"");;
+        infoTime.setText("Colocação: "+adverClassi+" ("+adverPontos+" pts)\nPróximo jogo: "+adverProximo);
     }
 
     public void criaDadosTabela(int pos, String[] jogador){
-
         TableRow row = new TableRow(this);
         row.setLayoutParams(new TableRow.LayoutParams(0,0));
 
-       if(pos == 0){
+        if(pos == 0){
             //Parametros de layout dos textviews
             TableRow.LayoutParams param01 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.4f);
             TableRow.LayoutParams param02 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+            TableRow.LayoutParams param05 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.2f);
             TableRow.LayoutParams param03 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.4f);
             TableRow.LayoutParams param04 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.3f);
 
             //CARGA DOS TEXTOS
             String t1 = "Score";
             String t2 = "Nome";
+            String t5 = "Pos";
             String t3 = "Idade";
             String t4 = "Cartão";
 
@@ -139,6 +177,11 @@ public class actConsultaTime extends AppCompatActivity {
             TextView nomeJog = new TextView(this);
             nomeJog.setLayoutParams(param02);
             nomeJog.setText(t2);
+
+            //TextView POSICAO
+            TextView posiJog = new TextView(this);
+            posiJog.setLayoutParams(param05);
+            posiJog.setText(t5);
 
             //TextView IDADE
             TextView ageJog = new TextView(this);
@@ -153,6 +196,7 @@ public class actConsultaTime extends AppCompatActivity {
             //SETANDO AS CORES NOS TEXT VIEWS
             scoreJog.setTextColor(Color.BLACK);
             nomeJog.setTextColor(Color.BLACK);
+            posiJog.setTextColor(Color.BLACK);
             ageJog.setTextColor(Color.BLACK);
             cartaoJog.setTextColor(Color.BLACK);
 
@@ -179,6 +223,7 @@ public class actConsultaTime extends AppCompatActivity {
             row.setLayoutParams(tableRowParams);
             row.addView(scoreJog);
             row.addView(nomeJog);
+            row.addView(posiJog);
             row.addView(ageJog);
             row.addView(cartaoJog);
             row.setId(100 + pos);
@@ -192,14 +237,17 @@ public class actConsultaTime extends AppCompatActivity {
             //Parametros de layout dos textviews
             TableRow.LayoutParams param01 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.4f);
             TableRow.LayoutParams param02 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+            TableRow.LayoutParams param05 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.2f);
             TableRow.LayoutParams param03 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.4f);
             TableRow.LayoutParams param04 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.3f);
 
             //CARGA DOS TEXTOS
             String t1 = jogador[0];
             String t2 = jogador[1];
-            String t3 = jogador[2];
-            String t4 = jogador[3];
+            String t5 = jogador[2];
+            String t3 = jogador[3];
+            String t4 = jogador[4];
+
 
             //TextView SCORE
             TextView scoreJog = new TextView(this);
@@ -210,6 +258,11 @@ public class actConsultaTime extends AppCompatActivity {
             TextView nomeJog = new TextView(this);
             nomeJog.setLayoutParams(param02);
             nomeJog.setText(t2);
+
+            //TextView POSICAO
+            TextView posiJog = new TextView(this);
+            posiJog.setLayoutParams(param05);
+            posiJog.setText(t5);
 
             //TextView IDADE
             TextView ageJog = new TextView(this);
@@ -224,6 +277,7 @@ public class actConsultaTime extends AppCompatActivity {
             //SETANDO AS CORES NOS TEXT VIEWS
             scoreJog.setTextColor(Color.BLACK);
             nomeJog.setTextColor(Color.BLACK);
+            posiJog.setTextColor(Color.BLACK);
             ageJog.setTextColor(Color.BLACK);
             cartaoJog.setTextColor(Color.BLACK);
 
@@ -247,6 +301,7 @@ public class actConsultaTime extends AppCompatActivity {
             row.setLayoutParams(tableRowParams);
             row.addView(scoreJog);
             row.addView(nomeJog);
+            row.addView(posiJog);
             row.addView(ageJog);
             row.addView(cartaoJog);
             row.setId(100 + pos);
