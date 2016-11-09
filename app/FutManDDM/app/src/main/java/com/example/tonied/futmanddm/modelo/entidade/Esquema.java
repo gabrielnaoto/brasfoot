@@ -6,11 +6,11 @@ package com.example.tonied.futmanddm.modelo.entidade;
 
 public enum Esquema {
 
-    ATAQUE_TOTAL(0, 80, 20, "ataque total"),
-    OFENSIVO(1, 65, 35, "ofensivo"),
-    BALANCEADO(2, 50, 50, "balanceado"),
-    DEFENSIVO(3, 35, 65, "devensivo"),
-    DEFENSA_TOTAL(4, 20, 80, "defesa total");
+    ATAQUE_TOTAL(0, 80, 20, "Ataque Total"),
+    OFENSIVO(1, 65, 35, "Ofensivo"),
+    BALANCEADO(2, 50, 50, "Balanceado"),
+    DEFENSIVO(3, 35, 65, "Defensivo"),
+    DEFENSA_TOTAL(4, 20, 80, "Defesa Total");
 
     private int ordem;
     private int ataque;

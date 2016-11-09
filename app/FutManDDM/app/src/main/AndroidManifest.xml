@@ -10,6 +10,8 @@
         android:theme="@style/FullscreenTheme">
         <activity
             android:name=".actSobre"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,14 +19,30 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".actSelTime" />
-        <activity android:name=".actConfigTime" />
-        <activity android:name=".actManager" />
-        <activity android:name=".actHome" />
-        <activity android:name=".actClassificacao" />
-        <activity android:name=".actConsultaTime" />
-        <activity android:name=".actTelaJogo" />
-        <activity android:name=".actDelayJogo"></activity>
+        <activity android:name=".actSelTime"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".actConfigTime"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".actManager"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".actHome"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".actClassificacao"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".actConsultaTime"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".actTelaJogo"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".actDelayJogo"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

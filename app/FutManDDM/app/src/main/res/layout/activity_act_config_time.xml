@@ -112,15 +112,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <SeekBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/seekFormacao"
-                android:layout_weight="1"
-                android:max="4"
-                android:paddingTop="5dp"
-                android:progress="2" />
-
             <TextView
                 android:text="50/50 - Balanceado"
                 android:layout_width="match_parent"
@@ -132,6 +123,16 @@
                 android:textAlignment="center"
                 android:lineSpacingExtra="8sp"
                 android:paddingTop="10dp" />
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekFormacao"
+                android:layout_weight="1"
+                android:max="4"
+                android:paddingTop="5dp"
+                android:progress="2" />
+
         </LinearLayout>
 
         <TextView

@@ -2,6 +2,7 @@ package com.example.tonied.futmanddm;
 
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.v7.app.ActionBar;
@@ -165,6 +166,7 @@ public class actConfigTime extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 Esquema e = Esquema.values()[progress];
                 tFormacao.setText(String.valueOf(e.getAtaque())+"/"+String.valueOf(e.getDefesa())+" - "+String.valueOf(e.getNome()) );
+                time.setEsquema(e);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {}
