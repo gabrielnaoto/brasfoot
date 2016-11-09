@@ -47,8 +47,8 @@ public class SQLTimeDAO implements TimeDAO {
         valores[1] = o.getPontos();
         valores[2] = o.getEsquema().getOrdem();
         valores[3] = o.getSaldo();
-        valores[4] = o.getPatrocinador().getPatrocinadorid();
-        valores[5] = o.getEstadio().getEstadioid();
+//        valores[4] = o.getPatrocinador().getPatrocinadorid();
+//        valores[5] = o.getEstadio().getEstadioid();
         valores[6] = o.getTimeid();
         db.execSQL("update time set nome = ?, pontos = ?, esquema = ?, saldo = ?, patrocinadorid = ?, estadioid = ?, timeid = ? where timeid = ? ", valores);
     }

@@ -139,7 +139,7 @@ public class actHome extends AppCompatActivity {
             Time t = new Time();
             t.setTimeid(i);
             t.setNome(linha);
-            t.setEsquema(Esquema.BALANCEADO);
+            t.setEsquema(Esquema.values()[(int)Math.floor(Math.random() * 5)]);
             t.setEstadio(new Estadio());
             t.setPatrocinador(new Patrocinador());
             t.setPontos(0);

@@ -112,5 +112,12 @@ public class Time {
         jogadores.add(j);
     }
 
+    public void ganhar() {
+        pontos += 3;
+    }
+
+    public void empatar() {
+        pontos += 1;
+    }
 
 }
