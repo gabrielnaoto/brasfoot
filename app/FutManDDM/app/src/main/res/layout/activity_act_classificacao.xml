@@ -48,22 +48,32 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:text=""
+                    android:id="@+id/textView6"
+                    tools:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:text="#"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_width="64dp" />
+
+                <TextView
                     android:layout_height="wrap_content"
-                    android:layout_width="60dp"
-                    android:id="@+id/textView15" />
+                    android:id="@+id/textView15"
+                    android:text=" "
+                    android:layout_width="0dp" />
 
                 <TextView
                     android:text="Pontos"
-                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".3"
                     android:textColor="@android:color/black"
                     android:layout_gravity="center_vertical"
                     android:textAlignment="center"
                     android:id="@+id/textView14"
-                    android:textSize="18sp"
-                    android:textStyle="normal|bold" />
+                    android:textSize="16sp"
+                    android:textStyle="normal|bold"
+                    android:layout_width="0dp" />
 
                 <TextView
                     android:text="    Time"
@@ -73,15 +83,27 @@
                     android:textColor="@android:color/black"
                     android:layout_gravity="center_vertical"
                     android:id="@+id/textView13"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="normal|bold"
                     android:textAlignment="textStart" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:text="1º"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView5"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:layout_width="0dp" />
 
                 <ImageView
                     app:srcCompat="@drawable/earsenal"
@@ -120,6 +142,17 @@
                 android:layout_weight="1"
                 android:background="?attr/colorAccent">
 
+                <TextView
+                    android:text="2º"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView7"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
                 <ImageView
                     app:srcCompat="@drawable/earsenal"
                     android:id="@+id/escudo02"
@@ -155,6 +188,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
+
+                <TextView
+                    android:text="3º"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView8"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
 
                 <ImageView
                     app:srcCompat="@drawable/earsenal"
@@ -193,6 +237,17 @@
                 android:layout_weight="1"
                 android:background="?attr/colorAccent">
 
+                <TextView
+                    android:text="4º"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView9"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
                 <ImageView
                     app:srcCompat="@drawable/earsenal"
                     android:id="@+id/escudo04"
@@ -228,6 +283,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
+
+                <TextView
+                    android:text="5º"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewcinco"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
 
                 <ImageView
                     app:srcCompat="@drawable/earsenal"
@@ -266,6 +332,17 @@
                 android:layout_weight="1"
                 android:background="?attr/colorAccent">
 
+                <TextView
+                    android:text="6º"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewseis"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
                 <ImageView
                     app:srcCompat="@drawable/earsenal"
                     android:id="@+id/escudo06"
@@ -301,6 +378,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
+
+                <TextView
+                    android:text="7º"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewsete"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
 
                 <ImageView
                     app:srcCompat="@drawable/earsenal"
@@ -338,6 +426,17 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="?attr/colorAccent">
+
+                <TextView
+                    android:text="8º"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewoito"
+                    android:layout_weight=".3"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
 
                 <ImageView
                     app:srcCompat="@drawable/earsenal"
