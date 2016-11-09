@@ -116,6 +116,7 @@ public class actSelTime extends AppCompatActivity {
         e.setPublico(6000);
         c.setE(e);
         Time t = new Time();
+        t.setSaldo(500000 + p.getValor());
         t = tdao.pesquisar(indiceTime);
         t.setEstadio(e);
         t.setPatrocinador(p);

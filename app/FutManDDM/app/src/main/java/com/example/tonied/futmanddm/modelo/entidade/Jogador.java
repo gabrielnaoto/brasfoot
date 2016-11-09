@@ -23,6 +23,8 @@ public class Jogador {
 
     }
 
+
+
     public Jogador(int jogadorid, String nome, String posicao, int idade, int tecnica, int fisico, int inteligentcia, int motivacao, Time time, int suspenso, int cartaoamarelo) {
         this.jogadorid = jogadorid;
         this.nome = nome;
@@ -35,6 +37,52 @@ public class Jogador {
         this.time = time;
         this.suspenso = suspenso;
         this.cartaoamarelo = cartaoamarelo;
+    }
+
+    public double getValor() {
+//        O preço dos jogadores varia em função de:
+//        Idade: <21 anos: 2x; 22 a 26 anos: 1,8x; 27 a 30 anos: 1,5x; >31 anos: 1x
+//        Nota: $1k por ponto
+//        Posição: goleiro: 1x; defesa: 1,3x; meio campo: 1,7x; ataque: 2x
+
+
+        double valor;
+
+        float mi = 0;
+        if (getIdade() < 21) {
+            mi = 2;
+        } else {
+            if (getIdade() < 26) {
+                mi = 1.8f;
+            } else {
+                if (getIdade() < 30) {
+                    mi = 1.5f;
+                } else {
+                    mi = 1;
+                }
+            }
+        }
+        float mp = 0;
+        if (getPosicao().equalsIgnoreCase("Goleiro")) {
+            mp = 1;
+        } else {
+            if (getPosicao().equalsIgnoreCase("Meia")) {
+                mp = 1.7f;
+            } else {
+                if (getPosicao().equalsIgnoreCase("Atacante")) {
+                    mp = 2f;
+                } else {
+                    if (getPosicao().equalsIgnoreCase("Zagueiro")) {
+                        mp = 1.3f;
+                    }
+                }
+            }
+        }
+        long score = getScore() * 1000;
+
+        valor = mi * score * mp;
+
+        return valor;
     }
 
     public String getPosicao() {
@@ -133,5 +181,12 @@ public class Jogador {
         this.titular = titular;
     }
 
+    public int getScore() {
+        return (int) (getInteligentcia() + getFisico() + getTecnica() + getMotivacao()) / 4;
+    }
+
+    public double getSalario() {
+        return getValor() * 0.1;
+    }
 
 }

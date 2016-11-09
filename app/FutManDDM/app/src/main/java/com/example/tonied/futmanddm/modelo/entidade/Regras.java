@@ -7,18 +7,19 @@ import java.util.Map;
 
 public class Regras {
 
-    public static final double CUSTO_PALESTRA = 10000;
-    public static final double CUSTO_TREINO_EXTRA = 50000;
-    public static final double CUSTO_RECUPERACAO_FISICA_PARCIAL = 5000;
-    public static final double CUSTO_RECUPERACAO_FISICA_TOTAL = 5000;
+    public static final double MOTIVACAO = 200000;
+    public static final double TECNICA = 200000;
+    public static final double REABILITACAO = 100000;
+    public static final double FISICA = 300000;
+
 
     public static int[] getGols(Esquema[] esquemas, int[] atributos) {
         int a1, a2, d1, d2;
-        a1 = (int) Math.ceil((esquemas[0].getAtaque() * atributos[0])/1000);
-        d1 = (int) Math.ceil((esquemas[0].getDefesa() * atributos[0])/1000);
+        a1 = (int) Math.ceil((esquemas[0].getAtaque() * atributos[0]) / 1000);
+        d1 = (int) Math.ceil((esquemas[0].getDefesa() * atributos[0]) / 1000);
 
-        a2 = (int) Math.ceil((esquemas[1].getAtaque() * atributos[1])/1000);
-        d2 = (int) Math.ceil((esquemas[1].getDefesa() * atributos[1]) /1000);
+        a2 = (int) Math.ceil((esquemas[1].getAtaque() * atributos[1]) / 1000);
+        d2 = (int) Math.ceil((esquemas[1].getDefesa() * atributos[1]) / 1000);
 
         int[] placar = new int[2];
 
@@ -28,7 +29,10 @@ public class Regras {
         return placar;
     }
 
-    public static Double[] valPatr = {1000000.0, 900000.0, 800000.0, 750000.0, 600000.0, 700000.0, 750000.0, 800000.0, 450000.0, 800000.0, 350000.0};
+    public static Double[] valPatr = {300000.0, 400000.0, 500000.0, 600000.0, 700000.0, 800000.0, 900000.0, 1000000.0, 1150000.0, 1200000.0, 1250000.0};
+    public static String[] valores = {"300 mil", "400 mil", "500 mil", "600 mil", "700 mil", "800 mil", "900 mil", "1 milhão", "1 milhão 150 mil", "1 milhão 200 mil", "1 milhão 250 mil"};
+    public static Double[] valIng = {85.0, 80.0, 70.0, 65.0, 60.0, 55.0, 50.0, 45.0, 40.0, 35.0, 30.0};
+    public static String[] ingressos = {"85", "80", "70", "65", "60", "55", "50", "45", "40", "35", "30"};
 
     public static int[] patrocinadores = {
             R.drawable.p5nike,
@@ -72,8 +76,6 @@ public class Regras {
             1
     };
 
-    public static String[] valores = {"1kk", "900k", "800k", "750k", "600k", "700k", "750k", "800k", "450k", "800k", "350k"};
-    public static String[] ingressos = {"80", "85", "70", "65", "60", "50", "50", "45", "50", "40", "35"};
     public static String[] nomeTime = {
             "Arsenal",
             "Atl. Madrid",
@@ -84,6 +86,28 @@ public class Regras {
             "Paris SG",
             "Real Madrid"
     };
+
+    public static int getPublico(int colocacao) {
+        switch (colocacao) {
+            case 1:
+                return 58000 + (int) Math.random() * 2000;
+            case 2:
+                return 52000 + (int) Math.random() * 2000;
+            case 3:
+                return 46000 + (int) Math.random() * 2000;
+            case 4:
+                return 40000 + (int) Math.random() * 2000;
+            case 5:
+                return 34000 + (int) Math.random() * 2000;
+            case 6:
+                return 28000 + (int) Math.random() * 2000;
+            case 7:
+                return 22000 + (int) Math.random() * 2000;
+            case 8:
+                return 20000 + (int) Math.random() * 2000;
+        }
+        return 20000;
+    }
 
 
     public static Map<String, Integer> getIndicesPorTime() {
