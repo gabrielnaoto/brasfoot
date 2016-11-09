@@ -42,15 +42,11 @@ public class SQLTimeDAO implements TimeDAO {
 
     @Override
     public void editar(Time o) {
-        Object[] valores = new Object[7];
-        valores[0] = o.getNome();
-        valores[1] = o.getPontos();
-        valores[2] = o.getEsquema().getOrdem();
-        valores[3] = o.getSaldo();
-//        valores[4] = o.getPatrocinador().getPatrocinadorid();
-//        valores[5] = o.getEstadio().getEstadioid();
-        valores[6] = o.getTimeid();
-        db.execSQL("update time set nome = ?, pontos = ?, esquema = ?, saldo = ?, patrocinadorid = ?, estadioid = ?, timeid = ? where timeid = ? ", valores);
+        System.out.println(o.toString());
+        Object[] valores = new Object[2];
+        valores[0] = o.getPontos();
+        valores[1] = o.getTimeid();
+        db.execSQL("update time set pontos = ? where timeid = ? ", valores);
     }
 
     @Override
@@ -117,7 +113,6 @@ public class SQLTimeDAO implements TimeDAO {
         int index_saldo = cursor.getColumnIndex("saldo");
         int index_patrocinadorid = cursor.getColumnIndex("patrocinadorid");
         int index_estadioid = cursor.getColumnIndex("estadioid");
-        int index_jogadores = cursor.getColumnIndex("jogadores");
         cursor.moveToFirst();
         List<Time> times = new ArrayList<>();
         while (!cursor.isAfterLast()) {
@@ -161,6 +156,7 @@ public class SQLTimeDAO implements TimeDAO {
                 cursorj.moveToNext();
             }
             t.setJogadores(jogadores);
+            System.out.println(t.toString());
             times.add(t);
             cursor.moveToNext();
         }

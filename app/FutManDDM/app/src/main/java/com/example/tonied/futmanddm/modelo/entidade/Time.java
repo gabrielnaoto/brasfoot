@@ -120,4 +120,16 @@ public class Time {
         pontos += 1;
     }
 
+    @Override
+    public String toString() {
+        return "Time{" +
+                "timeid=" + timeid +
+                ", nome='" + nome + '\'' +
+                ", pontos=" + pontos +
+                ", saldo=" + saldo +
+                ", esquema=" + esquema +
+                ", patrocinador=" + patrocinador +
+                ", estadio=" + estadio +
+                '}';
+    }
 }

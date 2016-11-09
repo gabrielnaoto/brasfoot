@@ -73,20 +73,27 @@ public class actDelayJogo extends AppCompatActivity implements Runnable {
             p.setPlacar(placar);
             partidadao.inserir(p);
 
-
+            System.out.println("partida inserida");
 
             if (p.getPlacar()[0] > p.getPlacar()[1]) {
                 p.getCasa().ganhar();
                 timedao.editar(p.getCasa());
+                System.out.println("pontos casa adicionados");
+                System.out.println(timedao.pesquisar(p.getCasa().getTimeid()).getPontos());
             } else {
                 if (p.getPlacar()[1] > p.getPlacar()[0]) {
                     p.getVisitante().ganhar();
                     timedao.editar(p.getVisitante());
+                    System.out.println("pontos visitante adicionados");
+                    System.out.println(timedao.pesquisar(p.getVisitante().getTimeid()).getPontos());
                 } else {
                     p.getCasa().empatar();
                     p.getVisitante().empatar();
                     timedao.editar(p.getCasa());
                     timedao.editar(p.getVisitante());
+                    System.out.println("ponto empate adicionado");
+                    System.out.println(timedao.pesquisar(p.getCasa().getTimeid()).getPontos());
+                    System.out.println(timedao.pesquisar(p.getVisitante().getTimeid()).getPontos());
                 }
             }
 
