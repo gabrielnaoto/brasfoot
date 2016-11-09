@@ -317,7 +317,7 @@
             android:paddingEnd="15dp">
 
             <Switch
-                android:text="Rehabilitação"
+                android:text="Reabilitação"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/sw04"

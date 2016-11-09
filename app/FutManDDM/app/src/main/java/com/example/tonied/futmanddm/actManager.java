@@ -183,7 +183,7 @@ public class actManager extends AppCompatActivity {
 
         campeonato = cdao.pesquisar();
         time = campeonato.getT();
-        adversario = tdao.pesquisar(Regras.getIndicesPorTime().get(Regras.getAdversario(time.getNome(), campeonato.getRodada())));
+        adversario = tdao.pesquisar(Regras.getIndicesPorTime().get(Regras.getAdversario(Regras.nomeTime[time.getTimeid()], campeonato.getRodada())));
 
 //        System.out.println("inicio---");
 //        System.out.println(time.getNome() + " nome do time atual");
