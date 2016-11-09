@@ -434,6 +434,7 @@ public class actManager extends AppCompatActivity {
                 dados.putInt("idVisit", idVisit);
                 it.putExtras(dados);
                 startActivity(it);
+                finish();
             }
         });
     }

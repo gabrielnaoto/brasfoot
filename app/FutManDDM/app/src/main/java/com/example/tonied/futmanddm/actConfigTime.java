@@ -235,6 +235,7 @@ public class actConfigTime extends AppCompatActivity {
         btVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(actConfigTime.this, actManager.class));
                 finish();
             }
         });

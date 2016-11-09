@@ -15,10 +15,10 @@ public class Regras {
     public static int[] getGols(Esquema[] esquemas, int[] atributos) {
         int a1, a2, d1, d2;
         a1 = (int) Math.ceil((esquemas[0].getAtaque() * atributos[0])/1000);
-        d1 = (int) Math.ceil((esquemas[0].getDefesa() * atributos[0])/100);
+        d1 = (int) Math.ceil((esquemas[0].getDefesa() * atributos[0])/1000);
 
-        a2 = (int) Math.ceil((esquemas[1].getAtaque() * atributos[1] * 0.9)/1000);
-        d2 = (int) Math.ceil((esquemas[1].getDefesa() * atributos[1] * 0.9) /1000);
+        a2 = (int) Math.ceil((esquemas[1].getAtaque() * atributos[1])/1000);
+        d2 = (int) Math.ceil((esquemas[1].getDefesa() * atributos[1]) /1000);
 
         int[] placar = new int[2];
 
