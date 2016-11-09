@@ -140,6 +140,7 @@ public class actHome extends AppCompatActivity {
             t.setTimeid(i);
             t.setNome(linha);
             t.setEsquema(Esquema.values()[(int)Math.floor(Math.random() * 5)]);
+            System.out.println(t.getEsquema().getNome());
             t.setEstadio(new Estadio());
             t.setPatrocinador(new Patrocinador());
             t.setPontos(0);

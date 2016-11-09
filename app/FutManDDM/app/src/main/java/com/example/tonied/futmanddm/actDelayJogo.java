@@ -72,6 +72,26 @@ public class actDelayJogo extends AppCompatActivity implements Runnable {
             p.setVisitante(times[1]);
             p.setPlacar(placar);
             partidadao.inserir(p);
+
+
+
+            if (p.getPlacar()[0] > p.getPlacar()[1]) {
+                p.getCasa().ganhar();
+                timedao.editar(p.getCasa());
+            } else {
+                if (p.getPlacar()[1] > p.getPlacar()[0]) {
+                    p.getVisitante().ganhar();
+                    timedao.editar(p.getVisitante());
+                } else {
+                    p.getCasa().empatar();
+                    p.getVisitante().empatar();
+                    timedao.editar(p.getCasa());
+                    timedao.editar(p.getVisitante());
+                }
+            }
+
         }
+
+
     }
 }

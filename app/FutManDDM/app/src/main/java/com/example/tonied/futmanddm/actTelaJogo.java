@@ -135,22 +135,7 @@ public class actTelaJogo extends AppCompatActivity {
             ((TextView) views.get(chave)).setText(atual.getPlacar()[1] + "");
         }
 
-        for (Partida p : partidas) {
-            if (p.getPlacar()[0] > p.getPlacar()[1]) {
-                p.getCasa().ganhar();
-                timedao.editar(p.getCasa());
-            } else {
-                if (p.getPlacar()[1] > p.getPlacar()[0]) {
-                    p.getVisitante().ganhar();
-                    timedao.editar(p.getVisitante());
-                } else {
-                    p.getCasa().empatar();
-                    p.getVisitante().empatar();
-                    timedao.editar(p.getCasa());
-                    timedao.editar(p.getVisitante());
-                }
-            }
-        }
+
 
         c.setRodada(c.getRodada() + 1);
         System.out.println(c.getRodada());

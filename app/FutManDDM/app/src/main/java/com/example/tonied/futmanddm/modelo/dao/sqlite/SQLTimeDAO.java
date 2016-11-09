@@ -42,7 +42,7 @@ public class SQLTimeDAO implements TimeDAO {
 
     @Override
     public void editar(Time o) {
-        Object[] valores = new Object[8];
+        Object[] valores = new Object[7];
         valores[0] = o.getNome();
         valores[1] = o.getPontos();
         valores[2] = o.getEsquema().getOrdem();
