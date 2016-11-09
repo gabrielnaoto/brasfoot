@@ -81,8 +81,6 @@ public class actHome extends AppCompatActivity {
                 "publico integer\n" +
                 ")");
 
-
-
         db.execSQL("create table time(\n" +
                 "nome varchar," +
                 "timeid integer primary key,\n" +
@@ -92,8 +90,6 @@ public class actHome extends AppCompatActivity {
                 "patrocinadorid integer not null,\n" +
                 "estadioid integer not null\n" +
                 ")");
-
-
 
         db.execSQL("create table jogador(\n" +
                 "jogadorid integer primary key autoincrement,\n" +
