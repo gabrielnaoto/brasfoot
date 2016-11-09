@@ -82,9 +82,8 @@ public class actManager extends AppCompatActivity {
     private Button btEscalar;
 
 
-    int indiceTime, idCasa, idVisit;
-    int indicePatr;
-    String XatuScore;
+    private static int idCasa, idVisit;
+    private static String localiz = "";
     int idScore;
     int atuScore;
     static int inc01;
@@ -107,6 +106,17 @@ public class actManager extends AppCompatActivity {
     private Time adversario;
 
     private Campeonato campeonato;
+
+    String[] nomeTime = {
+            "Arsenal",
+            "Atl. Madrid",
+            "Barcelona",
+            "Bayern Munique",
+            "Juventus",
+            "Manchester Utd",
+            "Paris SG",
+            "Real Madrid"
+    };
 
 
     @Override
@@ -163,7 +173,6 @@ public class actManager extends AppCompatActivity {
         btEscalar = (Button) findViewById(R.id.btEscalar);
         btClassif = (Button) findViewById(R.id.btClassif);
 
-
         SQLiteDatabase db = openOrCreateDatabase("brasfoot", MODE_PRIVATE, null);
 
         tdao = new SQLTimeDAO(db);
@@ -174,17 +183,14 @@ public class actManager extends AppCompatActivity {
 
         campeonato = cdao.pesquisar();
         time = campeonato.getT();
-        System.out.println("inicio---");
-        System.out.println(time.getNome() + " nome do time atual");
-        System.out.println(campeonato.getRodada() + " rodada atual");
-        System.out.println(Regras.getAdversario(time.getNome(), campeonato.getRodada()));
-        System.out.println(Regras.getIndicesPorTime().get(Regras.getAdversario(time.getNome(), campeonato.getRodada())));
-        System.out.println("fim------");
         adversario = tdao.pesquisar(Regras.getIndicesPorTime().get(Regras.getAdversario(time.getNome(), campeonato.getRodada())));
 
-        idScore = time.getAtributos();
-        atuScore = idScore;
-        XatuScore = idScore + "";
+//        System.out.println("inicio---");
+//        System.out.println(time.getNome() + " nome do time atual");
+//        System.out.println(campeonato.getRodada() + " rodada atual");
+//        System.out.println(Regras.getAdversario(time.getNome(), campeonato.getRodada()));
+//        System.out.println(Regras.getIndicesPorTime().get(Regras.getAdversario(time.getNome(), campeonato.getRodada())));
+//        System.out.println("fim------");
 
         buscaDadosExt();
         cargaInfos();
@@ -193,34 +199,23 @@ public class actManager extends AppCompatActivity {
         btEscalarClick();
         visualizaTimeClick();
         btClassificacaoClick();
-
     }
 
 
-    /**
-     * preencher dina
-     */
+    //==============================================================================================
+    //=============== INICIO DOS METODOS - CARGA DAS INFORMACOES EXTERNAS ==========================
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void buscaDadosExt() {
-//        int contador = 0;
-//        for (Time t : times) {
-//            scores[contador++] = t.getAtributos();
-//        }
-
-        inc01 = 0;
-        inc02 = 0;
-        inc03 = 0;
-        inc04 = 0;
-
-
         idClassif = 1;
         advClassif = 1;
+
         for (Time t : times) {
             if (t.getTimeid() == time.getTimeid()) {
                 break;
             }
             idClassif++;
-
         }
+
         for (Time t : times) {
             if (t.getTimeid() == adversario.getTimeid()) {
                 break;
@@ -228,16 +223,58 @@ public class actManager extends AppCompatActivity {
             advClassif++;
 
         }
-        idPontos = time.getPontos();
-        idMoral = 70;
-        idCaixa = time.getSaldo();
-        idDespesa = 0;
 
+        idPontos = time.getPontos();
+        idCaixa = time.getSaldo();
+        idScore = time.getAtributos();
+        atuScore = idScore; //CAMPO UTILIZADO PARA SCORE PROJETADO
+        //=============================================================
+        // =========== FALTA DINAMIZAR ================================
+        // ============================================================
+        idDespesa = 0;
+        idMoral = 70;
+        inc01 = 0;
+        inc02 = 0;
+        inc03 = 0;
+        inc04 = 0;
+        //=============================================================
+        //=============================================================
     }
 
+
+    //===================== CARREGA AS INFORMAÇOES DO TIME =========================================
+    public void cargaInfos() {
+        escudo.setImageResource(Regras.times[time.getTimeid()]);
+        info00.setText(idScore+"");
+        atualizaScore();
+        info01.setText(idClassif + "º (" + idPontos + " pontos)");
+        info02.setText(idMoral + "%");
+        info03.setText("R$ " + idCaixa + "0");
+        info04.setText("R$ " + idDespesa + "0");
+    }
+
+    //============== ATUALIZA O SCORE PROJETADO COM BASE NOS INCREMENTOS ADQUIRIDOS ================
+    public void atualizaScore() {
+        info00n.setText(atuScore+inc01+inc02+inc03+inc04+"");
+    }
+
+
+    //================ ATUALIZA O PAINEL DO PROXIMO JOGO E JOGOS RECENTES ==========================
     public void cargaJogos(int rodAtual) {
         List<Partida> partidas = pdao.listarPorTime(time.getTimeid());
+        eAdversario.setImageResource(Regras.times[adversario.getTimeid()]);
+        if (Regras.isCasa(nomeTime[time.getTimeid()], campeonato.getRodada() )) {
+            localiz = "Casa";
+            idCasa = time.getTimeid();
+            idVisit = adversario.getTimeid();
+        } else {
+            localiz = "Fora";
+            idCasa = adversario.getTimeid();
+            idVisit = time.getTimeid();
+        }
+        tAdversario.setText(localiz + " - " + advClassif + "º (" + adversario.getPontos() + " pts) - " + adversario.getAtributos());
 
+        //==================== ATUALIZA OS ULTIMOS JOGOS DO TIME ===================================
         if (rodAtual == 1) {
             ej01.setImageResource(R.drawable.esemtime);
             ej02.setImageResource(R.drawable.esemtime);
@@ -293,42 +330,14 @@ public class actManager extends AppCompatActivity {
             res02.setText(partidas.get(rodAtual - 3).getPlacar()[0] + " X " + partidas.get(rodAtual - 3).getPlacar()[1]);
             res03.setText(partidas.get(rodAtual - 2).getPlacar()[0] + " X " + partidas.get(rodAtual - 2).getPlacar()[1]);
         }
-        eAdversario.setImageResource(Regras.times[adversario.getTimeid()]);
-
-        String localiz = "";
-        if (Regras.isCasa(time.getNome(), rodAtual + 1)) {
-            localiz = "Casa";
-            idCasa = time.getTimeid();
-            idVisit = adversario.getTimeid();
-        } else {
-            localiz = "Fora";
-            idCasa = adversario.getTimeid();
-            idVisit = time.getTimeid();
-        }
-        tAdversario.setText(localiz + " - " + advClassif + "º (" + adversario.getPontos() + " pts) - " + adversario.getAtributos());
     }
 
-    public void cargaInfos() {
-        escudo.setImageResource(Regras.times[time.getTimeid()]);
-        info00.setText(idScore+"");
-        atualizaScore();
-        info01.setText(idClassif + "º (" + idPontos + " pontos)");
-        info02.setText(idMoral + "%");
-        info03.setText("R$ " + idCaixa + "0");
-        info04.setText("R$ " + idDespesa + "0");
-    }
-
-    public void atualizaScore() {
-        info00n.setText(atuScore+inc01+inc02+inc03+inc04+"");
-    }
-
+    //==================== CARREGA OS DADOS DO PAINEL DE ULTIMOS JOGOS =============================
     public void cargaClassif() {
-        System.out.println(times.get(0).getTimeid() + "");
-        System.out.println(times.get(1).getTimeid() + "");
-        System.out.println(times.get(2).getTimeid() + "");
-        System.out.println(times.get(3).getTimeid() + "");
-
-
+//        System.out.println(times.get(0).getTimeid() + "");
+//        System.out.println(times.get(1).getTimeid() + "");
+//        System.out.println(times.get(2).getTimeid() + "");
+//        System.out.println(times.get(3).getTimeid() + "");
         ec01.setImageResource(Regras.times[times.get(0).getTimeid()]); //imagem
         ec02.setImageResource(Regras.times[times.get(1).getTimeid()]);
         ec03.setImageResource(Regras.times[times.get(2).getTimeid()]);
@@ -343,6 +352,8 @@ public class actManager extends AppCompatActivity {
         pc04.setText(times.get(3).getPontos() + "");
     }
 
+
+    //=========================== INTERAÇÕES DOS SWITCHES E HELPS ==================================
     public void onClickHint01(View v) {
         Toast.makeText(this, "Custo de R$ 25.000,00 por partida\nAumento de 2% no Score para a partida", Toast.LENGTH_SHORT).show();
     }
@@ -405,6 +416,9 @@ public class actManager extends AppCompatActivity {
         atualizaScore();
     }
 
+    //=============================================================================================
+    //========================= CHAMADA DAS TELAS SEGUINTES =======================================
+    //=============================================================================================
     public void btEscalarClick() {
         btEscalar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -428,7 +442,6 @@ public class actManager extends AppCompatActivity {
                 Intent it = new Intent(actManager.this, actConsultaTime.class);
                 Bundle dados = new Bundle();
                 //Data to bundle
-
                 dados.putInt("adverIdTime", adversario.getTimeid());
                 dados.putInt("adverClassi", advClassif);
                 dados.putInt("adverPontos", adversario.getPontos());

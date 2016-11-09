@@ -263,7 +263,7 @@ public class actConfigTime extends AppCompatActivity {
                     dados.putInt("adverIdTime", adversario.getTimeid());
                     dados.putInt("adverClassi", adverClassif);
                     dados.putInt("adverPontos", adversario.getPontos());
-                    dados.putString("adverProximo", Regras.getAdversario(adversario.getNome(), campeonato.getRodada() + 1) );
+                    dados.putString("adverProximo", Regras.getAdversario(nomeTime[adversario.getTimeid()], campeonato.getRodada() + 1) );
                 it.putExtras(dados);
                 startActivity(it);
                 }
@@ -278,7 +278,7 @@ public class actConfigTime extends AppCompatActivity {
                     dados.putInt("adverIdTime", adversario.getTimeid());
                     dados.putInt("adverClassi", adverClassif);
                     dados.putInt("adverPontos", adversario.getPontos());
-                    dados.putString("adverProximo", Regras.getAdversario(adversario.getNome(), campeonato.getRodada() + 1) );
+                    dados.putString("adverProximo", Regras.getAdversario(nomeTime[adversario.getTimeid()], campeonato.getRodada() + 1) );
                     it.putExtras(dados);
                 startActivity(it);
                 }
