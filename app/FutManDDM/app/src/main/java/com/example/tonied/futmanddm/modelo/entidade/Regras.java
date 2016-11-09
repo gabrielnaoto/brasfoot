@@ -114,11 +114,15 @@ public class Regras {
 
     public static String getAdversario(String time, int semana) {
         String[][] jogos = getCalendario(semana);
+        System.out.println(time);
         for (int i = 0; i < 4; i++) {
-            System.out.println(jogos[i][0] + jogos[i][1]);
-            if (jogos[i][0] == time) {
+            System.out.println(jogos[i][0] + " x " + jogos[i][1]);
+            if (jogos[i][0].equalsIgnoreCase(time)) {
+                System.out.println(jogos[i][1]);
                 return jogos[i][1];
-            } else {
+            }
+            if (jogos[i][1].equalsIgnoreCase(time)) {
+                System.out.println(jogos[i][0]);
                 return jogos[i][0];
             }
         }

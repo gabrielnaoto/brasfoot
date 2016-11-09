@@ -174,6 +174,12 @@ public class actManager extends AppCompatActivity {
 
         campeonato = cdao.pesquisar();
         time = campeonato.getT();
+        System.out.println("inicio---");
+        System.out.println(time.getNome() + " nome do time atual");
+        System.out.println(campeonato.getRodada() + " rodada atual");
+        System.out.println(Regras.getAdversario(time.getNome(), campeonato.getRodada()));
+        System.out.println(Regras.getIndicesPorTime().get(Regras.getAdversario(time.getNome(), campeonato.getRodada())));
+        System.out.println("fim------");
         adversario = tdao.pesquisar(Regras.getIndicesPorTime().get(Regras.getAdversario(time.getNome(), campeonato.getRodada())));
 
         idScore = time.getAtributos();
@@ -224,9 +230,8 @@ public class actManager extends AppCompatActivity {
         }
         idPontos = time.getPontos();
         idMoral = 70;
-        idCaixa = Regras.valPatr[indicePatr];
+        idCaixa = time.getSaldo();
         idDespesa = 0;
-
 
     }
 
@@ -307,7 +312,7 @@ public class actManager extends AppCompatActivity {
         escudo.setImageResource(Regras.times[time.getTimeid()]);
         info00.setText(idScore+"");
         atualizaScore();
-        info01.setText(idClassif + "º (" + idPontos + " pts)");
+        info01.setText(idClassif + "º (" + idPontos + " pontos)");
         info02.setText(idMoral + "%");
         info03.setText("R$ " + idCaixa + "0");
         info04.setText("R$ " + idDespesa + "0");
@@ -407,7 +412,7 @@ public class actManager extends AppCompatActivity {
                 Intent it = new Intent(actManager.this, actConfigTime.class);
                 Bundle dados = new Bundle();
                 //Data to bundle
-                dados.putInt("indiceTime", indiceTime);
+                dados.putInt("indiceTime", time.getTimeid());
                 dados.putInt("idCasa", idCasa );
                 dados.putInt("idVisit", idVisit);
                 it.putExtras(dados);
