@@ -105,7 +105,6 @@ public class actSelTime extends AppCompatActivity {
     private void salvarCampeonato() {
 
         Campeonato c = new Campeonato();
-        c.setT(tdao.pesquisar(indiceTime));
         Patrocinador p = new Patrocinador();
         p.setNome(Regras.n_patrocinadores[indicePatr]);
         p.setEstrelas(Regras.e_patrocinadores[indicePatr]);
@@ -116,6 +115,11 @@ public class actSelTime extends AppCompatActivity {
         e.setIngresso(Regras.valPatr[indicePatr]);
         e.setPublico(6000);
         c.setE(e);
+        Time t = new Time();
+        t = tdao.pesquisar(indiceTime);
+        t.setEstadio(e);
+        t.setPatrocinador(p);
+        c.setT(t);
         cdao.inserir(c);
     }
 
