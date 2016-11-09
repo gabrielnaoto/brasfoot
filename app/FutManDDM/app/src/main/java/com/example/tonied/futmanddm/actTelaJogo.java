@@ -1,5 +1,7 @@
 package com.example.tonied.futmanddm;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,9 @@ import android.widget.TextView;
 import com.example.tonied.futmanddm.modelo.dao.core.CampeonatoDAO;
 import com.example.tonied.futmanddm.modelo.dao.core.PartidaDAO;
 import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLCampeonatoDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLPartidaDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLTimeDAO;
 import com.example.tonied.futmanddm.modelo.entidade.Campeonato;
 import com.example.tonied.futmanddm.modelo.entidade.Partida;
 import com.example.tonied.futmanddm.modelo.entidade.Regras;
@@ -57,6 +62,14 @@ public class actTelaJogo extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        SQLiteDatabase db = openOrCreateDatabase("brasfoot", MODE_PRIVATE, null);
+
+        campeonatodao = new SQLCampeonatoDAO(db);
+
+        partidadao = new SQLPartidaDAO(db);
+
+        timedao = new SQLTimeDAO(db);
 
         p1escCasa = (ImageView) findViewById(R.id.p1escCasa);
         p2escCasa = (ImageView) findViewById(R.id.p2escCasa);
@@ -106,18 +119,25 @@ public class actTelaJogo extends AppCompatActivity {
     public void carregaResultados() {
         c = campeonatodao.pesquisar();
         rodadap = c.getRodada();
-        List<Partida> partidas = partidadao.listar(rodadap);
-        for (int i = 1; i <= partidas.size(); i++) {
+        List<Partida> partidas = partidadao.listarPorRodada(rodadap);
+        System.out.println("taggggg " + partidas.size());
+        System.out.println(c.getRodada());
+        for (int i = 0; i < 4; i++) {
             Partida atual = partidas.get(i);
-            String chave = i + "esc" + "Casa";
+            String chave = (i + 1) + "esc" + "Casa";
             ((ImageView) views.get(chave)).setImageResource(Regras.times[atual.getCasa().getTimeid()]);
-            chave = i + "pl" + "Casa";
-            ((TextView) views.get(chave)).setText(atual.getPlacar()[0]);
-            chave = i + "esc" + "Visit";
+            chave = (i + 1) + "pl" + "Casa";
+            ((TextView) views.get(chave)).setText(atual.getPlacar()[0] + "");
+            System.out.println(atual.getPlacar()[0] + " x " + atual.getPlacar()[1]);
+            chave = (i + 1) + "esc" + "Visit";
             ((ImageView) views.get(chave)).setImageResource(Regras.times[atual.getVisitante().getTimeid()]);
-            chave = i + "pl" + "Visit";
-            ((TextView) views.get(chave)).setText(atual.getPlacar()[1]);
+            chave = (i + 1)  + "pl" + "Visit";
+            ((TextView) views.get(chave)).setText(atual.getPlacar()[1] + "");
         }
+
+        c.setRodada(c.getRodada() + 1);
+        System.out.println(c.getRodada());
+        campeonatodao.editar(c);
     }
 
     private void cargaJogos(int r) {
@@ -128,6 +148,7 @@ public class actTelaJogo extends AppCompatActivity {
         btOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(actTelaJogo.this, actManager.class));
                 finish();
             }
         });

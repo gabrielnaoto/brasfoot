@@ -41,8 +41,6 @@ public class actHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_home);
 
-        deleteDatabase("brasfoot");
-
         ActionBar ac = getSupportActionBar();
         ac.hide();
 
@@ -63,27 +61,29 @@ public class actHome extends AppCompatActivity {
         jogadorDAO = new SQLJogadorDAO(db);
         timeDAO = new SQLTimeDAO(db);
 
-        db.execSQL("create table if not exists patrocinador(\n" +
+        db.execSQL("create table patrocinador(\n" +
                 "patrocinadorid integer primary key autoincrement,\n" +
                 "nome varchar,\n" +
                 "estrelas integer,\n" +
                 "valor double)");
 
-        db.execSQL("create table if not exists campeonato(\n" +
+        db.execSQL("create table campeonato(\n" +
                 "id integer primary key autoincrement,\n" +
                 "time integer,\n" +
                 "estadio integer,\n" +
                 "rodada integer,\n" +
                 "patrocinador integer)");
 
-        db.execSQL("create table if not exists estadio(\n" +
+        db.execSQL("create table estadio(\n" +
                 "estadioid integer primary key autoincrement,\n" +
                 "estrelas integer,\n" +
                 "ingresso double, \n" +
                 "publico integer\n" +
                 ")");
 
-        db.execSQL("create table if not exists time(\n" +
+
+
+        db.execSQL("create table time(\n" +
                 "nome varchar," +
                 "timeid integer primary key,\n" +
                 "pontos integer,\n" +
@@ -93,7 +93,9 @@ public class actHome extends AppCompatActivity {
                 "estadioid integer not null\n" +
                 ")");
 
-        db.execSQL("create table if not exists jogador(\n" +
+
+
+        db.execSQL("create table jogador(\n" +
                 "jogadorid integer primary key autoincrement,\n" +
                 "nome varchar,\n" +
                 "posicao varchar,\n" +
@@ -107,19 +109,16 @@ public class actHome extends AppCompatActivity {
                 "timeid integer\n" +
                 ")");
 
-        db.execSQL("create table if not exists partida(\n" +
+
+        db.execSQL("create table partida(\n" +
                 "partidaid integer primary key autoincrement,\n" +
+                "rodada integer,\n" +
+                "golcasa integer,\n" +
+                "golvizi integer,\n" +
                 "casaid integer,\n" +
                 "visitanteid integer\n" +
-                "rodada integer\n" +
                 ");");
 
-        db.execSQL("create table if not exists gols(\n" +
-                "id integer primary key autoincrement,\n" +
-                "gols integer not null,\n" +
-                "timeid integer not null,\n" +
-                "partidaid integer not null\n" +
-                ")");
     }
 
     public void continuar(View v) {

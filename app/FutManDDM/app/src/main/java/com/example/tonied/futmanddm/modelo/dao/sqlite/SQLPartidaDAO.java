@@ -22,76 +22,69 @@ public class SQLPartidaDAO implements PartidaDAO {
 
     @Override
     public void inserir(Partida o) {
-        Object[] valores = new Object[3];
+        Object[] valores = new Object[5];
         valores[0] = o.getCasa().getTimeid();
         valores[1] = o.getVisitante().getTimeid();
         valores[2] = o.getRodada();
-        db.execSQL("insert into partida(casa, visitante, rodada) values(?,?, ?)", valores);
-        for (int i = 0; i < 2; i++) {
-            Object[] gols = new Object[3];
-            gols[0] = o.getPlacar()[i];
-            if (i == 0) {
-                gols[1] = o.getCasa().getTimeid();
-            } else {
-                gols[1] = o.getVisitante().getTimeid();
-            }
-            gols[2] = o.getPartidaid();
-            db.execSQL("insert into gols(gols, timeid, partidaid) values (?,?,?)", gols);
-        }
+        valores[3] = o.getPlacar()[0];
+        valores[4] = o.getPlacar()[1];
+        db.execSQL("insert into partida(casaid, visitanteid, rodada, golcasa, golvizi) values(?,?, ?, ?, ?)", valores);
     }
-
 
 
     @Override
     public List<Partida> listarPorTime(int o) {
         String[] id = {o + "", o + ""};
-        Cursor cursor = db.rawQuery("select p.partidaid, g1.gols, g2.gols, p.casaid, p.visitanteid, p.rodada\n" +
-                "from partida as p \n" +
-                "inner join gols as g1 on p.partidaid = g1.partidaid and p.casaid = g1.timeid \n" +
-                "left join gols as g2 on p.partidaid = g2.partidaid and p.visitanteid = g2.timeid                               \n" +
-                "where p.casaid = ?\n" +
-                "or p.visitanteid =?\n" +
-                "order by p.rodada\n", id);
-        int index_casagols = cursor.getColumnIndex("casa_gols");
-        int index_vizigols = cursor.getColumnIndex("vizi_gols");
-        int index_partidaid = cursor.getColumnIndex("partidaid");
-        int index_casaid = cursor.getColumnIndex("casaid");
-        int index_visitanteid = cursor.getColumnIndex("visitanteid");
-        cursor.moveToFirst();
+        Cursor resultado = db.rawQuery("SELECT * FROM partida WHERE casaid = ? or visitanteid = ? order by rodada", id);
+        int index_casagols = resultado.getColumnIndex("golcasa");
+        int index_vizigols = resultado.getColumnIndex("golvizi");
+        int index_partidaid = resultado.getColumnIndex("partidaid");
+        int index_casaid = resultado.getColumnIndex("casaid");
+        int index_visitanteid = resultado.getColumnIndex("visitanteid");
+        int index_rodada = resultado.getColumnIndex("rodada");
+        resultado.moveToFirst();
         List<Partida> partidas = new ArrayList<>();
-        while (!cursor.isAfterLast()) {
-            Partida p = new Partida(timeDAO.pesquisar(cursor.getInt(index_casaid)), timeDAO.pesquisar(cursor.getInt(index_visitanteid)));
-            int[] placar = {cursor.getInt(index_casagols), cursor.getInt(index_vizigols)};
+        while (!resultado.isAfterLast()) {
+            int indicec = resultado.getInt(index_casaid);
+            int indicev = resultado.getInt(index_visitanteid);
+            Partida p = new Partida(timeDAO.pesquisar(indicec), timeDAO.pesquisar(indicev));
+            int[] placar = new int[2];
+            placar[0] = resultado.getInt(index_casagols);
+            placar[1] = resultado.getInt(index_vizigols);
             p.setPlacar(placar);
-            p.setPartidaid(cursor.getInt(index_partidaid));
+            p.setPartidaid(resultado.getInt(index_partidaid));
+            p.setRodada(resultado.getInt(index_rodada));
             partidas.add(p);
-
+            resultado.moveToNext();
         }
         return partidas;
+
     }
 
     @Override
     public List<Partida> listarPorRodada(int o) {
         String[] id = {o + ""};
-        Cursor cursor = db.rawQuery("select p.partidaid, g1.gols, g2.gols, p.casaid, p.visitanteid, p.rodada\n" +
-                "from partida as p \n" +
-                "inner join gols as g1 on p.partidaid = g1.partidaid and p.casaid = g1.timeid \n" +
-                "left join gols as g2 on p.partidaid = g2.partidaid and p.visitanteid = g2.timeid\n" +
-                "where p.rodada = ?", id);
-        int index_casagols = cursor.getColumnIndex("casa_gols");
-        int index_vizigols = cursor.getColumnIndex("vizi_gols");
-        int index_partidaid = cursor.getColumnIndex("partidaid");
-        int index_casaid = cursor.getColumnIndex("casaid");
-        int index_visitanteid = cursor.getColumnIndex("visitanteid");
-        cursor.moveToFirst();
+        Cursor resultado = db.rawQuery("SELECT * FROM partida WHERE rodada = ?", id);
+        int index_casagols = resultado.getColumnIndex("golcasa");
+        int index_vizigols = resultado.getColumnIndex("golvizi");
+        int index_partidaid = resultado.getColumnIndex("partidaid");
+        int index_casaid = resultado.getColumnIndex("casaid");
+        int index_visitanteid = resultado.getColumnIndex("visitanteid");
+        int index_rodada = resultado.getColumnIndex("rodada");
         List<Partida> partidas = new ArrayList<>();
-        while (!cursor.isAfterLast()) {
-            Partida p = new Partida(timeDAO.pesquisar(cursor.getInt(index_casaid)), timeDAO.pesquisar(cursor.getInt(index_visitanteid)));
-            int[] placar = {cursor.getInt(index_casagols), cursor.getInt(index_vizigols)};
+        resultado.moveToFirst();
+        while (!resultado.isAfterLast()) {
+            int indicec = resultado.getInt(index_casaid);
+            int indicev = resultado.getInt(index_visitanteid);
+            Partida p = new Partida(timeDAO.pesquisar(indicec), timeDAO.pesquisar(indicev));
+            int[] placar = new int[2];
+            placar[0] = resultado.getInt(index_casagols);
+            placar[1] = resultado.getInt(index_vizigols);
             p.setPlacar(placar);
-            p.setPartidaid(cursor.getInt(index_partidaid));
+            p.setPartidaid(resultado.getInt(index_partidaid));
+            p.setRodada(resultado.getInt(index_rodada));
             partidas.add(p);
-
+            resultado.moveToNext();
         }
         return partidas;
     }

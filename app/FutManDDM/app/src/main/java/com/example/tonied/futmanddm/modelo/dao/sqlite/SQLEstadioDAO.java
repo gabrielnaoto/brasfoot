@@ -32,7 +32,7 @@ public class SQLEstadioDAO implements EstadioDAO {
         valores[0] = o.getEstrelas();
         valores[1] = o.getIngresso();
         valores[2] = o.getPublico();
-        db.execSQL("update estadio estrelas = ?, ingresso = ?, publico ?, where estadioid = ?", valores);
+        db.execSQL("update estadio set estrelas = ?, ingresso = ?, publico ?, where estadioid = ?", valores);
     }
 
     @Override

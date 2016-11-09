@@ -233,7 +233,7 @@ public class actManager extends AppCompatActivity {
     public void cargaJogos(int rodAtual) {
         List<Partida> partidas = pdao.listarPorTime(time.getTimeid());
 
-        if (rodAtual == 0) {
+        if (rodAtual == 1) {
             ej01.setImageResource(R.drawable.esemtime);
             ej02.setImageResource(R.drawable.esemtime);
             ej03.setImageResource(R.drawable.esemtime);
@@ -244,7 +244,7 @@ public class actManager extends AppCompatActivity {
             res02.setText("  X  ");
             res03.setText("  X  ");
 
-        } else if (rodAtual == 1) {
+        } else if (rodAtual == 2) {
             ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
             ej02.setImageResource(R.drawable.esemtime);
             ej03.setImageResource(R.drawable.esemtime);
@@ -255,7 +255,7 @@ public class actManager extends AppCompatActivity {
             res02.setText("  X  ");
             res03.setText("  X  ");
 
-        } else if (rodAtual == 2) {
+        } else if (rodAtual == 3) {
             ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
             ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
             ej03.setImageResource(R.drawable.esemtime);
@@ -266,7 +266,7 @@ public class actManager extends AppCompatActivity {
             res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
             res03.setText("  X  ");
 
-        } else if (rodAtual == 3) {
+        } else if (rodAtual == 4) {
             ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
             ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
             ej03.setImageResource(Regras.times[partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? partidas.get(2).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
@@ -277,7 +277,7 @@ public class actManager extends AppCompatActivity {
             res02.setText(partidas.get(1).getPlacar()[0] + " X " + partidas.get(1).getPlacar()[1]);
             res03.setText(partidas.get(2).getPlacar()[0] + " X " + partidas.get(2).getPlacar()[1]);
 
-        } else if (rodAtual >= 4) {
+        } else if (rodAtual >= 5) {
             ej01.setImageResource(Regras.times[partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? partidas.get(0).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
             ej02.setImageResource(Regras.times[partidas.get(1).getCasa().getTimeid() == time.getTimeid() ? partidas.get(1).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);
             ej03.setImageResource(Regras.times[partidas.get(2).getCasa().getTimeid() == time.getTimeid() ? partidas.get(2).getVisitante().getTimeid() : partidas.get(0).getCasa().getTimeid()]);

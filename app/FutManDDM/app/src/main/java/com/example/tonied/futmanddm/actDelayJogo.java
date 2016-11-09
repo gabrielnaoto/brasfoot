@@ -50,11 +50,12 @@ public class actDelayJogo extends AppCompatActivity implements Runnable {
     public void results(){
         SQLiteDatabase db = openOrCreateDatabase("brasfoot", MODE_PRIVATE, null);
         timedao = new SQLTimeDAO(db);
+        partidadao = new SQLPartidaDAO(db);
         campeonatodao = new SQLCampeonatoDAO(db);
         c = campeonatodao.pesquisar();
         rodada = c.getRodada();
         String[][] calendario = Regras.getCalendario(rodada);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             Time[] times = new Time[2];
             Esquema[] esquemas = new Esquema[2];
             int[] atributos = new int[2];

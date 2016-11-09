@@ -38,6 +38,13 @@ public class SQLCampeonatoDAO implements CampeonatoDAO {
 
     @Override
     public void editar(Campeonato o) {
+        Object[] valores = new Object[4];
+        valores[0] = o.getT().getTimeid();
+//        valores[1] = o.getE().getEstadioid();
+//        valores[2] = o.getP().getPatrocinadorid();
+        valores[3] = o.getRodada();
+        db.execSQL("update campeonato set time = ?, estadio = ?, patrocinador = ?, rodada =? ", valores);
+
 
     }
 
