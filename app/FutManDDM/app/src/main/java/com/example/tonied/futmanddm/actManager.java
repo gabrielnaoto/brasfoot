@@ -323,9 +323,9 @@ public class actManager extends AppCompatActivity {
             ej01.setImageResource(Regras.times[partidas.get(rodAtual - 4).getCasa().getTimeid() == time.getTimeid() ? partidas.get(rodAtual - 4).getVisitante().getTimeid() : partidas.get(rodAtual - 4).getCasa().getTimeid()]);
             ej02.setImageResource(Regras.times[partidas.get(rodAtual - 3).getCasa().getTimeid() == time.getTimeid() ? partidas.get(rodAtual - 3).getVisitante().getTimeid() : partidas.get(rodAtual - 3).getCasa().getTimeid()]);
             ej03.setImageResource(Regras.times[partidas.get(rodAtual - 2).getCasa().getTimeid() == time.getTimeid() ? partidas.get(rodAtual - 2).getVisitante().getTimeid() : partidas.get(rodAtual - 2).getCasa().getTimeid()]);
-            rod01.setText("Rodada " + (rodAtual - 3) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-            rod02.setText("Rodada " + (rodAtual - 2) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
-            rod03.setText("Rodada " + (rodAtual - 1) + (partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            rod01.setText("Rodada " + (rodAtual - 3) + " - " +(partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            rod02.setText("Rodada " + (rodAtual - 2) + " - " +(partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
+            rod03.setText("Rodada " + (rodAtual - 1) + " - " +(partidas.get(0).getCasa().getTimeid() == time.getTimeid() ? "casa" : "visitante"));
             res01.setText(partidas.get(rodAtual - 4).getPlacar()[0] + " X " + partidas.get(rodAtual - 4).getPlacar()[1]);
             res02.setText(partidas.get(rodAtual - 3).getPlacar()[0] + " X " + partidas.get(rodAtual - 3).getPlacar()[1]);
             res03.setText(partidas.get(rodAtual - 2).getPlacar()[0] + " X " + partidas.get(rodAtual - 2).getPlacar()[1]);
