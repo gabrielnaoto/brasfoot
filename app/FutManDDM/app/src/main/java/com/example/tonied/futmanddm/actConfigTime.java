@@ -155,6 +155,9 @@ public class actConfigTime extends AppCompatActivity {
             escudoVisitante.setImageResource(timesLogo[indiceTime]);
         }
 
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //+++++++++++++++++ FALTA PERSISTIR A ALTERAÇÃO PARA INFLUENCIAR NO JOGO +++++++++++++++++++
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //implementações da seekbar
         seekFormacao.setProgress(2);
         seekFormacao.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

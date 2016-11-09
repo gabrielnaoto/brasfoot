@@ -332,7 +332,7 @@ public class actManager extends AppCompatActivity {
         }
     }
 
-    //==================== CARREGA OS DADOS DO PAINEL DE ULTIMOS JOGOS =============================
+    //==================== CARREGA OS DADOS DA CLASSIFICACAO =============================
     public void cargaClassif() {
 //        System.out.println(times.get(0).getTimeid() + "");
 //        System.out.println(times.get(1).getTimeid() + "");
@@ -354,6 +354,9 @@ public class actManager extends AppCompatActivity {
 
 
     //=========================== INTERAÇÕES DOS SWITCHES E HELPS ==================================
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //+++++++++++++++++ FALTANDO PERSISTIR NO BANCO AS ALTERACOES DOS INCREMENTOS ++++++++++++++++++
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void onClickHint01(View v) {
         Toast.makeText(this, "Custo de R$ 25.000,00 por partida\nAumento de 2% no Score para a partida", Toast.LENGTH_SHORT).show();
     }
@@ -445,6 +448,7 @@ public class actManager extends AppCompatActivity {
                 dados.putInt("adverIdTime", adversario.getTimeid());
                 dados.putInt("adverClassi", advClassif);
                 dados.putInt("adverPontos", adversario.getPontos());
+                dados.putString("adverProximo", Regras.getAdversario(nomeTime[adversario.getTimeid()], campeonato.getRodada() + 1) );
                 it.putExtras(dados);
                 startActivity(it);
             }
