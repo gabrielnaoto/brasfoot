@@ -104,6 +104,8 @@ public class actConfigTime extends AppCompatActivity {
     private Time time;
     private Time adversario;
 
+    private double despesas;
+
     private Campeonato campeonato;
 
     @Override
@@ -118,6 +120,7 @@ public class actConfigTime extends AppCompatActivity {
         indiceTime = dados.getInt("indiceTime");
         idCasa = dados.getInt("idCasa");
         idVisit = dados.getInt("idVisit");
+        despesas = dados.getDouble("despesas");
 
         SQLiteDatabase db = openOrCreateDatabase("brasfoot", MODE_PRIVATE, null);
         tdao = new SQLTimeDAO(db);
@@ -127,7 +130,7 @@ public class actConfigTime extends AppCompatActivity {
         times = tdao.listar();
         campeonato = cdao.pesquisar();
         time = campeonato.getT();
-        adversario = tdao.pesquisar(Regras.getIndicesPorTime().get(Regras.getAdversario(time.getNome(), campeonato.getRodada())));
+        adversario = tdao.pesquisar(Regras.getIndicesPorTime().get(Regras.getAdversario(Regras.nomeTime[time.getTimeid()], campeonato.getRodada())));
 
         scoreCasa = (TextView)findViewById(R.id.scoreCasa);
         escudoCasa = (ImageView)findViewById(R.id.escudoCasa);
@@ -253,6 +256,8 @@ public class actConfigTime extends AppCompatActivity {
                 dados.putInt("indiceTime", indiceTime);
                 it.putExtras(dados);
                 startActivity(it);
+                time.setSaldo(time.getSaldo() - despesas);
+                tdao.editar(time);
                 finish();
             }
         });

@@ -52,7 +52,7 @@ public class SQLJogadorDAO implements JogadorDAO {
         valores[7] = o.getSuspenso();
         valores[8] = o.getCartaoamarelo();
         valores[9] = o.getTime().getTimeid();
-        db.execSQL("update jogador set nome = ?, posicao = ?, idade = ?, tecnica = ?, fisico = ?, inteligencia = ?,motivacao = ?, suspenso = ?, cartaoamarelo = ?, timeid = ?, where jogadorid = ?", valores);
+        db.execSQL("update jogador set nome = ?, posicao = ?, idade = ?, tecnica = ?, fisico = ?, inteligencia = ?,motivacao = ?, suspenso = ?, cartaoamarelo = ?, timeid = ? where jogadorid = ?", valores);
     }
 
     @Override
