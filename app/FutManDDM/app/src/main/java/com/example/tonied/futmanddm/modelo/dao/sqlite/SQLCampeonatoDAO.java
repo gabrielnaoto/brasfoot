@@ -30,8 +30,8 @@ public class SQLCampeonatoDAO implements CampeonatoDAO {
     public void inserir(Campeonato o) {
         Object[] valores = new Object[4];
         valores[0] = o.getT().getTimeid();
-//        valores[1] = o.getE().getEstadioid();
-//        valores[2] = o.getP().getPatrocinadorid();
+        valores[1] = o.getE().getEstadioid();
+        valores[2] = o.getP().getPatrocinadorid();
         valores[3] = o.getRodada();
         db.execSQL("insert into campeonato (time, estadio, patrocinador, rodada) values(?,?,?,?)", valores);
     }
@@ -40,8 +40,8 @@ public class SQLCampeonatoDAO implements CampeonatoDAO {
     public void editar(Campeonato o) {
         Object[] valores = new Object[4];
         valores[0] = o.getT().getTimeid();
-//        valores[1] = o.getE().getEstadioid();
-//        valores[2] = o.getP().getPatrocinadorid();
+        valores[1] = o.getE().getEstadioid();
+        valores[2] = o.getP().getPatrocinadorid();
         valores[3] = o.getRodada();
         db.execSQL("update campeonato set time = ?, estadio = ?, patrocinador = ?, rodada =? ", valores);
 
@@ -58,8 +58,8 @@ public class SQLCampeonatoDAO implements CampeonatoDAO {
         cursor.moveToFirst();
         Campeonato e = new Campeonato();
         e.setT(tdao.pesquisar(cursor.getInt(index_time)));
-//        e.setE(edao.pesquisar(cursor.getInt(index_estadio)));
-//        e.setP(pdao.pesquisar(cursor.getInt(index_patrocinador)));
+        e.setE(edao.pesquisar(cursor.getInt(index_estadio)));
+        e.setP(pdao.pesquisar(cursor.getInt(index_patrocinador)));
         e.setRodada(cursor.getInt(index_rodada));
         return e;
     }

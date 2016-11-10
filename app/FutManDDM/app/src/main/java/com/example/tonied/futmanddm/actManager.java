@@ -19,6 +19,7 @@ import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLCampeonatoDAO;
 import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLPartidaDAO;
 import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLTimeDAO;
 import com.example.tonied.futmanddm.modelo.entidade.Campeonato;
+import com.example.tonied.futmanddm.modelo.entidade.Jogador;
 import com.example.tonied.futmanddm.modelo.entidade.Partida;
 import com.example.tonied.futmanddm.modelo.entidade.Regras;
 import com.example.tonied.futmanddm.modelo.entidade.Time;
@@ -225,13 +226,18 @@ public class actManager extends AppCompatActivity {
         }
 
         idPontos = time.getPontos();
+        System.out.println(time.getPontos());
         idCaixa = time.getSaldo();
+        System.out.println(time.getSaldo());
         idScore = time.getAtributos();
         atuScore = idScore; //CAMPO UTILIZADO PARA SCORE PROJETADO
         //=============================================================
         // =========== FALTA DINAMIZAR ================================
         // ============================================================
         idDespesa = 0;
+        for (Jogador j:time.getJogadores()) {
+            idDespesa += j.getSalario();
+        }
         idMoral = 70;
         inc01 = 0;
         inc02 = 0;
@@ -432,6 +438,7 @@ public class actManager extends AppCompatActivity {
                 dados.putInt("indiceTime", time.getTimeid());
                 dados.putInt("idCasa", idCasa );
                 dados.putInt("idVisit", idVisit);
+                dados.putDouble("despesas", idDespesa);
                 it.putExtras(dados);
                 startActivity(it);
                 finish();

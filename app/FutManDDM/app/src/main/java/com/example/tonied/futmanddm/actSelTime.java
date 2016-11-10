@@ -11,8 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tonied.futmanddm.modelo.dao.core.CampeonatoDAO;
+import com.example.tonied.futmanddm.modelo.dao.core.EstadioDAO;
 import com.example.tonied.futmanddm.modelo.dao.core.TimeDAO;
 import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLCampeonatoDAO;
+import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLEstadioDAO;
 import com.example.tonied.futmanddm.modelo.dao.sqlite.SQLTimeDAO;
 import com.example.tonied.futmanddm.modelo.entidade.Campeonato;
 import com.example.tonied.futmanddm.modelo.entidade.Estadio;
@@ -36,6 +38,7 @@ public class actSelTime extends AppCompatActivity {
     private static TextView texto02;
 
     private CampeonatoDAO cdao;
+    private EstadioDAO edao;
     private TimeDAO tdao;
 
     private int indiceTime = 0;
@@ -78,6 +81,7 @@ public class actSelTime extends AppCompatActivity {
 
         cdao = new SQLCampeonatoDAO(db);
         tdao = new SQLTimeDAO(db);
+        edao = new SQLEstadioDAO(db);
 
         System.out.println("vai carregar");
 
@@ -114,13 +118,18 @@ public class actSelTime extends AppCompatActivity {
         e.setEstrelas(Regras.e_patrocinadores[indicePatr]);
         e.setIngresso(Regras.valPatr[indicePatr]);
         e.setPublico(6000);
+        edao.inserir(e);
+        System.out.println(e.getIngresso() + " " + e.getPublico());
         c.setE(e);
         Time t = new Time();
-        t.setSaldo(500000 + p.getValor());
         t = tdao.pesquisar(indiceTime);
-        t.setEstadio(e);
-        t.setPatrocinador(p);
+        t.setSaldo(500000 + Regras.valPatr[indicePatr]);
+//        t.setEstadio(e);
+//        t.setPatrocinador(p);
+        System.out.println("saldo do time: " + t.getSaldo());
+        tdao.editar(t);
         c.setT(t);
+
         cdao.inserir(c);
     }
 

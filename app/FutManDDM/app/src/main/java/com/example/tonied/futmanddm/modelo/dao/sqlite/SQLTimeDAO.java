@@ -43,10 +43,12 @@ public class SQLTimeDAO implements TimeDAO {
     @Override
     public void editar(Time o) {
         System.out.println(o.toString());
-        Object[] valores = new Object[2];
+        Object[] valores = new Object[4];
         valores[0] = o.getPontos();
-        valores[1] = o.getTimeid();
-        db.execSQL("update time set pontos = ? where timeid = ? ", valores);
+        valores[1] = o.getSaldo();
+        valores[2] = o.getEsquema();
+        valores[3] = o.getTimeid();
+        db.execSQL("update time set pontos = ?, saldo = ?, esquema = ? where timeid = ? ", valores);
     }
 
     @Override
