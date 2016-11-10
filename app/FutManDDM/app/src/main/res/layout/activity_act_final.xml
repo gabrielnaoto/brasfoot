@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_act_final"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tonied.futmanddm.actFinal"
+    android:background="@drawable/telafinal">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/emanunited"
+            android:id="@+id/eCampeao"
+            android:layout_height="175dp"
+            android:paddingTop="10dp" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="120dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/colorControlActivated"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    app:srcCompat="@drawable/ebayern"
+                    android:id="@+id/ec02"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:text="Bayern Munchen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tc02"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical|start"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:text="12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pc02"
+                    android:layout_weight=".3"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center"
+                    android:textSize="24sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/colorControlActivated"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    app:srcCompat="@drawable/ebayern"
+                    android:id="@+id/ec03"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:text="Bayern Munchen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tc03"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical|start"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:text="12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pc03"
+                    android:layout_weight=".3"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center"
+                    android:textSize="24sp" />
+
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+</LinearLayout>
