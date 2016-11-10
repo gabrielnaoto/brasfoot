@@ -262,6 +262,7 @@ public class actManager extends AppCompatActivity {
     //============== ATUALIZA O SCORE PROJETADO COM BASE NOS INCREMENTOS ADQUIRIDOS ================
     public void atualizaScore() {
         info00n.setText(atuScore+inc01+inc02+inc03+inc04+"");
+//        tdao.editar(time);
     }
 
 
@@ -381,10 +382,10 @@ public class actManager extends AppCompatActivity {
 
     public void onClickSw01(View v) {
         if (sw01.isChecked()) {
-            idDespesa += 25000;
-            inc01 = (int) (atuScore * 0.02);
+            idDespesa += Regras.MOTIVACAO;
+            inc01 = 1;
         } else {
-            idDespesa -= 25000;
+            idDespesa -= Regras.MOTIVACAO;
             inc01 = 0;
         }
         info04.setText("R$ " + idDespesa + "0");
@@ -393,10 +394,10 @@ public class actManager extends AppCompatActivity {
 
     public void onClickSw02(View v) {
         if (sw02.isChecked()) {
-            idDespesa += 10000;
-            inc02 = (int) (atuScore * 0.02);
+            idDespesa += Regras.FISICA;
+            inc02 = 1;
         } else {
-            idDespesa -= 10000;
+            idDespesa -= Regras.FISICA;
             inc02 = 0;
         }
         info04.setText("R$ " + idDespesa + "0");
@@ -405,10 +406,10 @@ public class actManager extends AppCompatActivity {
 
     public void onClickSw03(View v) {
         if (sw03.isChecked()) {
-            idDespesa += 8000;
-            inc03 = (int) (atuScore * 0.01);
+            idDespesa += Regras.TECNICA;
+            inc03 = 1;
         } else {
-            idDespesa -= 8000;
+            idDespesa -= Regras.TECNICA;
             inc03 = 0;
         }
         info04.setText("R$ " + idDespesa + "0");
@@ -417,9 +418,11 @@ public class actManager extends AppCompatActivity {
 
     public void onClickSw04(View v) {
         if (sw04.isChecked()) {
-            idDespesa += 15000;
+            idDespesa += Regras.REABILITACAO;
+            inc04 = 1;
         } else {
-            idDespesa -= 15000;
+            idDespesa -= Regras.REABILITACAO;
+            inc04 = 0;
         }
         info04.setText("R$ " + idDespesa + "0");
         atualizaScore();

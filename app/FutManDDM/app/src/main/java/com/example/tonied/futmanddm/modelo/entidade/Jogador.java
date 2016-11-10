@@ -20,10 +20,7 @@ public class Jogador {
     private boolean titular;
 
     public Jogador() {
-
     }
-
-
 
     public Jogador(int jogadorid, String nome, String posicao, int idade, int tecnica, int fisico, int inteligentcia, int motivacao, Time time, int suspenso, int cartaoamarelo) {
         this.jogadorid = jogadorid;

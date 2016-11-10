@@ -69,6 +69,12 @@ public class actFinal extends AppCompatActivity {
         pc02 = (TextView) findViewById(R.id.pc02);
         pc03 = (TextView) findViewById(R.id.pc03);
 
+        SQLiteDatabase db = openOrCreateDatabase("brasfoot", MODE_PRIVATE, null);
+
+        timeDAO = new SQLTimeDAO(db);
+
+        times = timeDAO.listar();
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
@@ -111,7 +117,8 @@ public class actFinal extends AppCompatActivity {
                 "time integer,\n" +
                 "estadio integer,\n" +
                 "rodada integer,\n" +
-                "patrocinador integer)");
+                "patrocinador integer," +
+                "ingresso integer)");
 
         db.execSQL("create table estadio(\n" +
                 "estadioid integer primary key autoincrement,\n" +
@@ -127,6 +134,7 @@ public class actFinal extends AppCompatActivity {
                 "esquema integer,\n" +
                 "saldo double,\n" +
                 "patrocinadorid integer not null,\n" +
+                "incrementos integer,\n" +
                 "estadioid integer not null\n" +
                 ")");
 

@@ -17,6 +17,16 @@ public class Time {
     private Esquema esquema;
     private Patrocinador patrocinador;
     private Estadio estadio;
+    private int incrementos;
+
+    public int getIncrementos() {
+        return incrementos;
+    }
+
+    public void setIncrementos(int incrementos) {
+        this.incrementos = incrementos;
+    }
+
 
     public Time() {
         jogadores = new ArrayList<>();
@@ -41,7 +51,7 @@ public class Time {
 
         int atributos = (int) (tecnica + fisico + inteligencia + motivacao) / 4;
 
-        return atributos;
+        return atributos + incrementos <= 100 ? atributos + incrementos : 100;
     }
 
     public int getTimeid() {

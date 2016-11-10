@@ -150,8 +150,13 @@ public class actTelaJogo extends AppCompatActivity {
         btOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(actTelaJogo.this, actManager.class));
-                finish();
+               if (c.getRodada() >= 14){
+                   startActivity(new Intent(actTelaJogo.this, actFinal.class));
+                   finish();
+               } else {
+                   startActivity(new Intent(actTelaJogo.this, actManager.class));
+                   finish();
+               }
             }
         });
     }

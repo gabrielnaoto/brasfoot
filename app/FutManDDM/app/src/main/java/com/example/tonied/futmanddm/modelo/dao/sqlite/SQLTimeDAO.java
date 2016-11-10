@@ -29,26 +29,28 @@ public class SQLTimeDAO implements TimeDAO {
 
     @Override
     public void inserir(Time o) {
-        Object[] valores = new Object[7];
+        Object[] valores = new Object[8];
         valores[0] = o.getNome();
         valores[1] = o.getPontos();
         valores[2] = o.getEsquema().getOrdem();
         valores[3] = o.getSaldo();
         valores[4] = o.getPatrocinador().getPatrocinadorid();
         valores[5] = o.getEstadio().getEstadioid();
-        valores[6] = o.getTimeid();
-        db.execSQL("insert into time(nome, pontos, esquema, saldo, patrocinadorid, estadioid, timeid) values(?, ?,?,?,?,?, ?)", valores);
+        valores[5] = o.getIncrementos();
+        valores[7] = o.getTimeid();
+        db.execSQL("insert into time(nome, pontos, esquema, saldo, patrocinadorid, estadioid, incrementos, timeid) values(?, ?,?,?,?,?, ?, ?)", valores);
     }
 
     @Override
     public void editar(Time o) {
         System.out.println(o.toString());
-        Object[] valores = new Object[4];
+        Object[] valores = new Object[5];
         valores[0] = o.getPontos();
         valores[1] = o.getSaldo();
         valores[2] = o.getEsquema();
-        valores[3] = o.getTimeid();
-        db.execSQL("update time set pontos = ?, saldo = ?, esquema = ? where timeid = ? ", valores);
+        valores[3] = o.getIncrementos();
+        valores[4] = o.getTimeid();
+        db.execSQL("update time set pontos = ?, saldo = ?, esquema = ?, incrementos = ? where timeid = ? ", valores);
     }
 
     @Override
@@ -60,6 +62,7 @@ public class SQLTimeDAO implements TimeDAO {
         int index_pontos = cursor.getColumnIndex("pontos");
         int index_esquema = cursor.getColumnIndex("esquema");
         int index_saldo = cursor.getColumnIndex("saldo");
+        int index_incrementos = cursor.getColumnIndex("incrementos");
 //        int index_patrocinadorid = cursor.getColumnIndex("patrocinadorid");
 //        int index_estadioid = cursor.getColumnIndex("estadioid");
         cursor.moveToFirst();
@@ -69,6 +72,7 @@ public class SQLTimeDAO implements TimeDAO {
         t.setPontos(cursor.getInt(index_pontos));
         t.setEsquema(Esquema.values()[cursor.getInt(index_esquema)]);
         t.setSaldo(cursor.getInt(index_saldo));
+        t.setIncrementos(cursor.getInt(index_incrementos));
 //        t.setPatrocinador(patrocinadorDAO.pesquisar(cursor.getInt(index_patrocinadorid)));
 //        t.setEstadio(estadioDAO.pesquisar(cursor.getInt(index_timeid)));
         Cursor cursorj = db.rawQuery("select * from jogador where timeid = ?", id);
@@ -104,8 +108,6 @@ public class SQLTimeDAO implements TimeDAO {
         t.setJogadores(jogadores);
         return t;
     }
-
-
 
 
     @Override

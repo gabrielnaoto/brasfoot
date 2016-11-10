@@ -47,7 +47,7 @@ public class actHome extends AppCompatActivity {
     }
 
     public void novo(View v) throws IOException {
-        Toast.makeText(getApplicationContext(), "novo", Toast.LENGTH_SHORT).show();
+
         deleteDatabase("brasfoot");
         createDataBase();
         importar();
@@ -89,6 +89,7 @@ public class actHome extends AppCompatActivity {
                 "esquema integer,\n" +
                 "saldo double,\n" +
                 "patrocinadorid integer not null,\n" +
+                "incrementos integer,\n" +
                 "estadioid integer not null\n" +
                 ")");
 
@@ -119,7 +120,7 @@ public class actHome extends AppCompatActivity {
     }
 
     public void continuar(View v) {
-        Toast.makeText(getApplicationContext(), "continuar", Toast.LENGTH_SHORT).show();
+
         Intent it = new Intent(this, actManager.class);
         startActivity(it);
         finish();

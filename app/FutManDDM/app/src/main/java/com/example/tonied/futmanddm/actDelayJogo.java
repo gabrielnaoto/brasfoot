@@ -76,6 +76,11 @@ public class actDelayJogo extends AppCompatActivity implements Runnable {
                 times[j] = t;
             }
             int[] placar = Regras.getGols(esquemas, atributos);
+            if (Math.random() > 0.5){
+                placar[1] = 3 - (int)Math.ceil(Math.random() * 3);
+            } else {
+                placar[0] = 3 - (int)Math.ceil(Math.random() * 3);
+            }
             p = new Partida();
             p.setRodada(rodada);
             p.setCasa(times[0]);
