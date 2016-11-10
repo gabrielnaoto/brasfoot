@@ -72,7 +72,8 @@ public class actHome extends AppCompatActivity {
                 "time integer,\n" +
                 "estadio integer,\n" +
                 "rodada integer,\n" +
-                "patrocinador integer)");
+                "patrocinador integer," +
+                "ingresso integer)");
 
         db.execSQL("create table estadio(\n" +
                 "estadioid integer primary key autoincrement,\n" +

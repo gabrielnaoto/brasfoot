@@ -116,10 +116,11 @@ public class actSelTime extends AppCompatActivity {
         c.setP(p);
         Estadio e = new Estadio();
         e.setEstrelas(Regras.e_patrocinadores[indicePatr]);
-        e.setIngresso(Regras.valPatr[indicePatr]);
+        e.setIngresso(Regras.valIng[indicePatr]);
         e.setPublico(6000);
         edao.inserir(e);
         System.out.println(e.getIngresso() + " " + e.getPublico());
+        System.out.println("salvou");
         c.setE(e);
         Time t = new Time();
         t = tdao.pesquisar(indiceTime);

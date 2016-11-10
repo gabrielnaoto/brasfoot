@@ -186,7 +186,9 @@ public class Jogador {
     }
 
     public double getSalario() {
-        return getValor() * 0.1;
+        System.out.println("valor " + getValor());
+        System.out.println("salario " + getValor() * 0.01);
+        return getValor() * 0.01;
     }
 
 }

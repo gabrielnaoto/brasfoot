@@ -32,6 +32,7 @@ public class actDelayJogo extends AppCompatActivity implements Runnable {
     private Time t;
     private JogadorDAO jogadordao;
     private int rodada;
+    private  double recebimento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,11 @@ public class actDelayJogo extends AppCompatActivity implements Runnable {
         Handler handler = new Handler();
         handler.postDelayed(this, 5000);
         results();
+
+
     }
+
+
 
     public void run() {
         startActivity(new Intent(this, actTelaJogo.class));
@@ -110,7 +115,8 @@ public class actDelayJogo extends AppCompatActivity implements Runnable {
                         } else {
                             j.setMotivacao(j.getMotivacao() - 5);
                             jogadordao.editar(j);
-                        }                    }
+                        }
+                    }
                     timedao.editar(p.getVisitante());
                     System.out.println("pontos visitante adicionados");
                     System.out.println(timedao.pesquisar(p.getVisitante().getTimeid()).getPontos());

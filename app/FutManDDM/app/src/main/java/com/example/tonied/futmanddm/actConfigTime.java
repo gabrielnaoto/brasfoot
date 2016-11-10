@@ -107,6 +107,7 @@ public class actConfigTime extends AppCompatActivity {
     private double despesas;
 
     private Campeonato campeonato;
+    private double recebimento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +116,8 @@ public class actConfigTime extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+
 
         Bundle dados = getIntent().getExtras();
         indiceTime = dados.getInt("indiceTime");
@@ -131,6 +134,8 @@ public class actConfigTime extends AppCompatActivity {
         campeonato = cdao.pesquisar();
         time = campeonato.getT();
         adversario = tdao.pesquisar(Regras.getIndicesPorTime().get(Regras.getAdversario(Regras.nomeTime[time.getTimeid()], campeonato.getRodada())));
+
+        recebimentos();
 
         scoreCasa = (TextView)findViewById(R.id.scoreCasa);
         escudoCasa = (ImageView)findViewById(R.id.escudoCasa);
@@ -256,11 +261,25 @@ public class actConfigTime extends AppCompatActivity {
                 dados.putInt("indiceTime", indiceTime);
                 it.putExtras(dados);
                 startActivity(it);
-                time.setSaldo(time.getSaldo() - despesas);
+                time.setSaldo(time.getSaldo() - despesas + recebimento);
                 tdao.editar(time);
                 finish();
             }
         });
+    }
+
+    private void recebimentos() {
+        double ingresso = campeonato.getIngresso();
+        int classificacao = 1;
+        for (Time t : tdao.listar()) {
+            if (t.getTimeid() == campeonato.getT().getTimeid()) {
+                break;
+            }
+            classificacao++;
+        }
+        int publico = Regras.getPublico(classificacao);
+        recebimento = publico * ingresso;
+
     }
 
     public void visualizaTimeClick() {

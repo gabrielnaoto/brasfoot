@@ -10,6 +10,7 @@ public class Campeonato {
     private Patrocinador p;
     private Estadio e;
     private int rodada;
+    private int ingresso;
 
     public Campeonato() {
         rodada = 1;
@@ -20,6 +21,14 @@ public class Campeonato {
         this.t = t;
         this.p = p;
         this.e = e;
+    }
+
+    public int getIngresso() {
+        return ingresso;
+    }
+
+    public void setIngresso(int ingresso) {
+        this.ingresso = ingresso;
     }
 
     public Time getT() {
